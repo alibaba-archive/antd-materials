@@ -8,7 +8,7 @@ import { setPublishedPackages } from './published-info';
 import { IPackageInfo, getPackageInfos } from './getPackageInfos';
 
 function publish(pkg: string, version: string, directory: string): void {
-  console.log('[PUBLISH]', `${pkg}@${version}`);
+  console.log('[PUBLISH]', `${pkg}@${version}`, process.env.NPM_TOKEN);
 
   // for prepublishOnly eg icejs build
   spawnSync('npm', [
