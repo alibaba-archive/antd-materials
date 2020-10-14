@@ -17,6 +17,7 @@
     "build"
   ],
   "devDependencies": {
+    "@ice/screenshot": "^0.1.7",
     "@ice/spec": "^1.0.1",
     "ali-oss": "^6.9.1",
     "eslint": "^6.0.1",
