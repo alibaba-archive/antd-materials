@@ -17,12 +17,15 @@ const loopMenuItem = (menus) =>
     children: children && loopMenuItem(children),
   }));
 
-export default function BasicLayout({ children }) {
+export default function BasicLayout({ children, location }) {
   return (
     <ProLayout
       title="icejs & antd"
       style={{
         minHeight: '100vh',
+      }}
+      location={{
+        pathname: location.pathname
       }}
       menuDataRender={() => loopMenuItem(asideMenuConfig)}
       menuItemRender={(item, defaultDom) => {
