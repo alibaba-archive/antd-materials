@@ -33,7 +33,7 @@ console.log('[PUBLISH] Start:');
 
 Promise.all([
   getPackageInfos(join(__dirname, '../scaffolds')),
-  getPackageInfos(join(__dirname, '../blocks'))
+  // getPackageInfos(join(__dirname, '../blocks'))
 ]).then((result: IPackageInfo[][]) => {
 
   let publishedCount = 0;
