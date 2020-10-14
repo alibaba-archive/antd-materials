@@ -1,7 +1,8 @@
 {
-  "name": "rax-materials",
+  "name": "antd-materials",
+  "private": true,
   "version": "0.1.1",
-  "description": "This is a ice material project for Rax",
+  "description": "This is a ice material project for antd",
   "author": "",
   "scripts": {
     "deploy": "npm run publish && npm run generate && npm run sync",
@@ -27,7 +28,7 @@
     "typescript": "^3.7.5"
   },
   "materialConfig": {
-    "template": "@icedesign/template-rax",
-    "type": "rax"
+    "template": "@icedesign/ice-react-ts-material-template",
+    "type": "react"
   }
 }
