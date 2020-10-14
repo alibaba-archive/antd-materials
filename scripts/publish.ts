@@ -10,6 +10,14 @@ import { IPackageInfo, getPackageInfos } from './getPackageInfos';
 function publish(pkg: string, version: string, directory: string): void {
   console.log('[PUBLISH]', `${pkg}@${version}`);
 
+  // for prepublishOnly eg icejs build
+  spawnSync('npm', [
+    'install',
+  ], {
+    stdio: 'inherit',
+    cwd: directory,
+  });
+
   spawnSync('npm', [
     'publish',
     '--access', 'public'
