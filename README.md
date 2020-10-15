@@ -1,53 +1,20 @@
-# Custom ICE Materials
+# Ant Design Materials
 
-[Docs](https://ice.work/docs/materials/about).
+Ant Design materials.
 
-## Install iceworks
+## Insall Iceworks
 
-```bash
-$ npm i -g iceworks
-$ iceworks --help
-```
+We recommend you to use materials by VS Code Plugin [Iceworks](https://marketplace.visualstudio.com/items?itemName=iceworks-team.iceworks). Click [here](https://ice.work/docs/iceworks/quick-start) to learn more about how to install Iceworks.
 
-## Install Deps
+## Add antd materials
 
-```bash
-$ npm install
-```
+> Material source url: http://ice.alicdn.com/assets/materials/antd-materials.json
 
-## Develop materials
+![](https://img.alicdn.com/tfs/TB1S5Yol6MZ7e4jSZFOXXX7epXa-2051-971.png)
 
-```bash
-# block
-$ cd blocks/ExampleBlock
-$ npm install
-$ npm run start
+## Create Application
 
-# component
-$ cd blocks/ExampleBlock
-$ npm install
-$ npm run start
-```
 
-## Add new material
+## License
 
-```bash
-$ iceworks add  # select block|component|scaffold
-```
-
-## Generate materials data
-
-```bash
-$ iceworks generate
-```
-
-## Publish materials data
-
-```bash
-# sync to fusion material center
-$ iceworks sync
-```
-
-## Use materials in iceworks
-
-Add the materials data url to iceworks.
+[MIT](LICENSE)
