@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    "build-plugin-block",
+    [
+      "build-plugin-moment-locales",
+      {
+        "locales": [
+          "zh-cn"
+        ]
+      }
+    ],
+    ["build-plugin-antd", {
+      "themeConfig": {
+        "primary-color": "#ccc"
+      }
+    }]  
+  ]
+}
