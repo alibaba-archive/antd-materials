@@ -21,6 +21,7 @@ export interface LogItem {
   operator?: string;
   opResult?: string;
   opTime?: string;
+  key?:number;
 }
 
 export interface DataSource {
@@ -67,11 +68,12 @@ const DEFAULT_DATA: DataSource = {
     ["业务线审批", "倩倩"],
     ["HR线审批", "叶俊"],
   ].map(
-    (item): LogItem => ({
+    (item,index): LogItem => ({
       opStatus: item[0],
       operator: item[1],
       opResult: "同意",
       opTime: "2019-11-11 09:36",
+      key:index,
     })
   ),
   person: {
