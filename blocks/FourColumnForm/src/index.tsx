@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Input,
   Button,
@@ -15,12 +15,13 @@ import {
 import { Moment } from "moment";
 
 import styles from "./index.module.less";
+import { InternalNamePath } from "_antd@4.12.3@antd/lib/form/interface";
 
 const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: { span: 8 },
-    wrapperCol: { span: 35 },
+  wrapperCol: { span: 35 },
 };
 
 export interface DataSource {
@@ -44,7 +45,12 @@ const DEFAULT_DATA: DataSource = {
   type: "private",
 };
 
-const DEFAULT_ON_SUBMIT = (values: FourColumnFormProps, errors: []): void => {
+const DEFAULT_ON_SUBMIT = (
+  values: FourColumnFormProps,
+  errors: { name: InternalNamePath; errors: string[] }[]
+): void => {
+  console.log(values);
+
   if (errors) {
     console.log("errors", errors);
     return;
@@ -65,33 +71,66 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
   const formChange = (value: DataSource) => {
     setValue(value);
   };
-
+  const formRef = useRef(null);
   return (
     <Card className={styles.FourColumnForm}>
       <Form
-        // value={postData}
+        initialValues={postData}
+        ref={formRef}
         labelAlign="right"
         onValuesChange={formChange}
+        onFinish={(value) => onSubmit(value, [])}
+        onFinishFailed={(value) => onSubmit(value.values, value.errorFields)}
       >
         <Row>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目名称：" required>
+            <FormItem
+              {...formItemLayout}
+              label="项目名称："
+              rules={[
+                {
+                  required: true,
+                  message: "name是必填字段",
+                },
+              ]}
+              name="name"
+            >
               <Input placeholder="请输入项目名称" name="name" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目所属分类：" required>
+            <FormItem
+              {...formItemLayout}
+              label="项目所属分类："
+              rules={[
+                {
+                  required: true,
+                  message: "category是必填字段",
+                },
+              ]}
+              name="category"
+            >
               <Input placeholder="请输入你的分类" name="category" />
             </FormItem>
           </Col>
 
           <Col span={6}>
-            <FormItem {...formItemLayout} label="申请人：" required>
+            <FormItem
+              {...formItemLayout}
+              label="申请人："
+              name="person"
+              rules={[
+                {
+                  required: true,
+                  message: "person是必填字段",
+                },
+              ]}
+            >
               <Input placeholder="申请人" name="person" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目权限：">
+            <FormItem {...formItemLayout} label="项目权限：" name="type">
               <Radio.Group name="type" aria-labelledby="authority of project">
                 <Radio id="private" value="private">
                   私密项目
@@ -106,8 +145,18 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="状态：" required>
-              <Select name="state" aria-labelledby="state of project">
+            <FormItem
+              {...formItemLayout}
+              label="状态："
+              name="state"
+              rules={[
+                {
+                  required: true,
+                  message: "state是必填字段",
+                },
+              ]}
+            >
+              <Select aria-labelledby="state of project">
                 <Select.Option id="step1" value="step1">
                   阶段一
                 </Select.Option>
@@ -121,72 +170,103 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="联系人：" required>
+            <FormItem
+              {...formItemLayout}
+              label="联系人："
+              name="relative"
+              rules={[
+                {
+                  required: true,
+                  message: "relative是必填字段",
+                },
+              ]}
+            >
               <Input placeholder="请输入联系人" name="relative" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="关联项目：" required>
+            <FormItem
+              {...formItemLayout}
+              label="关联项目："
+              name="relaventProject"
+              rules={[
+                {
+                  required: true,
+                  message: "relaventProject是必填字段",
+                },
+              ]}
+            >
               <Input placeholder="请输入关联项目" name="relaventProject" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="申请日期：" required>
+            <FormItem
+              {...formItemLayout}
+              label="申请日期："
+              name="date"
+              rules={[
+                {
+                  required: true,
+                  message: "date是必填字段",
+                },
+              ]}
+            >
               <DatePicker.RangePicker name="date" />
             </FormItem>
           </Col>
 
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号1：">
+            <FormItem {...formItemLayout} label="项目编号1：" name="data1">
               <Input placeholder="请输入" name="data1" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号2：">
+            <FormItem {...formItemLayout} label="项目编号2：" name="data2">
               <Input placeholder="请输入" name="data2" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号3：">
+            <FormItem {...formItemLayout} label="项目编号3：" name="data3">
               <Input placeholder="请输入" name="data3" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号4：">
+            <FormItem {...formItemLayout} label="项目编号4：" name="data4">
               <Input placeholder="请输入" name="data4" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号5：">
+            <FormItem {...formItemLayout} label="项目编号5：" name="data5">
               <Input placeholder="请输入" name="data5" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号6：">
+            <FormItem {...formItemLayout} label="项目编号6：" name="data6">
               <Input placeholder="请输入" name="data6" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号7：">
+            <FormItem {...formItemLayout} label="项目编号7：" name="data7">
               <Input placeholder="请输入" name="data7" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem {...formItemLayout} label="项目编号8：">
+            <FormItem {...formItemLayout} label="项目编号8：" name="data8">
               <Input placeholder="请输入" name="data8" />
             </FormItem>
           </Col>
           <Col span={6}>
-            <FormItem>
-              {/* <Box spacing={8} direction="row">
-              <Form.Submit
-                type="primary"
-                onClick={onSubmit}
-                validate
-              >提交
-              </Form.Submit>
-              <Button onClick={onCancel} type="secondary">取消</Button>
-            </Box> */}
+            <FormItem wrapperCol={{ span: 12, offset: 8 }}>
+              <div>
+                <Button
+                  type="primary"
+                  onClick={() => formRef.current.submit()}
+                  style={{ marginRight: "10px" }}
+                >
+                  提交
+                </Button>
+                <Button onClick={onCancel}>取消</Button>
+              </div>
             </FormItem>
           </Col>
         </Row>
