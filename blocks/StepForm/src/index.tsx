@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   Form,
@@ -8,11 +8,11 @@ import {
   Button,
   Typography,
   Row,
-  Col,
-} from "antd";
-import { CheckCircleOutlined } from "@ant-design/icons";
-import styles from "./index.module.less";
-import { useForm } from "_antd@4.12.3@antd/lib/form/Form";
+  Col
+} from 'antd';
+import { CheckCircleOutlined } from '@ant-design/icons';
+import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
+import styles from './index.module.less';
 
 export interface DataSource {
   name?: string;
@@ -27,10 +27,10 @@ export interface StepFormProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  name: "",
-  category: "",
-  authority: "private",
-  desc: "",
+  name: '',
+  category: '',
+  authority: 'private',
+  desc: ''
 };
 
 const StepForm: React.FunctionComponent<StepFormProps> = (
@@ -42,13 +42,13 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
   const [form] = useForm();
   const formLayout = {
     labelCol: { span: 6 },
-    wrapperCol: { span: 15 },
+    wrapperCol: { span: 15 }
   };
 
-  const steps = ["填写信息", "确认信息", "完成"].map(
+  const steps = ['填写信息', '确认信息', '完成'].map(
     (item, index): React.ReactElement => (
       <Steps.Step
-        aria-current={index === currentStep ? "step" : undefined}
+        aria-current={index === currentStep ? 'step' : undefined}
         key={index}
         title={item}
       />
@@ -57,7 +57,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
 
   const submit = (): void => {
     const values = form.getFieldsValue(true);
-    console.log("values:", values);
+    console.log('values:', values);
     // @ts-ignore
     onSubmit(values);
 
@@ -68,9 +68,9 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
     try {
       const values = await form.validateFields();
       setStep(currentStep + 1);
-      console.log("Success:", values);
+      console.log('Success:', values);
     } catch (errorInfo) {
-      console.log("Failed:", errorInfo);
+      console.log('Failed:', errorInfo);
     }
   };
 
@@ -96,7 +96,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
     case 1:
       actions = (
         <>
-          <Button onClick={goPrev} style={{ marginRight: "5px" }}>
+          <Button onClick={goPrev} style={{ marginRight: '5px' }}>
             上一步
           </Button>
           <Button type="primary" onClick={submit} htmlType="submit">
@@ -115,7 +115,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
             <div>
               <Button
                 type="primary"
-                style={{ marginRight: "5px" }}
+                style={{ marginRight: '5px' }}
                 onClick={goInitial}
               >
                 返回主页
@@ -149,8 +149,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: "必填",
-                  },
+                    message: '必填'
+                  }
                 ]}
               >
                 <Input placeholder="给项目起个名字" />
@@ -165,8 +165,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: "必填",
-                  },
+                    message: '必填'
+                  }
                 ]}
               >
                 <Input placeholder="请输入你的分类" />
@@ -203,7 +203,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
     );
   } else if (currentStep == 1) {
     const values = form.getFieldsValue(true);
-    const { name, category, authority, desc = "" } = values;
+    const { name, category, authority, desc = '' } = values;
     mainbody = (
       <>
         <Form
@@ -222,8 +222,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: "必填",
-                  },
+                    message: '必填'
+                  }
                 ]}
               >
                 {name}
@@ -238,8 +238,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: "必填",
-                  },
+                    message: '必填'
+                  }
                 ]}
               >
                 {category}
@@ -249,11 +249,11 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
               <Form.Item label="项目权限" name="authority" {...formLayout}>
                 <Radio.Group aria-labelledby="authority of project">
                   <Radio id={authority} value={authority} disabled>
-                    {authority == "private"
-                      ? "私密项目"
-                      : authority == "internal"
-                      ? "内部项目"
-                      : "开放项目"}
+                    {authority == 'private'
+                      ? '私密项目'
+                      : authority == 'internal'
+                        ? '内部项目'
+                        : '开放项目'}
                   </Radio>
                 </Radio.Group>
               </Form.Item>

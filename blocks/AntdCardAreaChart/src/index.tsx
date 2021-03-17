@@ -1,9 +1,9 @@
-import React from "react";
-import { Chart, Geom } from "bizcharts";
-import mock from "./mock.js";
+import React from 'react';
+import { Chart, Geom } from 'bizcharts';
+import { Card } from 'antd';
+import mock from './mock.js';
 
-import { Card } from "antd";
-import styles from "./index.module.less";
+import styles from './index.module.less';
 
 interface ChartItem {
   date?: string | number;
@@ -21,13 +21,13 @@ interface AntdCardAreaChartProps {
 }
 
 const DEFAULT_DATA: AntdCardAreaChartProps = {
-  title: "",
-  subTitle: "访问量",
+  title: '',
+  subTitle: '访问量',
   value: mock.value,
   chartData: mock.saleList,
-  des: "周同比:",
-  rate: "12.0",
-  chartHeight: 100,
+  des: '周同比:',
+  rate: '12.0',
+  chartHeight: 100
 };
 
 const AntdCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
@@ -35,11 +35,15 @@ const AntdCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
 ): JSX.Element => {
   const { title, subTitle, value, chartData, des, rate, chartHeight } = {
     ...DEFAULT_DATA,
-    ...props,
+    ...props
   };
 
   return (
-    <Card  className={styles.areaChart} title={title ? title : ""} style={{margin: '8px'}}>
+    <Card
+      className={styles.areaChart}
+      title={title || ''}
+      style={{ margin: '8px' }}
+    >
       <div className={styles.subTitle}>{subTitle}</div>
       <div className={styles.value}>{value}</div>
       <div className={styles.des}>
@@ -48,15 +52,15 @@ const AntdCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
       </div>
       <Chart
         width={10}
-        height={chartHeight ? chartHeight : 0}
+        height={chartHeight || 0}
         data={chartData}
         scale={{
           date: {
-            range: [0, 1],
-          },
+            range: [0, 1]
+          }
         }}
         forceFit
-        padding={["auto", "0"]}
+        padding={['auto', '0']}
       >
         <Geom
           type="line"

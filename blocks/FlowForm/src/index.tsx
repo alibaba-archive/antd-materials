@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState, useRef } from "react";
-import { findDOMNode } from "react-dom";
+import React, { FC, useEffect, useState, useRef } from 'react';
+import { findDOMNode } from 'react-dom';
 import {
   Card,
   Button,
@@ -14,9 +14,9 @@ import {
   Typography,
   Row,
   Col,
-  Space,
-} from "antd";
-import styles from "./index.module.less";
+  Space
+} from 'antd';
+import styles from './index.module.less';
 
 export interface Experience {
   company?: string;
@@ -70,38 +70,38 @@ export interface FlowFormProps {
 const DEFAULT_DATA: DataSource = {
   approval: {
     approverId: 1,
-    assessmentType: 1,
+    assessmentType: 1
   },
   person: {
     avatar:
-      "https://img.alicdn.com/tfs/TB1WpoDouH2gK0jSZJnXXaT1FXa-1072-1608.jpg",
-    surname: "谢",
-    name: "莉莉",
-    phone: "13676349585",
-    email: "Xielili@aliwork-inc.com",
-    region: "中国/浙江",
-    address: "杭州",
+      'https://img.alicdn.com/tfs/TB1WpoDouH2gK0jSZJnXXaT1FXa-1072-1608.jpg',
+    surname: '谢',
+    name: '莉莉',
+    phone: '13676349585',
+    email: 'Xielili@aliwork-inc.com',
+    region: '中国/浙江',
+    address: '杭州',
     workTime: 3,
-    education: "Singapore University of Technology and Design",
-    rank: "P10",
-    position: "Senior Director",
-    department: "aliwork&EHR",
-    workAddress: "杭州",
-    salary: "20,000",
+    education: 'Singapore University of Technology and Design',
+    rank: 'P10',
+    position: 'Senior Director',
+    department: 'aliwork&EHR',
+    workAddress: '杭州',
+    salary: '20,000',
     experiences: [
       {
-        company: "浙江杭州天猫有限公司",
-        position: "高级研发专家",
-        region: "中国/浙江",
+        company: '浙江杭州天猫有限公司',
+        position: '高级研发专家',
+        region: '中国/浙江',
         description:
-          "Fusion 是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。",
-        salary: "20,000 USD",
+          'Fusion 是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。',
+        salary: '20,000 USD',
         time: 13,
-        allowance: "5,000 USD",
-        rsu: false,
-      },
-    ],
-  },
+        allowance: '5,000 USD',
+        rsu: false
+      }
+    ]
+  }
 };
 
 const FlowForm: FC<FlowFormProps> = (props) => {
@@ -110,7 +110,7 @@ const FlowForm: FC<FlowFormProps> = (props) => {
     onAgree = () => {},
     onRefuse = () => {},
     onTransfer = () => {},
-    onSignature = () => {},
+    onSignature = () => {}
   } = props;
 
   // const field = Field.useField({
@@ -193,8 +193,8 @@ const FlowForm: FC<FlowFormProps> = (props) => {
         <Card title="候选人信息">
           <Row>
             <Col span={12}>
-              <div style={{ display: "flex" }}>
-                <div style={{ marginRight: "20px" }}>
+              <div style={{ display: 'flex' }}>
+                <div style={{ marginRight: '20px' }}>
                   <Avatar src={dataSource.person?.avatar} />
                 </div>
                 <div>
@@ -205,7 +205,7 @@ const FlowForm: FC<FlowFormProps> = (props) => {
                           label={`${dataSource.person?.surname}${dataSource.person?.name}`}
                         >
                           <span className="next-form-preview">
-                            {dataSource.person?.phone} |{" "}
+                            {dataSource.person?.phone} |{' '}
                             {dataSource.person?.email}
                           </span>
                         </Form.Item>
@@ -236,7 +236,7 @@ const FlowForm: FC<FlowFormProps> = (props) => {
                 </div>
               </div>
             </Col>
-            <Col span={12} style={{ position: "relative" }}>
+            <Col span={12} style={{ position: 'relative' }}>
               <Divider className={styles.Divider} type="vertical" />
               <Form labelAlign="right">
                 <Row>
@@ -271,7 +271,7 @@ const FlowForm: FC<FlowFormProps> = (props) => {
                   <Col span={12}>
                     <Form.Item label="薪水">
                       <div className="next-form-preview">
-                        {dataSource.person?.salary}{" "}
+                        {dataSource.person?.salary}{' '}
                         <Tag color="green">+23.2%</Tag>
                       </div>
                     </Form.Item>
@@ -401,7 +401,7 @@ const FlowForm: FC<FlowFormProps> = (props) => {
                         <Col span={8}>
                           <Form.Item label="Options/RSU">
                             <span className="next-form-preview">
-                              {experience.rsu ? "Yes" : "No"}
+                              {experience.rsu ? 'Yes' : 'No'}
                             </span>
                           </Form.Item>
                         </Col>

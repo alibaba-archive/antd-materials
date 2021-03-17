@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Input,
   Form,
@@ -7,19 +7,19 @@ import {
   DatePicker,
   message,
   Radio,
-  Upload,
-} from "antd";
+  Upload
+} from 'antd';
 
-import { Moment } from "moment";
-import { UploadOutlined } from "@ant-design/icons";
+import { Moment } from 'moment';
+import { UploadOutlined } from '@ant-design/icons';
 
-import styles from "./index.module.less";
+import styles from './index.module.less';
 
 const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: { span: 5 },
-  wrapperCol: { span: 16 },
+  wrapperCol: { span: 16 }
 };
 
 export interface DataSource {
@@ -38,7 +38,7 @@ export interface BasicFormProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  type: "private",
+  type: 'private'
 };
 
 const BasicForm: React.FC<BasicFormProps> = (
@@ -48,16 +48,16 @@ const BasicForm: React.FC<BasicFormProps> = (
   const DEFAULT_ON_SUBMIT = async () => {
     try {
       const values = await form.validateFields();
-      console.log("values:", values);
-      message.success("提交成功");
+      console.log('values:', values);
+      message.success('提交成功');
     } catch (errorInfo) {
-      console.log("Failed:", errorInfo);
+      console.log('Failed:', errorInfo);
     }
   };
   const {
     dataSource = DEFAULT_DATA,
     onSubmit = DEFAULT_ON_SUBMIT,
-    onCancel = () => {},
+    onCancel = () => {}
   } = props;
   const [postData, setValue] = useState<DataSource>(dataSource);
 
@@ -68,7 +68,7 @@ const BasicForm: React.FC<BasicFormProps> = (
     <Card>
       <Form
         className={styles.BasicForm}
-        validateMessages={{ required: "必填" }}
+        validateMessages={{ required: '必填' }}
         form={form}
         initialValues={postData}
         labelAlign="right"
@@ -80,8 +80,8 @@ const BasicForm: React.FC<BasicFormProps> = (
           rules={[
             {
               required: true,
-              message: "必填",
-            },
+              message: '必填'
+            }
           ]}
           name="name"
         >
@@ -94,8 +94,8 @@ const BasicForm: React.FC<BasicFormProps> = (
           rules={[
             {
               required: true,
-              message: "必填",
-            },
+              message: '必填'
+            }
           ]}
           name="category"
         >
@@ -108,8 +108,8 @@ const BasicForm: React.FC<BasicFormProps> = (
           rules={[
             {
               required: true,
-              message: "必填",
-            },
+              message: '必填'
+            }
           ]}
           name="date"
         >
@@ -131,7 +131,12 @@ const BasicForm: React.FC<BasicFormProps> = (
         </FormItem>
 
         <FormItem {...formItemLayout} label="上传封面：" name="pic">
-          <Upload name="logo" action="/upload.do" listType="picture" accept="image/png, image/jpeg">
+          <Upload
+            name="logo"
+            action="/upload.do"
+            listType="picture"
+            accept="image/png, image/jpeg"
+          >
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </FormItem>
@@ -140,9 +145,13 @@ const BasicForm: React.FC<BasicFormProps> = (
           <Input.TextArea placeholder="请输入项目详细信息" name="desc" />
         </FormItem>
 
-        <FormItem wrapperCol={{ span: 12, offset: 5 }} >
+        <FormItem wrapperCol={{ span: 12, offset: 5 }}>
           <div>
-            <Button type="primary" onClick={onSubmit} style={{marginRight:'10px'}}>
+            <Button
+              type="primary"
+              onClick={onSubmit}
+              style={{ marginRight: '10px' }}
+            >
               提交
             </Button>
             <Button onClick={onCancel}>取消</Button>

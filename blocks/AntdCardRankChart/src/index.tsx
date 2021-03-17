@@ -3,7 +3,6 @@ import { Card, Row, Col, Divider } from 'antd';
 
 import styles from './index.module.less';
 
-
 interface DataItem {
   name?: string;
   rate?: string;
@@ -25,62 +24,62 @@ const DEFAULT_DATA: CardConfig = {
     { name: '亚洲', rate: '40%', color: '#2B7FFB' },
     { name: '欧洲', rate: '30%', color: '#00D6CB' },
     { name: '南非', rate: '20%', color: '#F0C330' },
-    { name: '美洲', rate: '10%', color: '#3840D9' },
-  ],
+    { name: '美洲', rate: '10%', color: '#3840D9' }
+  ]
 };
 
-const AntdCardRankChart: React.FunctionComponent<AntdCardRankChartProps> = (props: AntdCardRankChartProps): JSX.Element => {
+const AntdCardRankChart: React.FunctionComponent<AntdCardRankChartProps> = (
+  props: AntdCardRankChartProps
+): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
   const { title, dataSource } = cardConfig;
   return (
     <Card title={title}>
-        <Row gutter={24}>
-          <Col span={12}>
-            <div className={styles.hisMap} />
-          </Col>
-          <Col span={6}>
-            <div className={styles.histogram}>
-              {dataSource &&
-                dataSource.map((item, idx) => (
-                  <div key={idx} style={{justifyContent: 'flex-start'}} >
-                    <div className={styles.hisTitle}>{item.name}</div>
-                    <div style={{display:'flex'}}>
-                      <div style={{ backgroundColor: item.color, width: item.rate }} />
-                      <div className={styles.hisRate}>{item.rate}</div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </Col>
-          <Col span={6}>
-            <div className={styles.subCard}>
-              <Divider type="vertical" className={styles.subDiv} />
-              <div className={styles.subBody}>
-                <div className={styles.subName}>亚洲</div>
-                <Divider type="horizontal" />
-                <div
-                  className={styles.subMain}
-                >
-                  <div>
-                    <div className={styles.subTypeName}>商品类目1</div>
-                    <div className={styles.subTypeValue}>6,123</div>
-                  </div>
-                  <Divider type="vertical" className={styles.subMainDiv} />
-                  <div>
-                    <div className={styles.subTypeName}>商品类目2</div>
-                    <div className={styles.subTypeValue}>132,4</div>
+      <Row gutter={24}>
+        <Col span={12}>
+          <div className={styles.hisMap} />
+        </Col>
+        <Col span={6}>
+          <div className={styles.histogram}>
+            {dataSource &&
+              dataSource.map((item, idx) => (
+                <div key={idx} style={{ justifyContent: 'flex-start' }}>
+                  <div className={styles.hisTitle}>{item.name}</div>
+                  <div style={{ display: 'flex' }}>
+                    <div
+                      style={{ backgroundColor: item.color, width: item.rate }}
+                    />
+                    <div className={styles.hisRate}>{item.rate}</div>
                   </div>
                 </div>
-                <div
-                  className={styles.subFooter}
-                >
-                  <div>周同比</div>
-                  <div>45%↑</div>
+              ))}
+          </div>
+        </Col>
+        <Col span={6}>
+          <div className={styles.subCard}>
+            <Divider type="vertical" className={styles.subDiv} />
+            <div className={styles.subBody}>
+              <div className={styles.subName}>亚洲</div>
+              <Divider type="horizontal" />
+              <div className={styles.subMain}>
+                <div>
+                  <div className={styles.subTypeName}>商品类目1</div>
+                  <div className={styles.subTypeValue}>6,123</div>
+                </div>
+                <Divider type="vertical" className={styles.subMainDiv} />
+                <div>
+                  <div className={styles.subTypeName}>商品类目2</div>
+                  <div className={styles.subTypeValue}>132,4</div>
                 </div>
               </div>
+              <div className={styles.subFooter}>
+                <div>周同比</div>
+                <div>45%↑</div>
+              </div>
             </div>
-          </Col>
-        </Row >
+          </div>
+        </Col>
+      </Row>
     </Card>
   );
 };

@@ -2,7 +2,11 @@ import React, { useRef, useCallback } from 'react';
 import { Dialog } from '@alifd/next';
 import { DialogProps } from '@alifd/next/types/dialog';
 
-import Operation, { ActionType, OperaitionProps, OperationRef } from './Operation';
+import Operation, {
+  ActionType,
+  OperaitionProps,
+  OperationRef
+} from './Operation';
 
 const getDialogTitle = (actionType: ActionType): string => {
   switch (actionType) {
@@ -43,7 +47,11 @@ const DialogOperation: React.FC<OperaitionProps & DialogProps> = (props) => {
       {...lastProps}
       onOk={handleOk}
     >
-      <Operation ref={operationRef} actionType={actionType} dataSource={dataSource} />
+      <Operation
+        ref={operationRef}
+        actionType={actionType}
+        dataSource={dataSource}
+      />
     </Dialog>
   );
 };

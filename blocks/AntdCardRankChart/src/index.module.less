@@ -1,4 +1,3 @@
-
 .hisMap {
   width: 100%;
   height: 345px;
@@ -49,6 +48,7 @@
     margin-bottom: 0;
   }
 }
+
 .subCard {
   height: 100%;
   display: flex;
@@ -63,13 +63,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
-    & > div {
+    align-items: center;
+
+    &>div {
       &:first-child {
-        color: rgba(153,153,153,1);
+        color: rgba(153, 153, 153, 1);
       }
+
       &:nth-child(2) {
-        color: rgba(54,207,201,1);
+        color: rgba(54, 207, 201, 1);
         font-size: 32px;
       }
     }
@@ -77,6 +79,7 @@
 
   .subBody {
     width: 100%;
+
     .subName {
       color: #222;
       font-weight: bold;
@@ -84,7 +87,7 @@
       line-height: 50px;
       text-align: center;
 
-      & + div {
+      &+div {
         width: 100%;
         margin-top: 0;
       }
@@ -98,7 +101,7 @@
     justify-content: center;
 
     .subTypeName {
-      color: rgba(153,153,153,1);
+      color: rgba(153, 153, 153, 1);
       font-size: 12px;
     }
 
@@ -112,7 +115,8 @@
     }
   }
 }
-:global(.ant-card-body){
+
+:global(.ant-card-body) {
   padding: 0;
   padding-top: 1px;
 }

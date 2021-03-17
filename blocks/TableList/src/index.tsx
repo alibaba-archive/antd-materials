@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Table,
@@ -10,10 +10,10 @@ import {
   Form,
   Input,
   Select
-} from "antd";
-import { SearchOutlined, UpOutlined, DownOutlined } from "@ant-design/icons";
+} from 'antd';
+import { SearchOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 
-import styles from "./index.module.less";
+import styles from './index.module.less';
 
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -26,11 +26,11 @@ const mockTableData: Array<Record<string, unknown>> = [];
 for (let i = 0; i <= 10; i += 1) {
   mockTableData.push({
     name: `品牌营销服务设计 ${String.fromCharCode(97 + i).toUpperCase()}`,
-    type: Math.random() > 0.5 ? "24小时页面" : "Banner 广告A",
-    demand: ["曾庆超", "阮小五", "公孙胜"][i % 3],
-    interface: ["阮小二", "谢莉莉", "樊瑞"][i % 3],
-    supplier: "博彦-李强",
-    designer: ["李立", "曹正", "姚越洋"][i % 3],
+    type: Math.random() > 0.5 ? '24小时页面' : 'Banner 广告A',
+    demand: ['曾庆超', '阮小五', '公孙胜'][i % 3],
+    interface: ['阮小二', '谢莉莉', '樊瑞'][i % 3],
+    supplier: '博彦-李强',
+    designer: ['李立', '曹正', '姚越洋'][i % 3],
     key: i
   });
 }
@@ -38,12 +38,12 @@ for (let i = 0; i <= 10; i += 1) {
 const DEFAULT_DATA: IDataSource = {
   tableData: mockTableData,
   tableColumn: {
-    name: "需求名称",
-    type: "类型数量",
-    demand: "需求方",
-    interface: "接口人",
-    supplier: "供应商接口人",
-    designer: "设计师"
+    name: '需求名称',
+    type: '类型数量',
+    demand: '需求方',
+    interface: '接口人',
+    supplier: '供应商接口人',
+    designer: '设计师'
   }
 };
 

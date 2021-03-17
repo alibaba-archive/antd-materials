@@ -1,8 +1,8 @@
-import React from "react";
-import { Card } from "antd";
-import { Chart, Geom } from "bizcharts";
-import mock from "./mock.js";
-import styles from "./index.module.less";
+import React from 'react';
+import { Card } from 'antd';
+import { Chart, Geom } from 'bizcharts';
+import mock from './mock.js';
+import styles from './index.module.less';
 
 interface ChartItem {
   date?: string;
@@ -20,12 +20,12 @@ interface CardConfig {
 }
 
 const DEFAULT_DATA: CardConfig = {
-  subTitle: "总销售额",
+  subTitle: '总销售额',
   value: mock.value,
   chartData: mock.saleList,
-  des: "周同比:",
+  des: '周同比:',
   rate: 10.1,
-  chartHeight: 100,
+  chartHeight: 100
 };
 
 export interface AntdCardBarChartProps {
@@ -44,33 +44,33 @@ const AntdCardBarChart: React.FunctionComponent<AntdCardBarChartProps> = (
     chartData,
     des,
     rate,
-    chartHeight,
+    chartHeight
   } = cardConfig;
 
   return (
     <div>
-    <Card title={title ? title : ""} style={{margin: '8px'}}>
-      <div className={styles.subTitle}>{subTitle}</div>
-      <div className={styles.value}>{value}</div>
-      <div className={styles.des}>
-        {des}
-        <span>{rate}↑</span>
-      </div>
-      <Chart
-        width={10}
-        height={chartHeight ? chartHeight : 0}
-        data={chartData}
-        scale={{
-          date: {
-            range: [0, 1],
-          },
-        }}
-        forceFit
-        padding={["auto", "16"]}
-      >
-        <Geom type="interval" position="date*value" color="#29A5FF" />
-      </Chart>
-    </Card>
+      <Card title={title || ''} style={{ margin: '8px' }}>
+        <div className={styles.subTitle}>{subTitle}</div>
+        <div className={styles.value}>{value}</div>
+        <div className={styles.des}>
+          {des}
+          <span>{rate}↑</span>
+        </div>
+        <Chart
+          width={10}
+          height={chartHeight || 0}
+          data={chartData}
+          scale={{
+            date: {
+              range: [0, 1]
+            }
+          }}
+          forceFit
+          padding={['auto', '16']}
+        >
+          <Geom type="interval" position="date*value" color="#29A5FF" />
+        </Chart>
+      </Card>
     </div>
   );
 };

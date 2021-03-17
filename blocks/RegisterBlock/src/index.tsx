@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Input, message, Form, Button } from 'antd';
 
+import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 import { useInterval } from './utils';
 import styles from './index.module.less';
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 
 const { Item } = Form;
 export interface RegisterProps {
@@ -23,20 +23,23 @@ export default function RegisterBlock() {
     password: '',
     rePassword: '',
     phone: '',
-    code: '',
+    code: ''
   });
 
   const [isRunning, checkRunning] = useState(false);
   const [second, setSecond] = useState(59);
-  const [isPhoneSubmit, setisPhoneSubmit] = useState(false)
+  const [isPhoneSubmit, setisPhoneSubmit] = useState(false);
 
-  useInterval(() => {
-    setSecond(second - 1);
-    if (second <= 0) {
-      checkRunning(false);
-      setSecond(59);
-    }
-  }, isRunning ? 1000 : null);
+  useInterval(
+    () => {
+      setSecond(second - 1);
+      if (second <= 0) {
+        checkRunning(false);
+        setSecond(59);
+      }
+    },
+    isRunning ? 1000 : null
+  );
 
   const formChange = (value: RegisterProps) => {
     setValue(value);
@@ -58,7 +61,7 @@ export default function RegisterBlock() {
     console.log('values:', values);
     message.success('注册成功');
   };
-  const [form] = useForm()
+  const [form] = useForm();
   return (
     <div className={styles.RegisterBlock}>
       <div className={styles.innerBlock}>
@@ -71,51 +74,85 @@ export default function RegisterBlock() {
         </a>
         <p className={styles.desc}>注册账号</p>
 
-        <Form initialValues={postData} onValuesChange={formChange} size="large" form={form}
-          onFinish={(value) => isPhoneSubmit ? sendCode(value) : handleSubmit(value)}
-          onFinishFailed={(value) => isPhoneSubmit ? sendCode(value.values, value.errorFields) : handleSubmit(value.values, value.errorFields)}
+        <Form
+          initialValues={postData}
+          onValuesChange={formChange}
+          size="large"
+          form={form}
+          onFinish={(value) =>
+            isPhoneSubmit ? sendCode(value) : handleSubmit(value)
+          }
+          onFinishFailed={(value) =>
+            isPhoneSubmit
+              ? sendCode(value.values, value.errorFields)
+              : handleSubmit(value.values, value.errorFields)
+          }
         >
-          <Item required rules={[{
-            required: true,
-            message: '请填写正确的邮箱',
-            pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
-          }]} name="email">
+          <Item
+            required
+            rules={[
+              {
+                required: true,
+                message: '请填写正确的邮箱',
+                pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+              }
+            ]}
+            name="email"
+          >
             <Input size="large" maxLength={20} placeholder="邮箱" />
           </Item>
-          <Item required name="password" validateTrigger="onBlur" rules={[{
-            required: true,
-            message: '请填写六位或以上的密码',
-            pattern: /^\d{6}/
-          }]}>
+          <Item
+            required
+            name="password"
+            validateTrigger="onBlur"
+            rules={[
+              {
+                required: true,
+                message: '请填写六位或以上的密码',
+                pattern: /^\d{6}/
+              }
+            ]}
+          >
             <Input.Password
               size="large"
               placeholder="至少六位密码，区分大小写"
             />
           </Item>
-          <Item required validateTrigger="onBlur" name="rePassword" rules={[{
-            required: true,
-            message: '请再次输入密码',
-            // validator:{checkPass}
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(new Error('两次密码输入不一致,请检查后重新输入'));
-            },
-          }),
-          ]} >
-            <Input.Password
-              size="large"
-              placeholder="确认密码"
-            />
+          <Item
+            required
+            validateTrigger="onBlur"
+            name="rePassword"
+            rules={[
+              {
+                required: true,
+                message: '请再次输入密码'
+                // validator:{checkPass}
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error('两次密码输入不一致,请检查后重新输入')
+                  );
+                }
+              })
+            ]}
+          >
+            <Input.Password size="large" placeholder="确认密码" />
           </Item>
-          <Item validateTrigger="onBlur" name="phone" rules={[{
-            required: true,
-            message: '请输入正确的手机号',
-            pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
-          }]}>
+          <Item
+            validateTrigger="onBlur"
+            name="phone"
+            rules={[
+              {
+                required: true,
+                message: '请输入正确的手机号',
+                pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
+              }
+            ]}
+          >
             <Input
               size="large"
               addonBefore={
@@ -128,10 +165,16 @@ export default function RegisterBlock() {
               placeholder="手机号"
             />
           </Item>
-          <Item required name="code" rules={[{
-            required: isPhoneSubmit ? false : true,
-            message: '请输入正确的验证码'
-          }]}>
+          <Item
+            required
+            name="code"
+            rules={[
+              {
+                required: !isPhoneSubmit,
+                message: '请输入正确的验证码'
+              }
+            ]}
+          >
             <Input
               size="large"
               addonAfter={
@@ -139,11 +182,11 @@ export default function RegisterBlock() {
                   <span className={styles.line} />
                   <Button
                     type="text"
-                    size='small'
+                    size="small"
                     disabled={!!isRunning}
                     onClick={() => setisPhoneSubmit(true)}
                     className={styles.sendCode}
-                    htmlType='submit'
+                    htmlType="submit"
                   >
                     {isRunning ? `${second}秒后再试` : '获取验证码'}
                   </Button>
@@ -157,7 +200,7 @@ export default function RegisterBlock() {
             <Button
               type="primary"
               onClick={() => setisPhoneSubmit(false)}
-              htmlType='submit'
+              htmlType="submit"
               className={styles.submitBtn}
             >
               注册账号
@@ -176,9 +219,9 @@ export default function RegisterBlock() {
 
 RegisterBlock.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  value: PropTypes.object,
+  value: PropTypes.object
 };
 
 RegisterBlock.defaultProps = {
-  value: {},
+  value: {}
 };

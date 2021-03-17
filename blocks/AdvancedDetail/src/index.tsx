@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Tabs,
   Card,
@@ -13,15 +13,15 @@ import {
   Typography,
   Divider,
   Table
-} from "antd";
-import styles from "./index.module.less";
+} from 'antd';
+import styles from './index.module.less';
 
 export interface LogItem {
   opStatus?: string;
   operator?: string;
   opResult?: string;
   opTime?: string;
-  key?:number;
+  key?: number;
 }
 
 export interface DataSource {
@@ -62,49 +62,49 @@ export interface AdvancedDetailProps {
 }
 const DEFAULT_DATA: DataSource = {
   logs: [
-    ["主管审批", "梅长苏"],
-    ["HRG", "叶周全"],
-    ["C&B审核人", "吴永辉"],
-    ["业务线审批", "倩倩"],
-    ["HR线审批", "叶俊"],
+    ['主管审批', '梅长苏'],
+    ['HRG', '叶周全'],
+    ['C&B审核人', '吴永辉'],
+    ['业务线审批', '倩倩'],
+    ['HR线审批', '叶俊']
   ].map(
-    (item,index): LogItem => ({
+    (item, index): LogItem => ({
       opStatus: item[0],
       operator: item[1],
-      opResult: "同意",
-      opTime: "2019-11-11 09:36",
-      key:index,
+      opResult: '同意',
+      opTime: '2019-11-11 09:36',
+      key: index
     })
   ),
   person: {
     avatar:
-      "https://img.alicdn.com/tfs/TB10Kr8orj1gK0jSZFOXXc7GpXa-1000-1000.png",
-    surname: "谢",
-    name: "莉莉",
-    phone: "13676349585",
-    email: "Xielili@aliwork-inc.com",
-    region: "中国/浙江",
-    address: "杭州",
+      'https://img.alicdn.com/tfs/TB10Kr8orj1gK0jSZFOXXc7GpXa-1000-1000.png',
+    surname: '谢',
+    name: '莉莉',
+    phone: '13676349585',
+    email: 'Xielili@aliwork-inc.com',
+    region: '中国/浙江',
+    address: '杭州',
     workTime: 3,
-    education: "Singapore University of Technology and Design",
-    rank: "P10",
-    position: "Senior Director",
-    department: "aliwork&EHR",
-    workAddress: "杭州",
+    education: 'Singapore University of Technology and Design',
+    rank: 'P10',
+    position: 'Senior Director',
+    department: 'aliwork&EHR',
+    workAddress: '杭州'
   },
   preJob: {
-    company: "浙江杭州天猫有限公司",
-    position: "高级研发专家",
-    address: "中国/浙江",
+    company: '浙江杭州天猫有限公司',
+    position: '高级研发专家',
+    address: '中国/浙江',
     description:
-      "Fusion 是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。",
+      'Fusion 是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。'
   },
   salary: {
-    month: "20,000 USD",
+    month: '20,000 USD',
     monthNumber: 13,
-    bonus: "5,000 USD",
-    rsu: "No",
-  },
+    bonus: '5,000 USD',
+    rsu: 'No'
+  }
 };
 const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
   props: AdvancedDetailProps
@@ -112,7 +112,7 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
   const {
     dataSource = DEFAULT_DATA,
     onTabChange = (): void => {},
-    onTableTabChange = (): void => {},
+    onTableTabChange = (): void => {}
   } = props;
   const { TabPane } = Tabs;
   const renderTab = (): JSX.Element => {
@@ -138,7 +138,7 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
   const menu = (): JSX.Element => {
     return (
       <Menu>
-        <Menu.Item >
+        <Menu.Item>
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -186,7 +186,7 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
                 <Dropdown
                   overlay={menu}
                   placement="bottomCenter"
-                  trigger={["click"]}
+                  trigger={['click']}
                 >
                   <Button className={styles.button}>更多</Button>
                 </Dropdown>
@@ -327,80 +327,104 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
           </div>
         </Card>
         <Card title="工作经历" className={styles.marginBottom}>
-            <div>
-              <Typography.Text className={styles.SubTitle}>分类标题</Typography.Text>
-              <Form labelAlign="right" style={{marginTop: '24px'}}>
+          <div>
+            <Typography.Text className={styles.SubTitle}>
+              分类标题
+            </Typography.Text>
+            <Form labelAlign="right" style={{ marginTop: '24px' }}>
               <Row gutter={24}>
                 <Col span={8}>
-                <Form.Item label="工作单位" required>
-                  <span className="next-form-preview">{dataSource.preJob?.company}</span>
-                </Form.Item>
+                  <Form.Item label="工作单位" required>
+                    <span className="next-form-preview">
+                      {dataSource.preJob?.company}
+                    </span>
+                  </Form.Item>
                 </Col>
                 <Col span={8}>
-                <Form.Item label="职位" required>
-                  <span className="next-form-preview">{dataSource.preJob?.position}</span>
-                </Form.Item>
+                  <Form.Item label="职位" required>
+                    <span className="next-form-preview">
+                      {dataSource.preJob?.position}
+                    </span>
+                  </Form.Item>
                 </Col>
                 <Col span={8}>
-                <Form.Item label="国家/地区" required>
-                  <span className="next-form-preview">{dataSource.preJob?.address}</span>
-                </Form.Item>
+                  <Form.Item label="国家/地区" required>
+                    <span className="next-form-preview">
+                      {dataSource.preJob?.address}
+                    </span>
+                  </Form.Item>
                 </Col>
                 <Col span={24}>
-                <Form.Item  label="项目描述" required>
-                  <span className="next-form-preview">{dataSource.preJob?.description}</span>
-                </Form.Item>
+                  <Form.Item label="项目描述" required>
+                    <span className="next-form-preview">
+                      {dataSource.preJob?.description}
+                    </span>
+                  </Form.Item>
                 </Col>
-                </Row>
-              </Form>
-            </div>
-            <Divider dashed />
-            <Typography.Text className={styles.SubTitle}>分类标题</Typography.Text>
-              <Form labelAlign="right" style={{marginTop: '24px'}}>
-              <Row gutter={24}>
+              </Row>
+            </Form>
+          </div>
+          <Divider dashed />
+          <Typography.Text className={styles.SubTitle}>
+            分类标题
+          </Typography.Text>
+          <Form labelAlign="right" style={{ marginTop: '24px' }}>
+            <Row gutter={24}>
               <Col span={8}>
                 <Form.Item label="月薪">
-                  <span className="next-form-preview">{dataSource.salary?.month}</span>
+                  <span className="next-form-preview">
+                    {dataSource.salary?.month}
+                  </span>
                 </Form.Item>
-                </Col>
-                <Col span={8}>
+              </Col>
+              <Col span={8}>
                 <Form.Item label="月数">
-                  <span className="next-form-preview">{dataSource.salary?.monthNumber}</span>
+                  <span className="next-form-preview">
+                    {dataSource.salary?.monthNumber}
+                  </span>
                 </Form.Item>
-                </Col>
-                <Col span={8}>
+              </Col>
+              <Col span={8}>
                 <Form.Item label="津贴">
                   5.000 USD
-                  <span className="next-form-preview">{dataSource.salary?.bonus}</span>
+                  <span className="next-form-preview">
+                    {dataSource.salary?.bonus}
+                  </span>
                 </Form.Item>
-                </Col>
-                <Col span={8}>
+              </Col>
+              <Col span={8}>
                 <Form.Item label="标题">
                   <span className="next-form-preview">-</span>
                 </Form.Item>
-                </Col>
-                <Col span={16}>
+              </Col>
+              <Col span={16}>
                 <Form.Item label="标题">
                   <span className="next-form-preview">-</span>
                 </Form.Item>
-                </Col>
-                <Col span={8}>
+              </Col>
+              <Col span={8}>
                 <Form.Item label="Options/RSU">
-                  <span className="next-form-preview">{dataSource.salary?.rsu}</span>
+                  <span className="next-form-preview">
+                    {dataSource.salary?.rsu}
+                  </span>
                 </Form.Item>
-                </Col>
-                </Row>
-              </Form>
+              </Col>
+            </Row>
+          </Form>
         </Card>
         <Card title={renderTab()}>
-            <div className={styles.Content}>
-              <Table dataSource={dataSource.logs} bordered={true} className={styles.Table}>
-                <Table.Column title="操作进程" dataIndex="opStatus" />
-                <Table.Column title="操作人" dataIndex="operator" />
-                <Table.Column title="执行结果" dataIndex="opResult" />
-                <Table.Column title="操作时间" dataIndex="opTime" />
-              </Table>
-            </div>
+          <div className={styles.Content}>
+            <Table
+              dataSource={dataSource.logs}
+              bordered
+              className={styles.Table}
+            >
+              <Table.Column title="操作进程" dataIndex="opStatus" />
+              <Table.Column title="操作人" dataIndex="operator" />
+              <Table.Column title="执行结果" dataIndex="opResult" />
+              <Table.Column title="操作时间" dataIndex="opTime" />
+            </Table>
+          </div>
         </Card>
       </div>
     </>

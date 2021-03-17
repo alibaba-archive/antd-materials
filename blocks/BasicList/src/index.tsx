@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Tag,
-  Divider,
-  Button,
-  Pagination,
-  Input,
-  Spin,
-} from "antd";
+import React, { useState, useEffect } from 'react';
+import { Card, Tag, Divider, Button, Pagination, Input, Spin } from 'antd';
 
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from '@ant-design/icons';
 
-import styles from "./index.module.less";
+import styles from './index.module.less';
 
 const { CheckableTag } = Tag;
 
@@ -34,26 +26,26 @@ export interface BasicListProps {
 
 const DEFAULT_DATA: DataSource = {
   tagsA: [
-    "类目一",
-    "类目二",
-    "类目三",
-    "类目四",
-    "类目五",
-    "类目六",
-    "类目七",
-    "类目八",
-    "类目九",
-    "类目十",
+    '类目一',
+    '类目二',
+    '类目三',
+    '类目四',
+    '类目五',
+    '类目六',
+    '类目七',
+    '类目八',
+    '类目九',
+    '类目十'
   ],
-  tagA: "类目一",
-  tagsB: ["不到一年", "一年以上三年以下", "三年以上五年以下", "五年以上"],
-  tagB: "一年以上三年以下",
+  tagA: '类目一',
+  tagsB: ['不到一年', '一年以上三年以下', '三年以上五年以下', '五年以上'],
+  tagB: '一年以上三年以下',
   cards: new Array(5).fill({
-    title: "构建一套产品化设计系统",
+    title: '构建一套产品化设计系统',
     content:
-      "随着互联网行业的聚变式发展，在电商业务从“信息透出” 到 “在线交易” 的过程中，网站 UI 构建也经历了“体验一致性”、“设计效率”、“UI系统构建/应用效率”、“多端适配” …",
-    subContent: "谢瑶 3 小时前更新",
-  }),
+      '随着互联网行业的聚变式发展，在电商业务从“信息透出” 到 “在线交易” 的过程中，网站 UI 构建也经历了“体验一致性”、“设计效率”、“UI系统构建/应用效率”、“多端适配” …',
+    subContent: '谢瑶 3 小时前更新'
+  })
 };
 
 const BasicList: React.FunctionComponent<BasicListProps> = (
@@ -150,10 +142,10 @@ const BasicList: React.FunctionComponent<BasicListProps> = (
             enterButton="搜索"
             size="large"
             onSearch={onSearchClick}
-            style={{ width: "600px" }}
+            style={{ width: '600px' }}
           />
         </div>
-        <Divider dashed style={{ margin: "24px 0" }} />
+        <Divider dashed style={{ margin: '24px 0' }} />
         <div className={styles.TagBox}>
           <div className={styles.TagBoxItem}>
             <span className={styles.TagTitleName}>内容分类:</span>
@@ -169,7 +161,7 @@ const BasicList: React.FunctionComponent<BasicListProps> = (
           <div className={styles.MainContent}>
             <div className={styles.ListItem}>
               <div className={styles.add}>
-                <PlusOutlined className={styles.icon}/>
+                <PlusOutlined className={styles.icon} />
                 <div className={styles.addText}>添加内容</div>
               </div>
             </div>
@@ -178,7 +170,12 @@ const BasicList: React.FunctionComponent<BasicListProps> = (
               <div className={styles.total}>
                 共<span>200</span>条需求
               </div>
-              <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onPaginationChange} />
+              <Pagination
+                showQuickJumper
+                defaultCurrent={2}
+                total={500}
+                onChange={onPaginationChange}
+              />
             </div>
           </div>
         </Spin>

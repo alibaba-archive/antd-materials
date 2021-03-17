@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 
 const getTableData = (
   { current, pageSize }: { current: number; pageSize: number },
-  formData: { status: 'normal' | 'empty' | 'exception' },
+  formData: { status: 'normal' | 'empty' | 'exception' }
 ): Promise<any> => {
   if (!formData.status || formData.status === 'normal') {
     let query = `page=${current}&size=${pageSize}`;
@@ -24,7 +24,7 @@ const getTableData = (
       .then((res) => res.json())
       .then((res) => ({
         total: 55,
-        list: res.results.slice(0, 10),
+        list: res.results.slice(0, 10)
       }));
   }
   if (formData.status === 'empty') {
@@ -61,7 +61,7 @@ const defaultColumnWidth: ColumnWidth = {
   email: 500,
   phone: 500,
   gender: 140,
-  operation: 150,
+  operation: 150
 };
 
 const DialogTable: React.FC = () => {
@@ -69,30 +69,42 @@ const DialogTable: React.FC = () => {
     columnWidth: defaultColumnWidth,
     optCol: null,
     actionType: 'preview',
-    actionVisible: false,
+    actionVisible: false
   });
   const { actionVisible, columnWidth, optCol } = state;
   // const field = Field.useField([]);
-  const { paginationProps, tableProps, search, error, refresh } = useFusionTable(getTableData, {
-    field,
+  const {
+    paginationProps,
+    tableProps,
+    search,
+    error,
+    refresh
+  } = useFusionTable(getTableData, {
+    field
   });
   const { reset } = search;
 
-  const onResizeChange = (dataIndex: keyof typeof defaultColumnWidth, width: number) => {
+  const onResizeChange = (
+    dataIndex: keyof typeof defaultColumnWidth,
+    width: number
+  ) => {
     const newWidth = {
-      ...columnWidth,
+      ...columnWidth
     };
     newWidth[dataIndex] += width;
     setState({ columnWidth: newWidth });
   };
 
-  const operationCallback = useCallback(({ actionType, dataSource }: OperaitionProps): void => {
-    setState({
-      actionType,
-      optCol: dataSource,
-      actionVisible: true,
-    });
-  }, [setState]);
+  const operationCallback = useCallback(
+    ({ actionType, dataSource }: OperaitionProps): void => {
+      setState({
+        actionType,
+        optCol: dataSource,
+        actionVisible: true
+      });
+    },
+    [setState]
+  );
 
   const handleCancel = useCallback((): void => {
     setState({ actionVisible: false });
@@ -109,19 +121,22 @@ const DialogTable: React.FC = () => {
     handleCancel();
   }, [handleCancel, reset, state]);
 
-  const handleDelete = useCallback((data: any) => {
-    if (!data) {
-      return;
-    }
-    Dialog.confirm({
-      title: '删除提醒',
-      content: `确定删除 ${data.name.last} 吗`,
-      onOk() {
-        message.success(`${data.name.last} 删除成功!`);
-        reset();
-      },
-    });
-  }, [reset]);
+  const handleDelete = useCallback(
+    (data: any) => {
+      if (!data) {
+        return;
+      }
+      Dialog.confirm({
+        title: '删除提醒',
+        content: `确定删除 ${data.name.last} 吗`,
+        onOk() {
+          message.success(`${data.name.last} 删除成功!`);
+          reset();
+        }
+      });
+    },
+    [reset]
+  );
 
   const cellOperation = (...args: any[]): React.ReactNode => {
     const record = args[2];
@@ -129,21 +144,22 @@ const DialogTable: React.FC = () => {
       <div>
         <Button
           type="primary"
-          onClick={() => operationCallback({ actionType: 'edit', dataSource: record })}
+          onClick={() =>
+            operationCallback({ actionType: 'edit', dataSource: record })
+          }
         >
           编辑
         </Button>
         &nbsp;&nbsp;
-        <Button
-          type="primary"
-          onClick={() => handleDelete(record)}
-        >
+        <Button type="primary" onClick={() => handleDelete(record)}>
           删除
         </Button>
         &nbsp;&nbsp;
         <Button
           type="primary"
-          onClick={() => operationCallback({ actionType: 'preview', dataSource: record })}
+          onClick={() =>
+            operationCallback({ actionType: 'preview', dataSource: record })
+          }
         >
           查看
         </Button>
@@ -154,35 +170,47 @@ const DialogTable: React.FC = () => {
   return (
     <div className={styles.DialogTable}>
       <Card>
-          <Table
-            {...tableProps}
-            // onResizeChange={onResizeChange}
-            // emptyContent={error ? <ExceptionBlock onRefresh={refresh} /> : <EmptyBlock />}
-            // primaryKey="email"
-          >
-            <Table.Column title="name" dataIndex="name.last"  width={columnWidth.name} />
-            <Table.Column title="email" dataIndex="email"  width={columnWidth.email} />
-            <Table.Column title="phone" dataIndex="phone"  width={columnWidth.phone} />
-            <Table.Column title="gender" dataIndex="gender"  width={columnWidth.gender} />
-            <Table.Column
-              title="操作"
-              width={columnWidth.operation}
-              // cell={cellOperation}
-            />
-          </Table>
-          <Pagination
-            style={{ marginTop: 16, textAlign: 'right' }}
-            showTotal={(total) => (
-              <>
-                共{' '}
-                <Button  type="primary">
-                  {total}
-                </Button>{' '}
-                个记录
-              </>
-            )}
-            {...paginationProps}
+        <Table
+          {...tableProps}
+          // onResizeChange={onResizeChange}
+          // emptyContent={error ? <ExceptionBlock onRefresh={refresh} /> : <EmptyBlock />}
+          // primaryKey="email"
+        >
+          <Table.Column
+            title="name"
+            dataIndex="name.last"
+            width={columnWidth.name}
           />
+          <Table.Column
+            title="email"
+            dataIndex="email"
+            width={columnWidth.email}
+          />
+          <Table.Column
+            title="phone"
+            dataIndex="phone"
+            width={columnWidth.phone}
+          />
+          <Table.Column
+            title="gender"
+            dataIndex="gender"
+            width={columnWidth.gender}
+          />
+          <Table.Column
+            title="操作"
+            width={columnWidth.operation}
+            // cell={cellOperation}
+          />
+        </Table>
+        <Pagination
+          style={{ marginTop: 16, textAlign: 'right' }}
+          showTotal={(total) => (
+            <>
+              共 <Button type="primary">{total}</Button> 个记录
+            </>
+          )}
+          {...paginationProps}
+        />
       </Card>
       <DialogOperation
         visible={actionVisible}

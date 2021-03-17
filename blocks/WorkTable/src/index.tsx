@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Avatar,
   Button,
@@ -11,11 +11,11 @@ import {
   Table,
   Calendar,
   Timeline,
-  List,
-} from "antd";
-import mock from "./mock";
+  List
+} from 'antd';
+import mock from './mock';
 
-import styles from "./index.module.less";
+import styles from './index.module.less';
 
 const TimelineItem = Timeline.Item;
 
@@ -72,16 +72,16 @@ export interface DataSource {
 const DEFAULT_DATA: DataSource = {
   person: {
     avatar:
-      "https://img.alicdn.com/tfs/TB1XdnvvUY1gK0jSZFCXXcwqXXa-500-500.png",
-    surname: "谢",
-    name: "莉莉",
-    email: "xielili@aliwork-inc.com",
+      'https://img.alicdn.com/tfs/TB1XdnvvUY1gK0jSZFCXXcwqXXa-500-500.png',
+    surname: '谢',
+    name: '莉莉',
+    email: 'xielili@aliwork-inc.com'
   },
   orderList: mock.orderList,
   projectList: mock.projectList,
   timeLineList: mock.timeLineList,
   updateList: mock.updateList,
-  entranceList: mock.entrances,
+  entranceList: mock.entrances
 };
 export interface WorkTableProps {
   dataSource?: DataSource;
@@ -92,9 +92,9 @@ interface ColorMap {
   low?: string;
 }
 const colorMap: ColorMap = {
-  high: "red",
-  middle: "yellow",
-  low: "green",
+  high: 'red',
+  middle: 'yellow',
+  low: 'green'
 };
 
 const WorkTable: React.FunctionComponent<WorkTableProps> = (
@@ -108,14 +108,14 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
     projectList,
     timeLineList,
     updateList,
-    entranceList,
+    entranceList
   } = dataSource;
 
-  const [tab, setTab] = useState("1");
+  const [tab, setTab] = useState('1');
 
   const changeTab = (val: string) => setTab(val);
 
-  const renderLevel = (text: "high" | "middle" | "low", index: number) => {
+  const renderLevel = (text: 'high' | 'middle' | 'low', index: number) => {
     return (
       <span key={text + index.toString()}>
         <Tag color={colorMap[text]}>{text}</Tag>
@@ -124,10 +124,10 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
   };
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      render: (text: string) => <a>{text}</a>,
-    },
+      title: 'Name',
+      dataIndex: 'name',
+      render: (text: string) => <a>{text}</a>
+    }
   ];
   return (
     <div className={styles.WorkTable}>
@@ -155,15 +155,15 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
       <div className={styles.workTableContent}>
         <Row gutter={20}>
           <Col span={16}>
-            <Card style={{ height: "100%" }} title="我的任务">
+            <Card style={{ height: '100%' }} title="我的任务">
               <Table
                 dataSource={orderList}
                 pagination={false}
                 rowSelection={{
-                  type: "checkbox",
+                  type: 'checkbox',
                   getCheckboxProps: (record: OrderItem): any => ({
-                    name: record.name,
-                  }),
+                    name: record.name
+                  })
                 }}
               >
                 <Table.Column title="任务名称" dataIndex="name" width={330} />
@@ -182,13 +182,13 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
               <div>
                 <Calendar fullscreen={false} />
                 <Typography.Text className={styles.planNumber}>
-                  共{" "}
+                  共{' '}
                   <span className={styles.strong}>{timeLineList?.length}</span>
                   个日程
                 </Typography.Text>
                 <Timeline
                   mode="left"
-                  style={{ marginLeft: "-250px", marginTop: "20px" }}
+                  style={{ marginLeft: '-250px', marginTop: '20px' }}
                 >
                   {timeLineList?.map(
                     (item): JSX.Element => (
@@ -196,20 +196,20 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                         key={item.planTime}
                         label={
                           <>
-                            <span style={{ color: "#999", fontSize: "12px" }}>
+                            <span style={{ color: '#999', fontSize: '12px' }}>
                               {item.planTime}
                             </span>
                             <br />
-                            <span style={{ color: "#999", fontSize: "12px" }}>
+                            <span style={{ color: '#999', fontSize: '12px' }}>
                               {item.planDuaring}
                             </span>
                           </>
                         }
                       >
-                        <div style={{ fontSize: "12px", color: "#333" }}>
+                        <div style={{ fontSize: '12px', color: '#333' }}>
                           {item.planName}
                         </div>
-                        <div style={{ fontSize: "12px", color: "#666" }}>
+                        <div style={{ fontSize: '12px', color: '#666' }}>
                           {item.planAddress}
                         </div>
                       </TimelineItem>
@@ -224,9 +224,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
               <List>
                 {projectList?.map((project) => {
                   return (
-                    <List.Item
-                      key={project.projectName}
-                    >
+                    <List.Item key={project.projectName}>
                       <List.Item.Meta
                         avatar={<Avatar src={project.img} />}
                         title={project.projectName}
@@ -240,50 +238,64 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
             </Card>
           </Col>
           <Col span={8}>
-            <Card style={{ height: "100%" }} title="我的项目">
+            <Card style={{ height: '100%' }} title="我的项目">
               <List>
                 <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1SFZAvQL0gK0jSZFAXXcA9pXa-200-200.png" />}
-                        title="Fusion Design"
-                      />
-                  </List.Item>
-                  <List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1SFZAvQL0gK0jSZFAXXcA9pXa-200-200.png" />
+                    }
+                    title="Fusion Design"
+                  />
+                </List.Item>
+                <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1QwMzvHr1gK0jSZR0XXbP8XXa-200-200.png" />}
-                        title="Alibaba ICS"
-                      />
-                  </List.Item>
-                  <List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1QwMzvHr1gK0jSZR0XXbP8XXa-200-200.png" />
+                    }
+                    title="Alibaba ICS"
+                  />
+                </List.Item>
+                <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1qxgDvG61gK0jSZFlXXXDKFXa-200-200.png" />}
-                        title="Retcode 前端监控"
-                      />
-                  </List.Item>
-                  <List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1qxgDvG61gK0jSZFlXXXDKFXa-200-200.png" />
+                    }
+                    title="Retcode 前端监控"
+                  />
+                </List.Item>
+                <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1TfwDvQT2gK0jSZFkXXcIQFXa-200-200.png" />}
-                        title="新零售事业部"
-                      />
-                  </List.Item>
-                  <List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1TfwDvQT2gK0jSZFkXXcIQFXa-200-200.png" />
+                    }
+                    title="新零售事业部"
+                  />
+                </List.Item>
+                <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1GgMzvHr1gK0jSZR0XXbP8XXa-200-200.png" />}
-                        title="前端物料中心"
-                      />
-                  </List.Item>
-                  <List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1GgMzvHr1gK0jSZR0XXbP8XXa-200-200.png" />
+                    }
+                    title="前端物料中心"
+                  />
+                </List.Item>
+                <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1tHozvQP2gK0jSZPxXXacQpXa-200-200.png" />}
-                        title="大财鲸"
-                      />
-                  </List.Item>
-                  <List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1tHozvQP2gK0jSZPxXXacQpXa-200-200.png" />
+                    }
+                    title="大财鲸"
+                  />
+                </List.Item>
+                <List.Item>
                   <List.Item.Meta
-                        avatar={<Avatar src="https://img.alicdn.com/tfs/TB1QwMzvHr1gK0jSZR0XXbP8XXa-200-200.png" />}
-                        title="Alibaba ICS"
-                      />
-                  </List.Item>
+                    avatar={
+                      <Avatar src="https://img.alicdn.com/tfs/TB1QwMzvHr1gK0jSZR0XXbP8XXa-200-200.png" />
+                    }
+                    title="Alibaba ICS"
+                  />
+                </List.Item>
               </List>
             </Card>
           </Col>
@@ -293,27 +305,27 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                 {updateList?.map((one, idx) => {
                   let title;
                   switch (one.action) {
-                    case "create":
+                    case 'create':
                       title = (
                         <div key={idx}>
-                          {one.name} 在 <a href="/">{one.project}</a> 新建项目{" "}
-                          <a href="/">{one.projectItem}</a>{" "}
+                          {one.name} 在 <a href="/">{one.project}</a> 新建项目{' '}
+                          <a href="/">{one.projectItem}</a>{' '}
                         </div>
                       );
                       break;
-                    case "release":
+                    case 'release':
                       title = (
                         <div key={idx}>
-                          {one.name} 将 <a href="/">{one.project}</a>{" "}
-                          更新至发布状态{" "}
+                          {one.name} 将 <a href="/">{one.project}</a>{' '}
+                          更新至发布状态{' '}
                         </div>
                       );
                       break;
-                    case "note":
+                    case 'note':
                       title = (
                         <div key={idx}>
-                          {one.name} 在 <a href="/">{one.project}</a> 发布了{" "}
-                          <a href="/">{one.projectItem}</a>{" "}
+                          {one.name} 在 <a href="/">{one.project}</a> 发布了{' '}
+                          <a href="/">{one.projectItem}</a>{' '}
                         </div>
                       );
                       break;
@@ -322,9 +334,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                   }
 
                   return (
-                    <List.Item
-                      key={idx}
-                    >
+                    <List.Item key={idx}>
                       <List.Item.Meta
                         avatar={<Avatar src={one.avatar} />}
                         title={title}
@@ -348,12 +358,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
               <div>
                 {entranceList?.map((item, idx) => {
                   return (
-                    <Button
-                      key={idx}
-                      size="large"
-                      href={item.link}
-                      type="text"
-                    >
+                    <Button key={idx} size="large" href={item.link} type="text">
                       {item.name}
                     </Button>
                   );

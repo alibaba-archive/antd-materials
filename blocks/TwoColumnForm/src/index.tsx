@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Input,
   Button,
@@ -10,18 +10,18 @@ import {
   Upload,
   UploadProps,
   Row,
-  Col,
-} from "antd";
+  Col
+} from 'antd';
 
-import { Moment } from "moment";
+import { Moment } from 'moment';
 
-import styles from "./index.module.less";
+import styles from './index.module.less';
 
 const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 30 },
+  wrapperCol: { span: 30 }
 };
 
 export interface DataSource {
@@ -40,12 +40,12 @@ export interface TwoColumnFormProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  type: "private",
+  type: 'private'
 };
 
 const DEFAULT_ON_SUBMIT = (values: TwoColumnFormProps): void => {
-  console.log("values:", values);
-  message.success("提交成功");
+  console.log('values:', values);
+  message.success('提交成功');
 };
 
 const TwoColumnForm: React.FC<TwoColumnFormProps> = (
@@ -54,7 +54,7 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (
   const {
     dataSource = DEFAULT_DATA,
     onSubmit = DEFAULT_ON_SUBMIT,
-    onCancel = () => {},
+    onCancel = () => {}
   } = props;
 
   const [postData, setValue] = useState<DataSource>(dataSource);
@@ -70,7 +70,7 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (
         labelAlign="right"
         onChange={formChange}
         onFinish={(values) => onSubmit(values)}
-        onFinishFailed={({ errorFields }) => console.log("error", errorFields)}
+        onFinishFailed={({ errorFields }) => console.log('error', errorFields)}
       >
         <Row>
           <Col span={12}>
@@ -82,8 +82,8 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: "name是必填字段",
-                },
+                  message: 'name是必填字段'
+                }
               ]}
             >
               <Input placeholder="请输入项目名称" />
@@ -98,8 +98,8 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: "category是必填字段",
-                },
+                  message: 'category是必填字段'
+                }
               ]}
             >
               <Input placeholder="请输入你的分类" />
@@ -114,8 +114,8 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: "date是必填字段",
-                },
+                  message: 'date是必填字段'
+                }
               ]}
             >
               <DatePicker.RangePicker />
@@ -148,17 +148,17 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (
               help="请选择大小不超过5M的文件，支持doc，docx，xls，xlsx，zip格式"
             >
               <Upload action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload">
-                <Button style={{ margin: "0 0 10px" }}>上传文件</Button>
+                <Button style={{ margin: '0 0 10px' }}>上传文件</Button>
               </Upload>
             </FormItem>
           </Col>
           <Col span={24}>
             <FormItem wrapperCol={{ offset: 2 }}>
-              <div style={{ marginTop: "20px" }}>
+              <div style={{ marginTop: '20px' }}>
                 <Button
                   type="primary"
                   htmlType="submit"
-                  style={{ marginRight: "10px" }}
+                  style={{ marginRight: '10px' }}
                 >
                   提交
                 </Button>

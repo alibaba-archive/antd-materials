@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Avatar, Card, Tabs, Table, Typography, Upload, Button, Form, Input, message, Radio, Row, Col, UploadProps, Modal } from 'antd';
+import {
+  Avatar,
+  Card,
+  Tabs,
+  Table,
+  Typography,
+  Upload,
+  Button,
+  Form,
+  Input,
+  message,
+  Radio,
+  Row,
+  Col,
+  UploadProps,
+  Modal
+} from 'antd';
 import { EllipsisOutlined, UserOutlined } from '@ant-design/icons';
 import styles from './index.module.less';
 
@@ -53,7 +69,7 @@ const MockData = [
     logo: 'https://img.alicdn.com/tfs/TB1D_GrnubviK0jSZFNXXaApXXa-183-183.png',
     privilege: '成员',
     key: 8
-  },
+  }
 ];
 
 export interface DataSource {
@@ -78,11 +94,14 @@ export interface SettingSystemProps {
 const DEFAULT_DATA: DataSource = {
   name: 'lily',
   type: 'private',
-  description: 'Fusion是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。',
+  description:
+    'Fusion是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。'
 };
 
-const DEFAULT_ON_SUBMIT = (values: SettingSystemProps, errors?: unknown): void => {
-
+const DEFAULT_ON_SUBMIT = (
+  values: SettingSystemProps,
+  errors?: unknown
+): void => {
   if (errors) {
     console.log('errors', errors);
     return;
@@ -91,11 +110,10 @@ const DEFAULT_ON_SUBMIT = (values: SettingSystemProps, errors?: unknown): void =
   message.success('更新成功');
 };
 
-const SettingSystemBlock: React.FC<SettingSystemProps> = (props: SettingSystemProps): JSX.Element => {
-  const {
-    dataSource = DEFAULT_DATA,
-    onSubmit = DEFAULT_ON_SUBMIT,
-  } = props;
+const SettingSystemBlock: React.FC<SettingSystemProps> = (
+  props: SettingSystemProps
+): JSX.Element => {
+  const { dataSource = DEFAULT_DATA, onSubmit = DEFAULT_ON_SUBMIT } = props;
 
   const [priList, setPriList] = useState<PriList[]>([]);
   const [inited, setInited] = useState(false);
@@ -107,25 +125,25 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (props: SettingSystemPr
     setInited(true);
   }, [inited]);
 
-
   const formChange = (values: DataSource): void => {
     setValue(values);
   };
 
   const onExitButtonClicked = (): void => {
-    setIsDialog(true)
+    setIsDialog(true);
   };
   const formLayout = {
     labelCol: { span: 5 },
     wrapperCol: { span: 20 }
-  }
+  };
   return (
     <div className={styles.SettingPersonBlock}>
-      <Tabs className={styles.customTab}
-      //  navClassName={styles.customTabHead}
+      <Tabs
+        className={styles.customTab}
+        //  navClassName={styles.customTabHead}
       >
         <Tabs.TabPane tab="基础设置" key="basic">
-          <Card >
+          <Card>
             <div className={styles.baseSettingContainer}>
               <Form
                 className={styles.baseSetting}
@@ -133,23 +151,35 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (props: SettingSystemPr
                 labelAlign="right"
                 onChange={formChange}
                 onFinish={(value) => onSubmit(value)}
-                onFinishFailed={(value) => onSubmit(value.values, value.errorFields)}
+                onFinishFailed={(value) =>
+                  onSubmit(value.values, value.errorFields)
+                }
               >
                 <Row>
                   <Col span={24}>
                     <div>项目封面</div>
-                    <FormItem >
+                    <FormItem>
                       <Row gutter={10}>
-                        <Col span={4}><Avatar shape="circle" size={64} icon={<UserOutlined />} /></Col>
+                        <Col span={4}>
+                          <Avatar
+                            shape="circle"
+                            size={64}
+                            icon={<UserOutlined />}
+                          />
+                        </Col>
                         <Col span={20} className={styles.changeLogo}>
-                          <div >
+                          <div>
                             <FormItem>
                               <Upload name="pic">
-                                <Button className={styles.uploadButton}>更新头像</Button>
+                                <Button className={styles.uploadButton}>
+                                  更新头像
+                                </Button>
                               </Upload>
                             </FormItem>
                             <div>
-                              <p>* 头像尽量上传超过 80px*80px, 但不要太大了。</p>
+                              <p>
+                                * 头像尽量上传超过 80px*80px, 但不要太大了。
+                              </p>
                               <p>* 请上传两倍图保证清晰度</p>
                             </div>
                           </div>
@@ -158,43 +188,67 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (props: SettingSystemPr
                     </FormItem>
                   </Col>
                   <Col span={24}>
-                    <FormItem label="项目名称" required rules={[{
-                      required: true,
-                      message: "必填"
-                    }]} {...formLayout} name="name">
+                    <FormItem
+                      label="项目名称"
+                      required
+                      rules={[
+                        {
+                          required: true,
+                          message: '必填'
+                        }
+                      ]}
+                      {...formLayout}
+                      name="name"
+                    >
                       <Input placeholder="请输入项目名称" />
                     </FormItem>
                   </Col>
                   <Col span={24}>
-                    <FormItem label="项目所属分类" required rules={[{
-                      required: true,
-                      message: "必填"
-                    }]} {...formLayout} name="category">
+                    <FormItem
+                      label="项目所属分类"
+                      required
+                      rules={[
+                        {
+                          required: true,
+                          message: '必填'
+                        }
+                      ]}
+                      {...formLayout}
+                      name="category"
+                    >
                       <Input placeholder="请输入你的分类" />
                     </FormItem>
                   </Col>
                   <Col span={24}>
                     <FormItem label="项目权限" {...formLayout} name="type">
                       <Radio.Group aria-labelledby="authority of project">
-                        <Radio id="private" value="private">私密项目</Radio>
-                        <Radio id="internal" value="internal">内部项目</Radio>
-                        <Radio id="public" value="public">开放项目</Radio>
+                        <Radio id="private" value="private">
+                          私密项目
+                        </Radio>
+                        <Radio id="internal" value="internal">
+                          内部项目
+                        </Radio>
+                        <Radio id="public" value="public">
+                          开放项目
+                        </Radio>
                       </Radio.Group>
                     </FormItem>
                   </Col>
                   <Col span={24}>
-                    <FormItem label="项目描述" {...formLayout} name="description">
+                    <FormItem
+                      label="项目描述"
+                      {...formLayout}
+                      name="description"
+                    >
                       <Input.TextArea placeholder="请输入项目描述" />
                     </FormItem>
                   </Col>
                   <Col span={24}>
                     <FormItem wrapperCol={{ span: 20, offset: 5 }}>
                       <div>
-                        <Button
-                          type="primary"
-                          htmlType="submit"
-                        >保存
-                      </Button>
+                        <Button type="primary" htmlType="submit">
+                          保存
+                        </Button>
                       </div>
                     </FormItem>
                   </Col>
@@ -215,7 +269,11 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (props: SettingSystemPr
             }
           >
             <Table dataSource={priList}>
-              <Table.Column dataIndex="logo" render={(url: string) => <Avatar src={url} />} width={50} />
+              <Table.Column
+                dataIndex="logo"
+                render={(url: string) => <Avatar src={url} />}
+                width={50}
+              />
               <Table.Column dataIndex="name" />
               <Table.Column dataIndex="privilege" />
               <Table.Column render={() => <EllipsisOutlined />} />
@@ -224,16 +282,26 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (props: SettingSystemPr
         </Tabs.TabPane>
 
         <Tabs.TabPane tab="更多设置" key="more">
-          <Card >
+          <Card>
             <div>
-              <Typography.Title level={4} className={styles.h3}>退出项目</Typography.Title>
-              <Typography.Text className={styles.p}>一旦你退出这个项目，你将无法访问这个项目的任何内容。</Typography.Text>
+              <Typography.Title level={4} className={styles.h3}>
+                退出项目
+              </Typography.Title>
+              <Typography.Text className={styles.p}>
+                一旦你退出这个项目，你将无法访问这个项目的任何内容。
+              </Typography.Text>
               <div style={{ marginTop: '15px' }}>
-                <Button
-                  onClick={onExitButtonClicked}
-                  danger
-                >退出项目</Button>
-                <Modal title="退出项目" visible={isDialog} onOk={() => setIsDialog(false)} onCancel={() => setIsDialog(false)} cancelText="取消" okText="确认">
+                <Button onClick={onExitButtonClicked} danger>
+                  退出项目
+                </Button>
+                <Modal
+                  title="退出项目"
+                  visible={isDialog}
+                  onOk={() => setIsDialog(false)}
+                  onCancel={() => setIsDialog(false)}
+                  cancelText="取消"
+                  okText="确认"
+                >
                   <p>确定退出该项目？</p>
                 </Modal>
               </div>

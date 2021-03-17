@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Input, message, Form, Divider, Checkbox, Button } from 'antd';
-import { AliwangwangOutlined, DingdingOutlined, WeiboSquareOutlined } from '@ant-design/icons';
+import {
+  AliwangwangOutlined,
+  DingdingOutlined,
+  WeiboSquareOutlined
+} from '@ant-design/icons';
 import { useInterval } from './utils';
 import styles from './index.module.less';
 
@@ -20,7 +24,7 @@ const DEFAULT_DATA: IDataSource = {
   password: '',
   autoLogin: true,
   phone: '',
-  code: '',
+  code: ''
 };
 
 interface LoginProps {
@@ -28,7 +32,7 @@ interface LoginProps {
 }
 
 const LoginBlock: React.FunctionComponent<LoginProps> = (
-  props = { dataSource: DEFAULT_DATA },
+  props = { dataSource: DEFAULT_DATA }
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA } = props;
 
@@ -37,7 +41,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
   const [isRunning, checkRunning] = useState(false);
   const [isPhone, checkPhone] = useState(false);
   const [second, setSecond] = useState(59);
-  const [isPhoneSubmit, setisPhoneSubmit] = useState(false)
+  const [isPhoneSubmit, setisPhoneSubmit] = useState(false);
 
   useInterval(
     () => {
@@ -47,7 +51,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
         setSecond(59);
       }
     },
-    isRunning ? 1000 : null,
+    isRunning ? 1000 : null
   );
 
   const formChange = (values: IDataSource) => {
@@ -73,11 +77,17 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
 
   const phoneForm = (
     <>
-      <Item name="phone" validateTrigger="onBlur" rules={[{
-        required: true,
-        message: '手机号格式错误',
-        pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
-      }]}>
+      <Item
+        name="phone"
+        validateTrigger="onBlur"
+        rules={[
+          {
+            required: true,
+            message: '手机号格式错误',
+            pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
+          }
+        ]}
+      >
         <Input
           addonBefore={
             <span className={styles.innerBeforeInput}>
@@ -89,10 +99,17 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
           placeholder="手机号"
         />
       </Item>
-      <Item required name="code" rules={[{
-        required: isPhoneSubmit ? false : true,
-        message: "必填",
-      }]} style={{ marginBottom: 0 }}>
+      <Item
+        required
+        name="code"
+        rules={[
+          {
+            required: !isPhoneSubmit,
+            message: '必填'
+          }
+        ]}
+        style={{ marginBottom: 0 }}
+      >
         <Input
           addonAfter={
             <span className={styles.innerAfterInput}>
@@ -102,7 +119,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
                 style={{ width: 64 }}
                 disabled={!!isRunning}
                 className={styles.sendCode}
-                size='small'
+                size="small"
                 onClick={() => setisPhoneSubmit(true)}
                 htmlType="submit"
               >
@@ -119,16 +136,29 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
 
   const accountForm = (
     <>
-      <Item name="name" required rules={[{
-        required: true,
-        message: "必填",
-      }]}>
+      <Item
+        name="name"
+        required
+        rules={[
+          {
+            required: true,
+            message: '必填'
+          }
+        ]}
+      >
         <Input maxLength={20} placeholder="用户名" />
       </Item>
-      <Item name="password" required rules={[{
-        required: true,
-        message: "必填",
-      }]} style={{ marginBottom: 0 }}>
+      <Item
+        name="password"
+        required
+        rules={[
+          {
+            required: true,
+            message: '必填'
+          }
+        ]}
+        style={{ marginBottom: 0 }}
+      >
         <Input.Password placeholder="密码" />
       </Item>
     </>
@@ -153,26 +183,43 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
           />
         </a>
         <div className={styles.desc}>
-          <span onClick={byAccount} className={isPhone ? undefined : styles.active}>
+          <span
+            onClick={byAccount}
+            className={isPhone ? undefined : styles.active}
+          >
             账户密码登录
           </span>
           <Divider type="vertical" />
-          <span onClick={byForm} className={isPhone ? styles.active : undefined}>
+          <span
+            onClick={byForm}
+            className={isPhone ? styles.active : undefined}
+          >
             手机号登录
           </span>
         </div>
 
-        <Form initialValues={postData} onValuesChange={formChange} size="large"
-          onFinish={(value) => isPhoneSubmit ? sendCode(value) : handleSubmit(value)}
-          onFinishFailed={(value) => isPhoneSubmit ? sendCode(value.values, value.errorFields) : handleSubmit(value.values, value.errorFields)}
+        <Form
+          initialValues={postData}
+          onValuesChange={formChange}
+          size="large"
+          onFinish={(value) =>
+            isPhoneSubmit ? sendCode(value) : handleSubmit(value)
+          }
+          onFinishFailed={(value) =>
+            isPhoneSubmit
+              ? sendCode(value.values, value.errorFields)
+              : handleSubmit(value.values, value.errorFields)
+          }
         >
           {isPhone ? phoneForm : accountForm}
 
           <div className={styles.infoLine}>
-            <Item style={{ marginBottom: 0 }} name="autoLogin" valuePropName="checked">
-              <Checkbox className={styles.infoLeft}>
-                自动登录
-              </Checkbox>
+            <Item
+              style={{ marginBottom: 0 }}
+              name="autoLogin"
+              valuePropName="checked"
+            >
+              <Checkbox className={styles.infoLeft}>自动登录</Checkbox>
             </Item>
             <div>
               <a href="/" className={styles.link}>
@@ -184,7 +231,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
           <Item style={{ marginBottom: 10 }}>
             <Button
               type="primary"
-              htmlType='submit'
+              htmlType="submit"
               onClick={() => setisPhoneSubmit(false)}
               className={styles.submitBtn}
             >
@@ -193,7 +240,9 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
           </Item>
           <div className={styles.infoLine}>
             <div className={styles.infoLeft}>
-              其他登录方式 <AliwangwangOutlined /><DingdingOutlined /><WeiboSquareOutlined />
+              其他登录方式 <AliwangwangOutlined />
+              <DingdingOutlined />
+              <WeiboSquareOutlined />
             </div>
             <a href="/" className={styles.link}>
               注册账号
