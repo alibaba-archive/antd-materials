@@ -1,0 +1,25 @@
+{
+  "publicPath": "./",
+  "plugins": [
+    [
+      "build-plugin-fusion",
+      {
+        "themePackage": "@alifd/theme-design-pro"
+      }
+    ],
+    [
+      "build-plugin-moment-locales",
+      {
+        "locales": [
+          "zh-cn"
+        ]
+      }
+    ],
+    ["build-plugin-antd", {
+      "themeConfig": {
+        "primary-color": "#ccc"
+      }
+    }],
+    "build-plugin-fusion-material"
+  ]
+}

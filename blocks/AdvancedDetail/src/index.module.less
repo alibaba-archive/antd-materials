@@ -1,0 +1,68 @@
+.AdvancedDetailHead {
+    margin-top: -20px;
+    // margin-right: -20px;
+    margin-bottom: 20px;
+    // margin-left: -20px;
+
+    .informationList {
+        display: flex;
+        flex: 1 1 0%;
+        flex-direction: column;
+
+        .informationHead {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+
+            .informationName {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .button {
+                margin: 0px 4px 0px 0px;
+            }
+        }
+    }
+}
+
+.AdvancedDetailBody {
+    padding: 10px;
+}
+
+.nextBox {
+    display: flex;
+}
+
+.SubTitle {
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 10px;
+    color: #333;
+    font-size: 16px;
+
+    &::before {
+        position: absolute;
+        top: calc(50% - 16px / 2);
+        bottom: 0;
+        left: 0;
+        width: 3px;
+        height: 16px;
+        line-height: 16px;
+        background-color: #298dff;
+        content: '';
+    }
+}
+
+:global(.ant-tabs-top > .ant-tabs-nav::before) {
+    border: 0;
+}
+
+:global(.ant-tabs-top > .ant-tabs-nav) {
+    margin-bottom: 0;
+}
+
+.marginBottom {
+    margin-bottom: 20px;
+}
