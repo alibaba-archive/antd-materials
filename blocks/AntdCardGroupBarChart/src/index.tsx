@@ -33,9 +33,9 @@ const DEFAULT_DATA: CardConfig = {
     { category: '品类四', value: 333, type: '门店三' },
     { category: '品类五', value: 111, type: '门店一' },
     { category: '品类五', value: 452, type: '门店二' },
-    { category: '品类五', value: 234, type: '门店三' }
+    { category: '品类五', value: 234, type: '门店三' },
   ],
-  chartHeight: 500
+  chartHeight: 500,
 };
 
 export interface AntdCardGroupBarChartProps {
@@ -43,7 +43,7 @@ export interface AntdCardGroupBarChartProps {
 }
 
 const AntdCardGroupBarChart: React.FunctionComponent<AntdCardGroupBarChartProps> = (
-  props: AntdCardGroupBarChartProps
+  props: AntdCardGroupBarChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
 
@@ -68,7 +68,7 @@ const AntdCardGroupBarChart: React.FunctionComponent<AntdCardGroupBarChartProps>
         <Legend
           textStyle={{
             fill: '#666',
-            fontSize: 14
+            fontSize: 14,
           }}
         />
         <Geom
@@ -78,8 +78,8 @@ const AntdCardGroupBarChart: React.FunctionComponent<AntdCardGroupBarChartProps>
           adjust={[
             {
               type: 'dodge',
-              marginRatio: 1 / 16
-            }
+              marginRatio: 1 / 16,
+            },
           ]}
         />
       </Chart>

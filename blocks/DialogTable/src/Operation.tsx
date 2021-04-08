@@ -1,5 +1,6 @@
 import React, { useEffect, useImperativeHandle } from 'react';
-import { Select, Form, Field, Input } from '@alifd/next';
+import { Select, Form, Input } from 'antd';
+import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 
 const FormItem = Form.Item;
 
@@ -7,7 +8,7 @@ export type ActionType = 'add' | 'edit' | 'preview';
 
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20 }
+  wrapperCol: { span: 20 },
 };
 
 export interface OperaitionProps {
@@ -20,41 +21,44 @@ export interface OperaitionProps {
    * 数据源
    */
   dataSource: any;
+  onOk?: () => void;
 }
 
 export interface OperationRef {
   getValues: (callback: (vals: Record<string, unknown>) => void) => void;
 }
 
-const Operation: React.ForwardRefRenderFunction<
-  OperationRef,
-  OperaitionProps
-> = (props, ref) => {
+const Operation: React.ForwardRefRenderFunction<OperationRef, OperaitionProps> = (props, ref) => {
   const { actionType } = props;
+
   const dataSource = props.dataSource || {};
-  const field = Field.useField([]);
+  const [form] = useForm();
   useEffect(() => {
-    field.reset();
+    form.resetFields();
     if (dataSource) {
       const newValues = {
-        name: dataSource.name.last,
+        nat: dataSource.nat,
         email: dataSource.email,
         phone: dataSource.phone,
-        gender: dataSource.gender
+        gender: dataSource.gender,
       };
-      field.setValues(newValues);
+
+      form.setFieldsValue(newValues);
     }
-  }, [field, dataSource]);
+  }, [form, dataSource]);
   useImperativeHandle<OperationRef, OperationRef>(ref, () => {
     return {
-      getValues(callback: (vals: Record<string, unknown>) => void) {
-        field.validate((errors, values): void => {
-          if (errors) {
-            return;
-          }
-          callback(values);
-        });
-      }
+      async getValues(callback: (vals: Record<string, unknown>) => void) {
+        await form
+          .validateFields()
+          .then((res) => {
+            callback(res);
+          })
+          .catch((res) => {
+            const { errorFields } = res;
+            console.log('error', errorFields);
+          });
+      },
     };
   });
 
@@ -62,38 +66,66 @@ const Operation: React.ForwardRefRenderFunction<
 
   return (
     <>
-      <Form
-        isPreview={isPreview}
-        fullWidth
-        labelAlign={isPreview ? 'left' : 'top'}
-        field={field}
-        {...formItemLayout}
-      >
-        <FormItem label="姓名:" required={!isPreview} requiredMessage="必填">
-          <Input {...field.init('name')} />
+      <Form labelAlign={isPreview ? 'left' : 'right'} form={form} {...formItemLayout}>
+        <FormItem
+          label="nat:"
+          required={!isPreview}
+          name="nat"
+          rules={[
+            {
+              required: true,
+              message: '必填',
+            },
+          ]}
+        >
+          {isPreview ? <span>{dataSource.nat}</span> : <Input />}
         </FormItem>
         <FormItem
           label="邮箱:"
-          format="email"
+          validateTrigger="onBlur"
+          rules={[
+            {
+              required: true,
+              message: '请输入正确的邮箱',
+              pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+            },
+          ]}
           required={!isPreview}
-          requiredMessage="必填"
+          name="email"
         >
-          <Input name="email" />
+          {isPreview ? <span>{dataSource.email}</span> : <Input />}
         </FormItem>
         <FormItem
           label="手机号:"
-          format="tel"
           required={!isPreview}
-          requiredMessage="必填"
+          name="phone"
+          validateTrigger="onBlur"
+          rules={[
+            {
+              required: true,
+              message: '请输入正确的手机号',
+              pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
+            },
+          ]}
         >
-          <Input name="phone" />
+          {isPreview ? <span>{dataSource.phone}</span> : <Input />}
         </FormItem>
-        <FormItem label="性别:" required={!isPreview} requiredMessage="必填">
+        <FormItem
+          label="性别:"
+          required={!isPreview}
+          rules={[
+            {
+              required: true,
+              message: '必填',
+            },
+          ]}
+          name="gender"
+        >
           <Select
-            name="gender"
-            dataSource={[
+            disabled={isPreview}
+            options={[
               { value: 'male', label: '男' },
-              { value: 'female', label: '女' }
+              { value: 'female', label: '女' },
             ]}
           />
         </FormItem>

@@ -23,7 +23,7 @@ export default function RegisterBlock() {
     password: '',
     rePassword: '',
     phone: '',
-    code: ''
+    code: '',
   });
 
   const [isRunning, checkRunning] = useState(false);
@@ -38,7 +38,7 @@ export default function RegisterBlock() {
         setSecond(59);
       }
     },
-    isRunning ? 1000 : null
+    isRunning ? 1000 : null,
   );
 
   const formChange = (value: RegisterProps) => {
@@ -80,12 +80,12 @@ export default function RegisterBlock() {
           size="large"
           form={form}
           onFinish={(value) =>
-            isPhoneSubmit ? sendCode(value) : handleSubmit(value)
+            (isPhoneSubmit ? sendCode(value) : handleSubmit(value))
           }
           onFinishFailed={(value) =>
-            isPhoneSubmit
+            (isPhoneSubmit
               ? sendCode(value.values, value.errorFields)
-              : handleSubmit(value.values, value.errorFields)
+              : handleSubmit(value.values, value.errorFields))
           }
         >
           <Item
@@ -94,8 +94,8 @@ export default function RegisterBlock() {
               {
                 required: true,
                 message: '请填写正确的邮箱',
-                pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
-              }
+                pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+              },
             ]}
             name="email"
           >
@@ -109,8 +109,8 @@ export default function RegisterBlock() {
               {
                 required: true,
                 message: '请填写六位或以上的密码',
-                pattern: /^\d{6}/
-              }
+                pattern: /^\d{6}/,
+              },
             ]}
           >
             <Input.Password
@@ -125,7 +125,7 @@ export default function RegisterBlock() {
             rules={[
               {
                 required: true,
-                message: '请再次输入密码'
+                message: '请再次输入密码',
                 // validator:{checkPass}
               },
               ({ getFieldValue }) => ({
@@ -134,10 +134,10 @@ export default function RegisterBlock() {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error('两次密码输入不一致,请检查后重新输入')
+                    new Error('两次密码输入不一致,请检查后重新输入'),
                   );
-                }
-              })
+                },
+              }),
             ]}
           >
             <Input.Password size="large" placeholder="确认密码" />
@@ -149,8 +149,8 @@ export default function RegisterBlock() {
               {
                 required: true,
                 message: '请输入正确的手机号',
-                pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
-              }
+                pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
+              },
             ]}
           >
             <Input
@@ -171,8 +171,8 @@ export default function RegisterBlock() {
             rules={[
               {
                 required: !isPhoneSubmit,
-                message: '请输入正确的验证码'
-              }
+                message: '请输入正确的验证码',
+              },
             ]}
           >
             <Input
@@ -219,9 +219,9 @@ export default function RegisterBlock() {
 
 RegisterBlock.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  value: PropTypes.object
+  value: PropTypes.object,
 };
 
 RegisterBlock.defaultProps = {
-  value: {}
+  value: {},
 };

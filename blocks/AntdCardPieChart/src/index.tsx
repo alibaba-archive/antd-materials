@@ -26,30 +26,30 @@ const DEFAULT_DATA: CardConfig = {
     {
       type: '类别一事例一',
       value: 40,
-      title: '类别一事例一 | 40.00%     ¥4,544'
+      title: '类别一事例一 | 40.00%     ¥4,544',
     },
     {
       type: '类别一事例二',
       value: 21,
-      title: '类别一事例二 | 22.12%     ¥2,344'
+      title: '类别一事例二 | 22.12%     ¥2,344',
     },
     {
       type: '类别一事例三',
       value: 17,
-      title: '类别一事例三 | 16.59%     ¥3,512'
+      title: '类别一事例三 | 16.59%     ¥3,512',
     },
     {
       type: '类别一事例四',
       value: 13,
-      title: '类别一事例四 | 13.11%     ¥2,341'
+      title: '类别一事例四 | 13.11%     ¥2,341',
     },
     {
       type: '类别一事例五',
       value: 9,
-      title: '类别一事例五 |  9.29%     ¥1,231'
-    }
+      title: '类别一事例五 |  9.29%     ¥1,231',
+    },
   ],
-  chartHeight: 500
+  chartHeight: 500,
 };
 interface valueProps {
   value?: string;
@@ -64,7 +64,7 @@ export interface AntdCardPieChartProps {
 }
 
 const AntdCardPieChart: React.FunctionComponent<AntdCardPieChartProps> = (
-  props: AntdCardPieChartProps
+  props: AntdCardPieChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
 
@@ -77,7 +77,7 @@ const AntdCardPieChart: React.FunctionComponent<AntdCardPieChartProps> = (
   const options = [
     { label: '类目一', value: 'one' },
     { label: '类目二', value: 'two' },
-    { label: '类目三', value: 'three' }
+    { label: '类目三', value: 'three' },
   ];
 
   return (
@@ -106,7 +106,7 @@ const AntdCardPieChart: React.FunctionComponent<AntdCardPieChartProps> = (
           offsetY={-30}
           textStyle={{
             fill: '#666',
-            fontSize: 14
+            fontSize: 14,
           }}
           itemMarginBottom={24}
         />
@@ -125,7 +125,7 @@ const AntdCardPieChart: React.FunctionComponent<AntdCardPieChartProps> = (
           color="title"
           style={{
             lineWidth: 1,
-            stroke: '#fff'
+            stroke: '#fff',
           }}
         />
       </Chart>

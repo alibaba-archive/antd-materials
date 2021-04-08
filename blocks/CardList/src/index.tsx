@@ -5,7 +5,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import styles from './index.module.less';
 
 const { CheckableTag } = Tag;
-// const { Cell } = ResponsiveGrid;
 export interface ICardItem {
   title?: string;
   content?: string;
@@ -34,7 +33,7 @@ const DEFAULT_DATA: DataSource = {
     '类目七',
     '类目八',
     '类目九',
-    '类目十'
+    '类目十',
   ],
   tagA: '类目一',
   tagsB: ['不到一年', '一年以上三年以下', '三年以上五年以下', '五年以上'],
@@ -43,12 +42,12 @@ const DEFAULT_DATA: DataSource = {
     title: '图片型卡片标题',
     content:
       '图片型卡片描述图片型卡片描述图片型卡片描述图片型卡片描述图片型卡片描述',
-    link: ['链接一', '链接二']
-  })
+    link: ['链接一', '链接二'],
+  }),
 };
 
 const CardList: React.FunctionComponent<CardListProps> = (
-  props: CardListProps
+  props: CardListProps,
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA, onSearch = (): void => {} } = props;
   const { Search } = Input;

@@ -1,12 +1,7 @@
 import React, { useRef, useCallback } from 'react';
-import { Dialog } from '@alifd/next';
-import { DialogProps } from '@alifd/next/types/dialog';
 
-import Operation, {
-  ActionType,
-  OperaitionProps,
-  OperationRef
-} from './Operation';
+import Operation, { ActionType, OperaitionProps, OperationRef } from './Operation';
+import { Modal } from 'antd';
 
 const getDialogTitle = (actionType: ActionType): string => {
   switch (actionType) {
@@ -21,8 +16,12 @@ const getDialogTitle = (actionType: ActionType): string => {
       return '预览员工';
   }
 };
-
-const DialogOperation: React.FC<OperaitionProps & DialogProps> = (props) => {
+export interface VisibleProps {
+  visible: boolean;
+  onClose: () => void;
+  onCancel: () => void;
+}
+const DialogOperation: React.FC<OperaitionProps & VisibleProps> = (props) => {
   const { actionType, dataSource, onOk = () => {}, ...lastProps } = props;
   const operationRef = useRef<OperationRef>(null);
 
@@ -31,28 +30,19 @@ const DialogOperation: React.FC<OperaitionProps & DialogProps> = (props) => {
       // @ts-ignore
       return onOk(null);
     }
+    console.log(operationRef.current);
+
     operationRef.current?.getValues((values) => {
+      console.log(values);
       // @ts-ignore
       onOk(values);
     });
   }, [actionType, onOk]);
 
   return (
-    <Dialog
-      shouldUpdatePosition
-      isFullScreen
-      title={getDialogTitle(actionType)}
-      style={{ width: 600 }}
-      footerAlign="center"
-      {...lastProps}
-      onOk={handleOk}
-    >
-      <Operation
-        ref={operationRef}
-        actionType={actionType}
-        dataSource={dataSource}
-      />
-    </Dialog>
+    <Modal title={getDialogTitle(actionType)} style={{ width: 600 }} {...lastProps} onOk={handleOk}>
+      <Operation ref={operationRef} actionType={actionType} dataSource={dataSource} />
+    </Modal>
   );
 };
 

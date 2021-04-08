@@ -14,7 +14,7 @@ import {
   Row,
   Col,
   UploadProps,
-  Modal
+  Modal,
 } from 'antd';
 import { EllipsisOutlined, UserOutlined } from '@ant-design/icons';
 import styles from './index.module.less';
@@ -26,50 +26,50 @@ const MockData = [
     name: '阿不思·布萊恩·鄧不利多',
     logo: 'https://img.alicdn.com/tfs/TB1WsE2n5_1gK0jSZFqXXcpaXXa-183-183.png',
     privilege: '管理员',
-    key: 1
+    key: 1,
   },
   {
     name: '戒钱',
     logo: 'https://img.alicdn.com/tfs/TB1cjwYnVT7gK0jSZFpXXaTkpXa-183-183.png',
     privilege: '管理员',
-    key: 2
+    key: 2,
   },
   {
     name: '格林德沃',
     logo: 'https://img.alicdn.com/tfs/TB1l7g0nYr1gK0jSZR0XXbP8XXa-183-183.png',
     privilege: '管理员',
-    key: 3
+    key: 3,
   },
   {
     name: '哈利玻特',
     logo: 'https://img.alicdn.com/tfs/TB1WUurnubviK0jSZFNXXaApXXa-183-183.png',
     privilege: '管理员',
-    key: 4
+    key: 4,
   },
   {
     name: '小天狼星',
     logo: 'https://img.alicdn.com/tfs/TB10Ts2n1L2gK0jSZFmXXc7iXXa-183-183.png',
     privilege: '成员',
-    key: 5
+    key: 5,
   },
   {
     name: '罗恩',
     logo: 'https://img.alicdn.com/tfs/TB1HHwYnVY7gK0jSZKzXXaikpXa-183-183.png',
     privilege: '成员',
-    key: 6
+    key: 6,
   },
   {
     name: '伏地魔',
     logo: 'https://img.alicdn.com/tfs/TB1T_WrnubviK0jSZFNXXaApXXa-183-183.png',
     privilege: '成员',
-    key: 7
+    key: 7,
   },
   {
     name: '赫敏',
     logo: 'https://img.alicdn.com/tfs/TB1D_GrnubviK0jSZFNXXaApXXa-183-183.png',
     privilege: '成员',
-    key: 8
-  }
+    key: 8,
+  },
 ];
 
 export interface DataSource {
@@ -95,12 +95,12 @@ const DEFAULT_DATA: DataSource = {
   name: 'lily',
   type: 'private',
   description:
-    'Fusion是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。'
+    'Fusion是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。',
 };
 
 const DEFAULT_ON_SUBMIT = (
   values: SettingSystemProps,
-  errors?: unknown
+  errors?: unknown,
 ): void => {
   if (errors) {
     console.log('errors', errors);
@@ -111,7 +111,7 @@ const DEFAULT_ON_SUBMIT = (
 };
 
 const SettingSystemBlock: React.FC<SettingSystemProps> = (
-  props: SettingSystemProps
+  props: SettingSystemProps,
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA, onSubmit = DEFAULT_ON_SUBMIT } = props;
 
@@ -134,7 +134,7 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (
   };
   const formLayout = {
     labelCol: { span: 5 },
-    wrapperCol: { span: 20 }
+    wrapperCol: { span: 20 },
   };
   return (
     <div className={styles.SettingPersonBlock}>
@@ -194,8 +194,8 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (
                       rules={[
                         {
                           required: true,
-                          message: '必填'
-                        }
+                          message: '必填',
+                        },
                       ]}
                       {...formLayout}
                       name="name"
@@ -210,8 +210,8 @@ const SettingSystemBlock: React.FC<SettingSystemProps> = (
                       rules={[
                         {
                           required: true,
-                          message: '必填'
-                        }
+                          message: '必填',
+                        },
                       ]}
                       {...formLayout}
                       name="category"

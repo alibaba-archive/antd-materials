@@ -1,30 +1,15 @@
-import React, { FC, useRef, useState, useEffect } from 'react';
-import {
-  Button,
-  Card,
-  Form,
-  Input,
-  Select,
-  Row,
-  Col,
-  Space,
-  Radio,
-  Divider,
-  message
-} from 'antd';
+import React, { FC, useRef } from 'react';
+import { Button, Card, Form, Input, Select, Row, Col, Space, Radio, Divider, message } from 'antd';
 import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
-import styles from './index.module.less';
 
 export interface DataSource {
-  job: {
+  values: {
     address?: string;
     position?: string;
     companyName?: string;
     currency?: string;
     annualSalary?: number;
     expectAnnualSalary?: number;
-  };
-  treatment: {
     monthlySalary?: number;
     monthNumber?: number;
     bonus?: number;
@@ -41,43 +26,26 @@ export interface ClassifiedFormProps {
   onCancel?: () => void;
 }
 
-const DEFAULT_DATA: DataSource = {
-  job: {
-    address: '美国 洛杉矶'
-  },
-  treatment: {
-    rsu: true
-  }
-};
-
 const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
-  const {
-    dataSource = DEFAULT_DATA,
-    onSubmit = () => {},
-    onCancel = () => {}
-  } = props;
+  const { onSubmit = () => {}, onCancel = () => {} } = props;
 
   const jobRef = useRef(null);
 
   const [form] = useForm();
   const handleSubmit = () => {
-    // form.getFieldsError().filter((value,index)=>{
-    //     console.log(value,index);
-
-    // })
-    console.log(form.getFieldsError(['currency']));
     const values = form.getFieldsValue(true);
-    onSubmit(values);
+
+    onSubmit({ values });
     message.success('提交成功');
   };
   const formLayout = {
     labelCol: { span: 6 },
-    wrapperCol: { span: 60 }
+    wrapperCol: { span: 60 },
   };
 
   return (
-    <div className={styles.ClassifiedForm}>
-      <Card className={styles.Card} title="工作经历">
+    <div>
+      <Card title="工作经历">
         <Space direction="vertical">
           <Card title="分类信息">
             <Form ref={jobRef} labelAlign="right" form={form}>
@@ -93,11 +61,7 @@ const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
                   </Form.Item>
                 </Col>
                 <Col span={8}>
-                  <Form.Item
-                    label="公司名称"
-                    {...formLayout}
-                    name="companyName"
-                  >
+                  <Form.Item label="公司名称" {...formLayout} name="companyName">
                     <Input name="companyName" placeholder="请输入公司名称" />
                   </Form.Item>
                 </Col>
@@ -108,8 +72,8 @@ const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
                     rules={[
                       {
                         required: true,
-                        message: '必填'
-                      }
+                        message: '必填',
+                      },
                     ]}
                     {...formLayout}
                     name="currency"
@@ -128,29 +92,17 @@ const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
                     rules={[
                       {
                         required: true,
-                        message: '必填'
-                      }
+                        message: '必填',
+                      },
                     ]}
                     {...formLayout}
                   >
-                    <Input
-                      name="annualSalary"
-                      placeholder="请输入薪资信息"
-                      addonAfter="CNY"
-                    />
+                    <Input name="annualSalary" placeholder="请输入薪资信息" addonAfter="CNY" />
                   </Form.Item>
                 </Col>
                 <Col span={8}>
-                  <Form.Item
-                    label="期望年薪"
-                    {...formLayout}
-                    name="expectAnnualSalary"
-                  >
-                    <Input
-                      name="expectAnnualSalary"
-                      placeholder="请输入期望薪资"
-                      addonAfter="CNY"
-                    />
+                  <Form.Item label="期望年薪" {...formLayout} name="expectAnnualSalary">
+                    <Input name="expectAnnualSalary" placeholder="请输入期望薪资" addonAfter="CNY" />
                   </Form.Item>
                 </Col>
               </Row>
@@ -166,8 +118,8 @@ const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
                     rules={[
                       {
                         required: true,
-                        message: '必填'
-                      }
+                        message: '必填',
+                      },
                     ]}
                     {...formLayout}
                     name="monthlySalary"
@@ -186,20 +138,12 @@ const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
                   </Form.Item>
                 </Col>
                 <Col span={8}>
-                  <Form.Item
-                    label="年度目标奖金"
-                    {...formLayout}
-                    name="targetBonus"
-                  >
+                  <Form.Item label="年度目标奖金" {...formLayout} name="targetBonus">
                     <Input placeholder="请输入年度目标奖金" />
                   </Form.Item>
                 </Col>
                 <Col span={8}>
-                  <Form.Item
-                    label="去年实际奖金"
-                    {...formLayout}
-                    name="lastYearBonus"
-                  >
+                  <Form.Item label="去年实际奖金" {...formLayout} name="lastYearBonus">
                     <Input placeholder="请输入实际奖金" />
                   </Form.Item>
                 </Col>

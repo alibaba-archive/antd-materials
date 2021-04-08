@@ -1,27 +1,13 @@
 import React, { useRef, useState } from 'react';
-import {
-  Input,
-  Button,
-  Select,
-  Form,
-  Card,
-  DatePicker,
-  message,
-  Radio,
-  Row,
-  Col
-} from 'antd';
+import { Input, Button, Select, Form, Card, DatePicker, message, Radio, Row, Col } from 'antd';
 
 import { Moment } from 'moment';
-
-import { InternalNamePath } from '_antd@4.12.3@antd/lib/form/interface';
-import styles from './index.module.less';
 
 const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: { span: 8 },
-  wrapperCol: { span: 35 }
+  wrapperCol: { span: 35 },
 };
 
 export interface DataSource {
@@ -42,13 +28,10 @@ export interface FourColumnFormProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  type: 'private'
+  type: 'private',
 };
 
-const DEFAULT_ON_SUBMIT = (
-  values: FourColumnFormProps,
-  errors: { name: InternalNamePath; errors: string[] }[]
-): void => {
+const DEFAULT_ON_SUBMIT = (values: FourColumnFormProps, errors: Array<{ name: Array<string | number>; errors: string[] }>): void => {
   console.log(values);
 
   if (errors) {
@@ -60,11 +43,7 @@ const DEFAULT_ON_SUBMIT = (
 };
 
 const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
-  const {
-    dataSource = DEFAULT_DATA,
-    onSubmit = DEFAULT_ON_SUBMIT,
-    onCancel = () => {}
-  } = props;
+  const { dataSource = DEFAULT_DATA, onSubmit = DEFAULT_ON_SUBMIT, onCancel = () => {} } = props;
 
   const [postData, setValue] = useState<DataSource>(dataSource);
 
@@ -73,7 +52,7 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
   };
   const formRef = useRef(null);
   return (
-    <Card className={styles.FourColumnForm}>
+    <Card>
       <Form
         initialValues={postData}
         ref={formRef}
@@ -90,8 +69,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'name是必填字段'
-                }
+                  message: 'name是必填字段',
+                },
               ]}
               name="name"
             >
@@ -105,8 +84,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'category是必填字段'
-                }
+                  message: 'category是必填字段',
+                },
               ]}
               name="category"
             >
@@ -122,8 +101,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'person是必填字段'
-                }
+                  message: 'person是必填字段',
+                },
               ]}
             >
               <Input placeholder="申请人" name="person" />
@@ -152,8 +131,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'state是必填字段'
-                }
+                  message: 'state是必填字段',
+                },
               ]}
             >
               <Select aria-labelledby="state of project">
@@ -177,8 +156,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'relative是必填字段'
-                }
+                  message: 'relative是必填字段',
+                },
               ]}
             >
               <Input placeholder="请输入联系人" name="relative" />
@@ -192,8 +171,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'relaventProject是必填字段'
-                }
+                  message: 'relaventProject是必填字段',
+                },
               ]}
             >
               <Input placeholder="请输入关联项目" name="relaventProject" />
@@ -207,8 +186,8 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
               rules={[
                 {
                   required: true,
-                  message: 'date是必填字段'
-                }
+                  message: 'date是必填字段',
+                },
               ]}
             >
               <DatePicker.RangePicker name="date" />
@@ -258,11 +237,7 @@ const FourColumnForm: React.FC<FourColumnFormProps> = (props): JSX.Element => {
           <Col span={6}>
             <FormItem wrapperCol={{ span: 12, offset: 8 }}>
               <div>
-                <Button
-                  type="primary"
-                  onClick={() => formRef.current.submit()}
-                  style={{ marginRight: '10px' }}
-                >
+                <Button type="primary" onClick={() => formRef.current.submit()} style={{ marginRight: '10px' }}>
                   提交
                 </Button>
                 <Button onClick={onCancel}>取消</Button>

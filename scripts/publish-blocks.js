@@ -30,7 +30,7 @@ blocksList.forEach(block => {
     console.log(block, 'not exist');
     return false;
   }
-
+  // eslint-disable-next-line
   const packageInfo = require(blockPkgjson);
   const {version, name} = packageInfo;
 
@@ -128,8 +128,8 @@ blocksList.forEach(block => {
   try {
     console.log(`publish start: ${name} ${version}`);
     const cmd = TYPE === 'scaffolds'
-                  ? `cd ${TYPE}/${block};tnpm update;npm publish;`
-                  : `cd blocks/${block};tnpm update;tnpm install bizcharts@3.x @antv/data-set@0.10.x;npm publish;`
+      ? `cd ${TYPE}/${block};tnpm update;npm publish;`
+      : `cd blocks/${block};tnpm update;tnpm install bizcharts@3.x @antv/data-set@0.10.x;npm publish;`
     execSync(cmd, {
       stdio: 'inherit'
     });

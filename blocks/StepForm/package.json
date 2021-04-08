@@ -1,5 +1,5 @@
 {
-  "name": "step-form",
+  "name": "@icedesign/antd-step-form",
   "version": "0.1.0",
   "description": "Form of Steps",
   "files": [

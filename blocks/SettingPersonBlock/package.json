@@ -1,5 +1,5 @@
 {
-  "name": "setting-person-block",
+  "name": "@icedesign/antd-setting-person-block",
   "version": "0.1.0",
   "description": "基础的个人设置Block",
   "files": [

@@ -9,7 +9,7 @@ import {
   Col,
   Form,
   Input,
-  Select
+  Select,
 } from 'antd';
 import { SearchOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 
@@ -31,7 +31,7 @@ for (let i = 0; i <= 10; i += 1) {
     interface: ['阮小二', '谢莉莉', '樊瑞'][i % 3],
     supplier: '博彦-李强',
     designer: ['李立', '曹正', '姚越洋'][i % 3],
-    key: i
+    key: i,
   });
 }
 
@@ -43,8 +43,8 @@ const DEFAULT_DATA: IDataSource = {
     demand: '需求方',
     interface: '接口人',
     supplier: '供应商接口人',
-    designer: '设计师'
-  }
+    designer: '设计师',
+  },
 };
 
 interface ITableListProps {
@@ -52,7 +52,7 @@ interface ITableListProps {
 }
 
 const TableList: React.FunctionComponent<ITableListProps> = (
-  props: ITableListProps
+  props: ITableListProps,
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA } = props;
 
@@ -78,7 +78,7 @@ const TableList: React.FunctionComponent<ITableListProps> = (
   };
   const formLayout = {
     labelCol: { span: 8 },
-    wrapperCol: { span: 16 }
+    wrapperCol: { span: 16 },
   };
   return (
     <>

@@ -106,7 +106,9 @@ export default {
       time: '4小时前',
       name: '阮小五',
       action: 'create',
-      avatar: 'https://img.alicdn.com/tfs/TB1corrvHr1gK0jSZFDXXb9yVXa-500-500.png',
+      avatar:
+        'https://img.alicdn.com/tfs/TB1corrvHr1gK0jSZFDXXb9yVXa-500-500.png',
+      key: '1',
     },
     {
       projectItem: 'ICS Design',
@@ -114,7 +116,9 @@ export default {
       time: '4小时前',
       name: '樊瑞',
       action: 'create',
-      avatar: 'https://img.alicdn.com/tfs/TB1uD_svKH2gK0jSZFEXXcqMpXa-500-500.png',
+      avatar:
+        'https://img.alicdn.com/tfs/TB1uD_svKH2gK0jSZFEXXcqMpXa-500-500.png',
+      key: '2',
     },
     {
       projectItem: 'Fusion Design',
@@ -122,7 +126,9 @@ export default {
       time: '4小时前',
       name: '李力',
       action: 'release',
-      avatar: 'https://img.alicdn.com/tfs/TB12knwvHj1gK0jSZFuXXcrHpXa-500-500.png',
+      avatar:
+        'https://img.alicdn.com/tfs/TB12knwvHj1gK0jSZFuXXcrHpXa-500-500.png',
+      key: '3',
     },
     {
       projectItem: 'Done',
@@ -130,7 +136,9 @@ export default {
       time: '4小时前',
       name: '公孙胜',
       action: 'create',
-      avatar: 'https://img.alicdn.com/tfs/TB1aD_svKH2gK0jSZFEXXcqMpXa-500-500.png',
+      avatar:
+        'https://img.alicdn.com/tfs/TB1aD_svKH2gK0jSZFEXXcqMpXa-500-500.png',
+      key: '4',
     },
     {
       projectItem: '留言',
@@ -138,32 +146,51 @@ export default {
       time: '4小时前',
       name: '阮小七',
       action: 'note',
-      avatar: 'https://img.alicdn.com/tfs/TB13djnvGL7gK0jSZFBXXXZZpXa-500-500.png',
+      avatar:
+        'https://img.alicdn.com/tfs/TB13djnvGL7gK0jSZFBXXXZZpXa-500-500.png',
+      key: '5',
     },
   ],
-  entrances: [{
-    name: '操作一',
-    link: '/',
-  }, {
-    name: '操作二',
-    link: '/',
-  }, {
-    name: '操作三',
-    link: '/',
-  }, {
-    name: '操作四',
-    link: '/',
-  }, {
-    name: '操作五',
-    link: '/',
-  }, {
-    name: '操作六',
-    link: '/',
-  }, {
-    name: '操作七',
-    link: '/',
-  }, {
-    name: '操作八',
-    link: '/',
-  }],
+  entrances: [
+    {
+      name: '操作一',
+      link: '/',
+      key: '1',
+    },
+    {
+      name: '操作二',
+      link: '/',
+      key: '2',
+    },
+    {
+      name: '操作三',
+      link: '/',
+      key: '3',
+    },
+    {
+      name: '操作四',
+      link: '/',
+      key: '4',
+    },
+    {
+      name: '操作五',
+      link: '/',
+      key: '5',
+    },
+    {
+      name: '操作六',
+      link: '/',
+      key: '6',
+    },
+    {
+      name: '操作七',
+      link: '/',
+      key: '7',
+    },
+    {
+      name: '操作八',
+      link: '/',
+      key: '8',
+    },
+  ],
 };

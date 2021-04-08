@@ -1,5 +1,5 @@
 {
-  "name": "single-col-filter-table",
+  "name": "@icedesign/antd-single-col-filter-table",
   "version": "0.1.0",
   "description": "table with single filter column",
   "files": [

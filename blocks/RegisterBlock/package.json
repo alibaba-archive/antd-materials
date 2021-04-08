@@ -1,5 +1,5 @@
 {
-  "name": "register-block",
+  "name": "@icedesign/antd-register-block",
   "version": "0.1.0",
   "description": "A basic register module",
   "files": [

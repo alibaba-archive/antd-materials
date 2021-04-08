@@ -3,7 +3,7 @@ import { Input, message, Form, Divider, Checkbox, Button } from 'antd';
 import {
   AliwangwangOutlined,
   DingdingOutlined,
-  WeiboSquareOutlined
+  WeiboSquareOutlined,
 } from '@ant-design/icons';
 import { useInterval } from './utils';
 import styles from './index.module.less';
@@ -20,11 +20,10 @@ export interface IDataSource {
 
 const DEFAULT_DATA: IDataSource = {
   name: '',
-  // eslint-disable-next-line @iceworks/best-practices/no-secret-info
   password: '',
   autoLogin: true,
   phone: '',
-  code: ''
+  code: '',
 };
 
 interface LoginProps {
@@ -32,7 +31,7 @@ interface LoginProps {
 }
 
 const LoginBlock: React.FunctionComponent<LoginProps> = (
-  props = { dataSource: DEFAULT_DATA }
+  props = { dataSource: DEFAULT_DATA },
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA } = props;
 
@@ -51,7 +50,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
         setSecond(59);
       }
     },
-    isRunning ? 1000 : null
+    isRunning ? 1000 : null,
   );
 
   const formChange = (values: IDataSource) => {
@@ -84,8 +83,8 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
           {
             required: true,
             message: '手机号格式错误',
-            pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
-          }
+            pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
+          },
         ]}
       >
         <Input
@@ -105,8 +104,8 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
         rules={[
           {
             required: !isPhoneSubmit,
-            message: '必填'
-          }
+            message: '必填',
+          },
         ]}
         style={{ marginBottom: 0 }}
       >
@@ -142,8 +141,8 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
         rules={[
           {
             required: true,
-            message: '必填'
-          }
+            message: '必填',
+          },
         ]}
       >
         <Input maxLength={20} placeholder="用户名" />
@@ -154,8 +153,8 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
         rules={[
           {
             required: true,
-            message: '必填'
-          }
+            message: '必填',
+          },
         ]}
         style={{ marginBottom: 0 }}
       >
@@ -203,12 +202,12 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (
           onValuesChange={formChange}
           size="large"
           onFinish={(value) =>
-            isPhoneSubmit ? sendCode(value) : handleSubmit(value)
+            (isPhoneSubmit ? sendCode(value) : handleSubmit(value))
           }
           onFinishFailed={(value) =>
-            isPhoneSubmit
+            (isPhoneSubmit
               ? sendCode(value.values, value.errorFields)
-              : handleSubmit(value.values, value.errorFields)
+              : handleSubmit(value.values, value.errorFields))
           }
         >
           {isPhone ? phoneForm : accountForm}

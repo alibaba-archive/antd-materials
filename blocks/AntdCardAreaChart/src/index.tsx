@@ -27,15 +27,15 @@ const DEFAULT_DATA: AntdCardAreaChartProps = {
   chartData: mock.saleList,
   des: '周同比:',
   rate: '12.0',
-  chartHeight: 100
+  chartHeight: 100,
 };
 
 const AntdCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
-  props = DEFAULT_DATA
+  props = DEFAULT_DATA,
 ): JSX.Element => {
   const { title, subTitle, value, chartData, des, rate, chartHeight } = {
     ...DEFAULT_DATA,
-    ...props
+    ...props,
   };
 
   return (
@@ -56,8 +56,8 @@ const AntdCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
         data={chartData}
         scale={{
           date: {
-            range: [0, 1]
-          }
+            range: [0, 1],
+          },
         }}
         forceFit
         padding={['auto', '0']}

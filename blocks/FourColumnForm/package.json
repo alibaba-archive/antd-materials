@@ -1,5 +1,5 @@
 {
-  "name": "four-column-form",
+  "name": "@icedesign/antd-four-column-form",
   "version": "0.1.0",
   "description": "Form of four columns",
   "files": [

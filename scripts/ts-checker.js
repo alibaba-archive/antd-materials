@@ -10,6 +10,7 @@ const scaffolds = [
 ];
 
 const failed = [];
+// eslint-disable-next-line
 for (const scaffold of scaffolds) {
   try {
     execSync(`cd scaffolds/${scaffold} && tsc -p ./tsconfig.json`, {

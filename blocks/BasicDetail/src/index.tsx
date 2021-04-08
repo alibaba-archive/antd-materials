@@ -35,7 +35,7 @@ const DEFAULT_DATA: DataSource = {
     code: 'ALXM890392-94890',
     committee: '经济体投资委员会',
     trade: '新零售',
-    aliasProject: '杭州阿里巴巴集团新零售'
+    aliasProject: '杭州阿里巴巴集团新零售',
   },
   projectMember: {
     icMemeber:
@@ -43,7 +43,7 @@ const DEFAULT_DATA: DataSource = {
     forensicReview:
       '阮小五，阮小二，阮小七，公孙胜，曹正，李立，樊瑞，阮小五，阮小二，阮小七，公孙胜，曹正，李立，樊瑞',
     financialReview:
-      '阮小五，阮小二，阮小七，公孙胜，曹正，李立，樊瑞，阮小五，阮小二，阮小七，公孙胜，曹正，李立，樊瑞'
+      '阮小五，阮小二，阮小七，公孙胜，曹正，李立，樊瑞，阮小五，阮小二，阮小七，公孙胜，曹正，李立，樊瑞',
   },
   // targetCompanys: new Array(10).fill({
   //   targetCompany: "蚂蚁证券投资有限公司",
@@ -58,16 +58,16 @@ const DEFAULT_DATA: DataSource = {
       business: '金融证券代理',
       address: '1569 Cronin Ways Apt. 082',
       creator: '欧鹏',
-      key: '1'
+      key: '1',
     },
     {
       targetCompany: '蚂蚁证券投资有限公司',
       business: '金融证券代理',
       address: '1569 Cronin Ways Apt. 082',
       creator: '欧鹏',
-      key: '2'
-    }
-  ]
+      key: '2',
+    },
+  ],
 };
 
 const BasicDetail: React.FunctionComponent<BasicDetailProps> = (props) => {
