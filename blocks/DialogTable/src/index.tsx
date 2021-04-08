@@ -1,17 +1,16 @@
-import React, { useCallback } from 'react';
-import { Button, Table, Card, Pagination, message, Dialog } from 'antd';
-import { useFusionTable, useSetState } from 'ahooks';
+import React, { useCallback, useState } from 'react';
+import { Table, Card, Pagination, message, Modal } from 'antd';
+import { useAntdTable, useSetState } from 'ahooks';
 
-import EmptyBlock from './EmptyBlock';
-import ExceptionBlock from './ExceptionBlock';
 import DialogOperation from './DialogOperation';
 import { ActionType, OperaitionProps } from './Operation';
 
-import styles from './index.module.scss';
+import styles from './index.module.less';
+import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 
 const getTableData = (
   { current, pageSize }: { current: number; pageSize: number },
-  formData: { status: 'normal' | 'empty' | 'exception' }
+  formData: { status: 'normal' | 'empty' | 'exception' },
 ): Promise<any> => {
   if (!formData.status || formData.status === 'normal') {
     let query = `page=${current}&size=${pageSize}`;
@@ -24,7 +23,7 @@ const getTableData = (
       .then((res) => res.json())
       .then((res) => ({
         total: 55,
-        list: res.results.slice(0, 10)
+        list: res.results.slice(0, 10),
       }));
   }
   if (formData.status === 'empty') {
@@ -42,7 +41,7 @@ const getTableData = (
 };
 
 interface ColumnWidth {
-  name: number;
+  nat: number;
   email: number;
   phone: number;
   gender: number;
@@ -57,11 +56,11 @@ interface DialogState {
 }
 
 const defaultColumnWidth: ColumnWidth = {
-  name: 140,
+  nat: 140,
   email: 500,
   phone: 500,
   gender: 140,
-  operation: 150
+  operation: 150,
 };
 
 const DialogTable: React.FC = () => {
@@ -69,41 +68,26 @@ const DialogTable: React.FC = () => {
     columnWidth: defaultColumnWidth,
     optCol: null,
     actionType: 'preview',
-    actionVisible: false
+    actionVisible: false,
   });
   const { actionVisible, columnWidth, optCol } = state;
-  // const field = Field.useField([]);
-  const {
-    paginationProps,
-    tableProps,
-    search,
-    error,
-    refresh
-  } = useFusionTable(getTableData, {
-    field
+  const [delMessage, setDelMessage] = useState('');
+  const [form] = useForm();
+  const { pagination, tableProps, search } = useAntdTable(getTableData, {
+    form,
   });
   const { reset } = search;
-
-  const onResizeChange = (
-    dataIndex: keyof typeof defaultColumnWidth,
-    width: number
-  ) => {
-    const newWidth = {
-      ...columnWidth
-    };
-    newWidth[dataIndex] += width;
-    setState({ columnWidth: newWidth });
-  };
+  console.log(tableProps);
 
   const operationCallback = useCallback(
     ({ actionType, dataSource }: OperaitionProps): void => {
       setState({
         actionType,
         optCol: dataSource,
-        actionVisible: true
+        actionVisible: true,
       });
     },
-    [setState]
+    [setState],
   );
 
   const handleCancel = useCallback((): void => {
@@ -126,43 +110,27 @@ const DialogTable: React.FC = () => {
       if (!data) {
         return;
       }
-      Dialog.confirm({
-        title: '删除提醒',
-        content: `确定删除 ${data.name.last} 吗`,
-        onOk() {
-          message.success(`${data.name.last} 删除成功!`);
-          reset();
-        }
-      });
+      setDelMessage(data.nat);
     },
-    [reset]
+    [reset],
   );
 
-  const cellOperation = (...args: any[]): React.ReactNode => {
-    const record = args[2];
+  const cellOperation = (values: unknown, row: any[]): React.ReactNode => {
+    const record = row;
+
     return (
       <div>
-        <Button
-          type="primary"
-          onClick={() =>
-            operationCallback({ actionType: 'edit', dataSource: record })
-          }
-        >
+        <a type="primary" onClick={() => operationCallback({ actionType: 'edit', dataSource: record })}>
           编辑
-        </Button>
+        </a>
         &nbsp;&nbsp;
-        <Button type="primary" onClick={() => handleDelete(record)}>
+        <a type="primary" onClick={() => handleDelete(record)}>
           删除
-        </Button>
+        </a>
         &nbsp;&nbsp;
-        <Button
-          type="primary"
-          onClick={() =>
-            operationCallback({ actionType: 'preview', dataSource: record })
-          }
-        >
+        <a type="primary" onClick={() => operationCallback({ actionType: 'preview', dataSource: record })}>
           查看
-        </Button>
+        </a>
       </div>
     );
   };
@@ -170,46 +138,21 @@ const DialogTable: React.FC = () => {
   return (
     <div className={styles.DialogTable}>
       <Card>
-        <Table
-          {...tableProps}
-          // onResizeChange={onResizeChange}
-          // emptyContent={error ? <ExceptionBlock onRefresh={refresh} /> : <EmptyBlock />}
-          // primaryKey="email"
-        >
-          <Table.Column
-            title="name"
-            dataIndex="name.last"
-            width={columnWidth.name}
-          />
-          <Table.Column
-            title="email"
-            dataIndex="email"
-            width={columnWidth.email}
-          />
-          <Table.Column
-            title="phone"
-            dataIndex="phone"
-            width={columnWidth.phone}
-          />
-          <Table.Column
-            title="gender"
-            dataIndex="gender"
-            width={columnWidth.gender}
-          />
-          <Table.Column
-            title="操作"
-            width={columnWidth.operation}
-            // cell={cellOperation}
-          />
+        <Table {...tableProps} rowKey="email" pagination={false} bordered>
+          <Table.Column title="nat" dataIndex="nat" width={columnWidth.nat} />
+          <Table.Column title="email" dataIndex="email" width={columnWidth.email} />
+          <Table.Column title="phone" dataIndex="phone" width={columnWidth.phone} />
+          <Table.Column title="gender" dataIndex="gender" width={columnWidth.gender} />
+          <Table.Column title="操作" width={columnWidth.operation} render={cellOperation} />
         </Table>
         <Pagination
           style={{ marginTop: 16, textAlign: 'right' }}
           showTotal={(total) => (
             <>
-              共 <Button type="primary">{total}</Button> 个记录
+              共 <a>{total}</a> 个记录
             </>
           )}
-          {...paginationProps}
+          {...pagination}
         />
       </Card>
       <DialogOperation
@@ -220,6 +163,19 @@ const DialogTable: React.FC = () => {
         onClose={handleCancel}
         onCancel={handleCancel}
       />
+      <Modal
+        title="删除提醒"
+        visible={!!delMessage}
+        onOk={() => {
+          message.success(`${delMessage}删除成功!`);
+          reset();
+          setDelMessage('');
+        }}
+        onCancel={() => setDelMessage('')}
+      >
+        <p>确定删除 {delMessage}吗</p>
+      </Modal>
+      ;
     </div>
   );
 };

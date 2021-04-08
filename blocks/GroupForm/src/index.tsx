@@ -12,7 +12,7 @@ import {
   Dropdown,
   Row,
   Col,
-  Modal
+  Modal,
 } from 'antd';
 import styles from './index.module.less';
 
@@ -60,64 +60,64 @@ const DEFAULT_DATA: DataSource = {
       name: '蚂蚁证券投资有限公司 A',
       business: '金融证券代理',
       address: '1569 Cronin Ways Apt. 082',
-      creatorName: '欧鹏'
+      creatorName: '欧鹏',
     },
     {
       key: '2',
       name: '蚂蚁证券投资有限公司 B',
       business: '金融证券代理',
       address: '4016 Kautzer Route Suite 366',
-      creatorName: '阮小五'
+      creatorName: '阮小五',
     },
     {
       key: '3',
       name: '蚂蚁证券投资有限公司 C',
       business: '金融证券代理',
       address: '22 Haag Manor',
-      creatorName: '阮小二'
+      creatorName: '阮小二',
     },
     {
       key: '4',
       name: '蚂蚁证券投资有限公司 D',
       business: '金融证券代理',
       address: '1014 McLaughlin Unions',
-      creatorName: '阮小七'
+      creatorName: '阮小七',
     },
     {
       key: '5',
       name: '蚂蚁证券投资有限公司 E',
       business: '金融证券代理',
       address: '8748 Devante Center',
-      creatorName: '公孙胜'
+      creatorName: '公孙胜',
     },
     {
       key: '6',
       name: '蚂蚁证券投资有限公司 F',
       business: '金融证券代理',
       address: '1014 McLaughlin Unions',
-      creatorName: '曹正'
+      creatorName: '曹正',
     },
     {
       key: '7',
       name: '蚂蚁证券投资有限公司 G',
       business: '金融证券代理',
       address: '8748 Devante Center',
-      creatorName: '李立'
+      creatorName: '李立',
     },
     {
       key: '8',
       name: '蚂蚁证券投资有限公司 H',
       business: '金融证券代理',
       address: '1569 Cronin Ways Apt. 082',
-      creatorName: '樊瑞'
-    }
-  ]
+      creatorName: '樊瑞',
+    },
+  ],
 };
 const GroupForm: FC<GroupFormProps> = (props) => {
   const {
     dataSource: defaultDataSource = DEFAULT_DATA,
     onSubmit = () => {},
-    onCancel = () => {}
+    onCancel = () => {},
   } = props;
   const columns = [
     {
@@ -125,28 +125,28 @@ const GroupForm: FC<GroupFormProps> = (props) => {
       dataIndex: 'name',
       width: 180,
       render: (value: string, row: any, index: number) =>
-        renderEditCell(value, index, row, 'name')
+        renderEditCell(value, index, row, 'name'),
     },
     {
       title: '主营业务',
       dataIndex: 'business',
       width: 180,
       render: (value: string, row: any, index: number) =>
-        renderEditCell(value, index, row, 'business')
+        renderEditCell(value, index, row, 'business'),
     },
     {
       title: '注册地',
       dataIndex: 'address',
       width: 180,
       render: (value: string, row: any, index: number) =>
-        renderEditCell(value, index, row, 'address')
+        renderEditCell(value, index, row, 'address'),
     },
     {
       title: '创始人',
       dataIndex: 'creatorName',
       width: 180,
       render: (value: string, row: any, index: number) =>
-        renderEditCell(value, index, row, 'creatorName')
+        renderEditCell(value, index, row, 'creatorName'),
     },
     {
       title: '注册地',
@@ -203,15 +203,15 @@ const GroupForm: FC<GroupFormProps> = (props) => {
             </Dropdown>
           </div>
         );
-      }
-    }
+      },
+    },
   ];
   const [dataSource, setDataSouce] = useState<DataSource>(defaultDataSource);
 
   const [isModalVisible, setIsModalVisible] = useState({
     show: false,
     index: null,
-    name: null
+    name: null,
   });
   const basicRef = useRef(null);
   const memberRef = useRef(null);
@@ -219,14 +219,14 @@ const GroupForm: FC<GroupFormProps> = (props) => {
   const changeRowData = (
     index: number,
     key: keyof Company,
-    value: string | number | boolean | []
+    value: string | number | boolean | [],
   ) => {
     const company: Company[] = [...dataSource.company];
     (company[index][key] as string | number | boolean | []) = value;
 
     setDataSouce({
       ...dataSource,
-      company
+      company,
     });
   };
 
@@ -236,29 +236,29 @@ const GroupForm: FC<GroupFormProps> = (props) => {
       company.splice(index, 1);
       setDataSouce({
         ...dataSource,
-        company
+        company,
       });
       return;
     }
     setIsModalVisible({
       show: true,
-      index: index,
-      name: company[index].name
+      index,
+      name: company[index].name,
     });
   };
 
   const addRow = () => {
     setDataSouce({
       ...dataSource,
-      company: [...dataSource.company, { edited: true }]
+      company: [...dataSource.company, { edited: true }],
     });
   };
 
   const submit = (obj: any) => {
     onSubmit({
-      basic: obj.type == 'basic' ? obj.values : null,
-      member: obj.type == 'member' ? obj.values : null,
-      company: dataSource.company
+      basic: obj.type === 'basic' ? obj.values : null,
+      member: obj.type === 'member' ? obj.values : null,
+      company: dataSource.company,
     });
   };
 
@@ -266,7 +266,7 @@ const GroupForm: FC<GroupFormProps> = (props) => {
     value: string,
     index: number,
     row: { edited: boolean },
-    key: keyof Company
+    key: keyof Company,
   ) => {
     if (row.edited) {
       return (
@@ -282,7 +282,7 @@ const GroupForm: FC<GroupFormProps> = (props) => {
 
   const formLayout = {
     labelCol: { span: 6 },
-    wrapperCol: { span: 30 }
+    wrapperCol: { span: 30 },
   };
   return (
     <div className={styles.GroupForm}>
@@ -302,8 +302,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
               >
                 <Input placeholder="请输入公司简称" />
@@ -318,8 +318,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
               >
                 <Input placeholder="请输入项目代号" />
@@ -333,8 +333,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 name="investmentsCommittee"
               >
@@ -349,8 +349,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 name="projectType"
               >
@@ -364,8 +364,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 {...formLayout}
                 name="projectId"
@@ -394,8 +394,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 {...formLayout}
                 name="contractType"
@@ -414,8 +414,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 {...formLayout}
                 name="icMemberId"
@@ -434,8 +434,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 {...formLayout}
                 name="forensicId"
@@ -454,8 +454,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 {...formLayout}
                 name="financeId"
@@ -474,8 +474,8 @@ const GroupForm: FC<GroupFormProps> = (props) => {
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
                 {...formLayout}
                 name="projectId"
@@ -526,19 +526,19 @@ const GroupForm: FC<GroupFormProps> = (props) => {
             company.splice(isModalVisible.index, 1);
             setDataSouce({
               ...dataSource,
-              company
+              company,
             });
             setIsModalVisible({
               show: false,
               index: null,
-              name: null
+              name: null,
             });
           }}
           onCancel={() =>
             setIsModalVisible({
               show: false,
               index: null,
-              name: null
+              name: null,
             })
           }
         >

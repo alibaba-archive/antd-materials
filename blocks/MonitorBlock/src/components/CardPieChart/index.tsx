@@ -24,30 +24,30 @@ const DEFAULT_DATA: CardConfig = {
     {
       type: 'chrome',
       value: 40,
-      title: 'chrome | 40.00%'
+      title: 'chrome | 40.00%',
     },
     {
       type: 'IE',
       value: 21,
-      title: 'IE | 22.12%'
+      title: 'IE | 22.12%',
     },
     {
       type: 'FireFox',
       value: 17,
-      title: 'FireFox | 16.59%'
+      title: 'FireFox | 16.59%',
     },
     {
       type: 'safari',
       value: 13,
-      title: 'safari | 13.11%'
+      title: 'safari | 13.11%',
     },
     {
       type: 'Opera',
       value: 9,
-      title: 'Opera |  9.29%'
-    }
+      title: 'Opera |  9.29%',
+    },
   ],
-  chartHeight: 400
+  chartHeight: 400,
 };
 
 export interface AntdCardLineChartProps {
@@ -55,7 +55,7 @@ export interface AntdCardLineChartProps {
 }
 
 const AntdCardLineChart: React.FunctionComponent<AntdCardLineChartProps> = (
-  props: AntdCardLineChartProps
+  props: AntdCardLineChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
 
@@ -75,7 +75,7 @@ const AntdCardLineChart: React.FunctionComponent<AntdCardLineChartProps> = (
           position="right-center"
           textStyle={{
             fill: '#666',
-            fontSize: 14
+            fontSize: 14,
           }}
           itemMarginBottom={24}
         />
@@ -85,7 +85,7 @@ const AntdCardLineChart: React.FunctionComponent<AntdCardLineChartProps> = (
           color="title"
           style={{
             lineWidth: 1,
-            stroke: '#fff'
+            stroke: '#fff',
           }}
         />
       </Chart>

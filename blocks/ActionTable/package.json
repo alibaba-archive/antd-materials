@@ -1,5 +1,5 @@
 {
-  "name": "action-table",
+  "name": "@icedesign/antd-action-table",
   "version": "0.1.0",
   "description": "action bar table",
   "files": [

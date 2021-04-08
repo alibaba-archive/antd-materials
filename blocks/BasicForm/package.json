@@ -1,5 +1,5 @@
 {
-  "name": "basic-form",
+  "name": "@icedesign/antd-basic-form",
   "version": "0.1.0",
   "description": "single column form",
   "files": [

@@ -29,14 +29,14 @@ const DEFAULT_DATA: CardConfig = {
       name: '总PV',
       value: '234,465789',
       des: '周同比:',
-      rate: 10.1
+      rate: 10.1,
     },
     {
       name: '总UV',
       value: '234,465789',
       des: '周同比:',
-      rate: -10.1
-    }
+      rate: -10.1,
+    },
   ],
   chartData: [
     { type: 'pv', date: 1489593600000, value: 100 },
@@ -44,9 +44,9 @@ const DEFAULT_DATA: CardConfig = {
     { type: 'pv', date: 1489591630000, value: 230 },
     { type: 'uv', date: 1489592600000, value: 140 },
     { type: 'uv', date: 1489592630000, value: 350 },
-    { type: 'uv', date: 1489590630000, value: 370 }
+    { type: 'uv', date: 1489590630000, value: 370 },
   ],
-  chartHeight: 300
+  chartHeight: 300,
 };
 
 export interface CardConfigProps {
@@ -56,7 +56,7 @@ export interface CardConfigProps {
 const InfoBlock: React.FC<any> = (
   props = DEFAULT_DATA && DEFAULT_DATA.titleItem
     ? DEFAULT_DATA.titleItem[0]
-    : null
+    : null,
 ): JSX.Element => {
   const { name, value, des, rate } = props;
   return (
@@ -82,24 +82,24 @@ const InfoBlock: React.FC<any> = (
 
 // 两条线pv/uv
 const RenderPvChart: React.FunctionComponent<CardConfig> = (
-  props = DEFAULT_DATA
+  props = DEFAULT_DATA,
 ) => {
   const { chartData, chartHeight } = { ...DEFAULT_DATA, ...props };
   const cols = {
     date: {
       type: 'timeCat',
       mask: 'MM/DD HH:mm',
-      range: [0.05, 0.95]
+      range: [0.05, 0.95],
     },
     value: {
-      min: 0
-    }
+      min: 0,
+    },
   };
 
   // 虚线处理
   const areaColors = [
     'l(100) 0:rgba(253,250,242) 1:rgba(255,245,205)',
-    'l(100) 0:rgba(221,246,250) 1:rgba(244,252,253)'
+    'l(100) 0:rgba(221,246,250) 1:rgba(244,252,253)',
   ];
   const lineColors = ['#FFCE03', '#00C1DE'];
   // 传入的height - 底部padding
@@ -132,7 +132,7 @@ const RenderPvChart: React.FunctionComponent<CardConfig> = (
 };
 
 const VisitBlock: React.FunctionComponent<CardConfigProps> = ({
-  cardConfig = DEFAULT_DATA
+  cardConfig = DEFAULT_DATA,
 }): JSX.Element => {
   const { titleItem = [], chartData, chartHeight } = cardConfig;
 

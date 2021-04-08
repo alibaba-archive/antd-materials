@@ -25,7 +25,7 @@ const DEFAULT_DATA: CardConfig = {
   chartData: mock.saleList,
   des: '周同比:',
   rate: 10.1,
-  chartHeight: 100
+  chartHeight: 100,
 };
 
 export interface AntdCardBarChartProps {
@@ -33,7 +33,7 @@ export interface AntdCardBarChartProps {
 }
 
 const AntdCardBarChart: React.FunctionComponent<AntdCardBarChartProps> = (
-  props: AntdCardBarChartProps
+  props: AntdCardBarChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
 
@@ -44,7 +44,7 @@ const AntdCardBarChart: React.FunctionComponent<AntdCardBarChartProps> = (
     chartData,
     des,
     rate,
-    chartHeight
+    chartHeight,
   } = cardConfig;
 
   return (
@@ -62,8 +62,8 @@ const AntdCardBarChart: React.FunctionComponent<AntdCardBarChartProps> = (
           data={chartData}
           scale={{
             date: {
-              range: [0, 1]
-            }
+              range: [0, 1],
+            },
           }}
           forceFit
           padding={['auto', '16']}

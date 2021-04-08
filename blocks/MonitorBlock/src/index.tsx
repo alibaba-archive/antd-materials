@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Space } from 'antd';
+import { Row, Col } from 'antd';
 import FusionCardAreaChart from './components/CardAreaChart';
 import FusionCardPieChart from './components/CardPieChart';
 
@@ -17,7 +17,7 @@ const MonitorBlock = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            height: '100%'
+            height: '100%',
           }}
         >
           <WebInfoBlock cardConfig={mock.JSErrorRate} />
@@ -33,7 +33,7 @@ const MonitorBlock = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            height: '100%'
+            height: '100%',
           }}
         >
           <WebInfoBlock cardConfig={mock.FirstRenderTime} />

@@ -7,7 +7,7 @@ import {
   DatePicker,
   message,
   Radio,
-  Upload
+  Upload,
 } from 'antd';
 
 import { Moment } from 'moment';
@@ -19,7 +19,7 @@ const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: { span: 5 },
-  wrapperCol: { span: 16 }
+  wrapperCol: { span: 16 },
 };
 
 export interface DataSource {
@@ -38,11 +38,11 @@ export interface BasicFormProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  type: 'private'
+  type: 'private',
 };
 
 const BasicForm: React.FC<BasicFormProps> = (
-  props: BasicFormProps
+  props: BasicFormProps,
 ): JSX.Element => {
   const [form] = Form.useForm();
   const DEFAULT_ON_SUBMIT = async () => {
@@ -57,7 +57,7 @@ const BasicForm: React.FC<BasicFormProps> = (
   const {
     dataSource = DEFAULT_DATA,
     onSubmit = DEFAULT_ON_SUBMIT,
-    onCancel = () => {}
+    onCancel = () => {},
   } = props;
   const [postData, setValue] = useState<DataSource>(dataSource);
 
@@ -80,8 +80,8 @@ const BasicForm: React.FC<BasicFormProps> = (
           rules={[
             {
               required: true,
-              message: '必填'
-            }
+              message: '必填',
+            },
           ]}
           name="name"
         >
@@ -94,8 +94,8 @@ const BasicForm: React.FC<BasicFormProps> = (
           rules={[
             {
               required: true,
-              message: '必填'
-            }
+              message: '必填',
+            },
           ]}
           name="category"
         >
@@ -108,8 +108,8 @@ const BasicForm: React.FC<BasicFormProps> = (
           rules={[
             {
               required: true,
-              message: '必填'
-            }
+              message: '必填',
+            },
           ]}
           name="date"
         >

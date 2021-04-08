@@ -35,7 +35,7 @@ const DEFAULT_DATA: DataSource = {
     '类目七',
     '类目八',
     '类目九',
-    '类目十'
+    '类目十',
   ],
   tagA: '类目一',
   tagsB: ['不到一年', '一年以上三年以下', '三年以上五年以下', '五年以上'],
@@ -44,12 +44,12 @@ const DEFAULT_DATA: DataSource = {
     title: '构建一套产品化设计系统',
     content:
       '随着互联网行业的聚变式发展，在电商业务从“信息透出” 到 “在线交易” 的过程中，网站 UI 构建也经历了“体验一致性”、“设计效率”、“UI系统构建/应用效率”、“多端适配” …',
-    subContent: '谢瑶 3 小时前更新'
-  })
+    subContent: '谢瑶 3 小时前更新',
+  }),
 };
 
 const BasicList: React.FunctionComponent<BasicListProps> = (
-  props: BasicListProps
+  props: BasicListProps,
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA, onSearch = (): void => {} } = props;
 

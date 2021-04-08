@@ -11,7 +11,7 @@ import {
   Table,
   Calendar,
   Timeline,
-  List
+  List,
 } from 'antd';
 import mock from './mock';
 
@@ -48,11 +48,13 @@ interface UpdateItem {
   name?: string;
   action?: string;
   avatar?: string;
+  key?: string;
 }
 
 interface EntranceItem {
   name?: string;
   link?: string;
+  key?: string;
 }
 
 export interface DataSource {
@@ -75,13 +77,13 @@ const DEFAULT_DATA: DataSource = {
       'https://img.alicdn.com/tfs/TB1XdnvvUY1gK0jSZFCXXcwqXXa-500-500.png',
     surname: '谢',
     name: '莉莉',
-    email: 'xielili@aliwork-inc.com'
+    email: 'xielili@aliwork-inc.com',
   },
   orderList: mock.orderList,
   projectList: mock.projectList,
   timeLineList: mock.timeLineList,
   updateList: mock.updateList,
-  entranceList: mock.entrances
+  entranceList: mock.entrances,
 };
 export interface WorkTableProps {
   dataSource?: DataSource;
@@ -94,11 +96,11 @@ interface ColorMap {
 const colorMap: ColorMap = {
   high: 'red',
   middle: 'yellow',
-  low: 'green'
+  low: 'green',
 };
 
 const WorkTable: React.FunctionComponent<WorkTableProps> = (
-  props: WorkTableProps
+  props: WorkTableProps,
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA } = props;
 
@@ -108,27 +110,20 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
     projectList,
     timeLineList,
     updateList,
-    entranceList
+    entranceList,
   } = dataSource;
 
   const [tab, setTab] = useState('1');
 
   const changeTab = (val: string) => setTab(val);
 
-  const renderLevel = (text: 'high' | 'middle' | 'low', index: number) => {
+  const renderLevel = (text: 'high' | 'middle' | 'low') => {
     return (
-      <span key={text + index.toString()}>
+      <span key={text}>
         <Tag color={colorMap[text]}>{text}</Tag>
       </span>
     );
   };
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      render: (text: string) => <a>{text}</a>
-    }
-  ];
   return (
     <div className={styles.WorkTable}>
       <div className={styles.workerContainor}>
@@ -162,8 +157,8 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                 rowSelection={{
                   type: 'checkbox',
                   getCheckboxProps: (record: OrderItem): any => ({
-                    name: record.name
-                  })
+                    name: record.name,
+                  }),
                 }}
               >
                 <Table.Column title="任务名称" dataIndex="name" width={330} />
@@ -213,7 +208,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                           {item.planAddress}
                         </div>
                       </TimelineItem>
-                    )
+                    ),
                   )}
                 </Timeline>
               </div>
@@ -302,12 +297,12 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
           <Col span={16}>
             <Card title="动态">
               <List>
-                {updateList?.map((one, idx) => {
+                {updateList?.map((one) => {
                   let title;
                   switch (one.action) {
                     case 'create':
                       title = (
-                        <div key={idx}>
+                        <div key={one.key}>
                           {one.name} 在 <a href="/">{one.project}</a> 新建项目{' '}
                           <a href="/">{one.projectItem}</a>{' '}
                         </div>
@@ -315,7 +310,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                       break;
                     case 'release':
                       title = (
-                        <div key={idx}>
+                        <div key={one.key}>
                           {one.name} 将 <a href="/">{one.project}</a>{' '}
                           更新至发布状态{' '}
                         </div>
@@ -323,7 +318,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                       break;
                     case 'note':
                       title = (
-                        <div key={idx}>
+                        <div key={one.key}>
                           {one.name} 在 <a href="/">{one.project}</a> 发布了{' '}
                           <a href="/">{one.projectItem}</a>{' '}
                         </div>
@@ -334,7 +329,7 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
                   }
 
                   return (
-                    <List.Item key={idx}>
+                    <List.Item key={one.key}>
                       <List.Item.Meta
                         avatar={<Avatar src={one.avatar} />}
                         title={title}
@@ -356,9 +351,9 @@ const WorkTable: React.FunctionComponent<WorkTableProps> = (
               }
             >
               <div>
-                {entranceList?.map((item, idx) => {
+                {entranceList?.map((item) => {
                   return (
-                    <Button key={idx} size="large" href={item.link} type="text">
+                    <Button key={item.key} size="large" href={item.link} type="text">
                       {item.name}
                     </Button>
                   );

@@ -26,7 +26,7 @@ const DEFAULT_DATA: CardConfig = {
   chartData: mock.saleList,
   des: '周同比:',
   rate: '10.1',
-  chartHeight: 100
+  chartHeight: 100,
 };
 
 export interface FusionCardTypebarChartProps {
@@ -34,7 +34,7 @@ export interface FusionCardTypebarChartProps {
 }
 
 const FusionCardTypebarChart: React.FunctionComponent<FusionCardTypebarChartProps> = (
-  props: FusionCardTypebarChartProps
+  props: FusionCardTypebarChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
 
@@ -45,7 +45,7 @@ const FusionCardTypebarChart: React.FunctionComponent<FusionCardTypebarChartProp
     chartData,
     des,
     rate,
-    chartHeight
+    chartHeight,
   } = cardConfig;
 
   return (
@@ -62,8 +62,8 @@ const FusionCardTypebarChart: React.FunctionComponent<FusionCardTypebarChartProp
         data={chartData}
         scale={{
           date: {
-            range: [0, 1]
-          }
+            range: [0, 1],
+          },
         }}
         forceFit
         padding={['auto', 'auto']}

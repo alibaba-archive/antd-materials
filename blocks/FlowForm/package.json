@@ -1,5 +1,5 @@
 {
-  "name": "flow-form",
+  "name": "@icedesign/antd-flow-form",
   "version": "0.1.0",
   "description": "流程表单",
   "files": [

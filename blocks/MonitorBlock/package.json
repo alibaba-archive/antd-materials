@@ -1,5 +1,5 @@
 {
-  "name": "monitor-block",
+  "name": "@icedesign/antd-monitor-block",
   "version": "0.1.0",
   "description": "监控页面",
   "files": [

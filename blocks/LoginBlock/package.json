@@ -1,5 +1,5 @@
 {
-  "name": "login-block",
+  "name": "@icedesign/antd-login-block",
   "version": "0.1.0",
   "description": "block for login",
   "files": [

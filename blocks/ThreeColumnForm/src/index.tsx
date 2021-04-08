@@ -1,28 +1,13 @@
 import React, { useState } from 'react';
-import {
-  Input,
-  Button,
-  Select,
-  Form,
-  DatePicker,
-  message,
-  Radio,
-  Upload,
-  Card,
-  Row,
-  Col,
-  UploadProps
-} from 'antd';
+import { Input, Button, Select, Form, DatePicker, Radio, Upload, Card, Row, Col, UploadProps } from 'antd';
 
 import { Moment } from 'moment';
-
-import styles from './index.module.less';
 
 const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: { span: 6 },
-  wrapperCol: { span: 20 }
+  wrapperCol: { span: 20 },
 };
 
 export interface DataSource {
@@ -43,26 +28,12 @@ export interface ThreeColumnFormProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  type: 'private'
+  type: 'private',
 };
 
-const DEFAULT_ON_SUBMIT = (values: ThreeColumnFormProps, errors: []): void => {
-  if (errors) {
-    console.log('errors', errors);
-    return;
-  }
-  console.log('values:', values);
-  message.success('提交成功');
-};
 
-const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
-  props: ThreeColumnFormProps
-): JSX.Element => {
-  const {
-    dataSource = DEFAULT_DATA,
-    onSubmit = DEFAULT_ON_SUBMIT,
-    onCancel = () => {}
-  } = props;
+const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (props: ThreeColumnFormProps): JSX.Element => {
+  const { dataSource = DEFAULT_DATA, onCancel = () => {} } = props;
 
   const [postData, setValue] = useState<DataSource>(dataSource);
 
@@ -71,7 +42,7 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
   };
 
   return (
-    <Card className={styles.ThreeColumnForm}>
+    <Card>
       <Form
         initialValues={postData}
         labelAlign="right"
@@ -88,8 +59,8 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: 'name是必填字段'
-                }
+                  message: 'name是必填字段',
+                },
               ]}
               name="name"
             >
@@ -104,8 +75,8 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: 'category'
-                }
+                  message: 'category',
+                },
               ]}
               name="category"
             >
@@ -121,8 +92,8 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: 'date是必填字段'
-                }
+                  message: 'date是必填字段',
+                },
               ]}
               name="date"
             >
@@ -137,8 +108,8 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: 'person是必填字段'
-                }
+                  message: 'person是必填字段',
+                },
               ]}
               name="person"
             >
@@ -153,8 +124,8 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
               rules={[
                 {
                   required: true,
-                  message: 'state是必填字段'
-                }
+                  message: 'state是必填字段',
+                },
               ]}
               name="state"
             >
@@ -192,11 +163,7 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
             </FormItem>
           </Col>
           <Col span={16}>
-            <FormItem
-              wrapperCol={{ offset: 3 }}
-              name="pic"
-              help="请选择大小不超过5M的文件，支持doc，docx，xls，xlsx，zip格式"
-            >
+            <FormItem wrapperCol={{ offset: 3 }} name="pic" help="请选择大小不超过5M的文件，支持doc，docx，xls，xlsx，zip格式">
               <Upload action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload">
                 <Button style={{ margin: '0 0 10px' }}>上传文件</Button>
               </Upload>
@@ -205,11 +172,7 @@ const ThreeColumnForm: React.FC<ThreeColumnFormProps> = (
           <Col span={16}>
             <FormItem wrapperCol={{ offset: 3 }}>
               <div style={{ marginTop: '20px' }}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  style={{ marginRight: '10px' }}
-                >
+                <Button type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
                   提交
                 </Button>
                 <Button onClick={onCancel}>取消</Button>

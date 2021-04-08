@@ -25,15 +25,15 @@ const DEFAULT_DATA: AntdCardAreaChartProps = {
   value: mock.value,
   chartData: mock.saleList,
   cardFoot: `日访问用户数  ${mock.dailySale}`,
-  chartHeight: 300
+  chartHeight: 300,
 };
 
 const FusionCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
-  props = DEFAULT_DATA
+  props = DEFAULT_DATA,
 ): JSX.Element => {
   const { title, subTitle, value, chartData, chartHeight } = {
     ...DEFAULT_DATA,
-    ...props
+    ...props,
   };
 
   return (
@@ -49,8 +49,8 @@ const FusionCardAreaChart: React.FunctionComponent<AntdCardAreaChartProps> = (
         height={chartHeight || 0}
         scale={{
           date: {
-            range: [0, 1]
-          }
+            range: [0, 1],
+          },
         }}
         width={10}
         forceFit

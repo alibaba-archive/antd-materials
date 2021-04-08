@@ -1,5 +1,5 @@
 {
-  "name": "three-column-form",
+  "name": "@icedesign/antd-three-column-form",
   "version": "0.1.0",
   "description": "Form of three columns",
   "files": [

@@ -10,7 +10,7 @@ import {
   Col,
   Button,
   Card,
-  Pagination
+  Pagination,
 } from 'antd';
 
 import { useAntdTable } from 'ahooks';
@@ -25,11 +25,11 @@ const CheckboxGroup = Checkbox.Group;
 const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
-    span: 4
+    span: 4,
   },
   wrapperCol: {
-    span: 20
-  }
+    span: 20,
+  },
 };
 
 const LANGUAGES = [
@@ -41,7 +41,7 @@ const LANGUAGES = [
   { label: '西班牙语', value: 'sp' },
   { label: '意大利语', value: 'it' },
   { label: '德文', value: 'gm' },
-  { label: '其他', value: 'other' }
+  { label: '其他', value: 'other' },
 ];
 
 const STAFF_COUNTS = [
@@ -49,12 +49,12 @@ const STAFF_COUNTS = [
   { label: '50-100', value: '1' },
   { label: '100-200', value: '2' },
   { label: '200-500', value: '3' },
-  { label: '500以上', value: '4' }
+  { label: '500以上', value: '4' },
 ];
 
 const YES_NO = [
   { label: '是', value: '0' },
-  { label: '否', value: '1' }
+  { label: '否', value: '1' },
 ];
 
 const LOCATIONS = [
@@ -62,12 +62,12 @@ const LOCATIONS = [
   { label: '上海', value: 'sh' },
   { label: '深圳', value: 'sz' },
   { label: '广州', value: 'gz' },
-  { label: '杭州', value: 'hz' }
+  { label: '杭州', value: 'hz' },
 ];
 
 const getTableData = async (
   { current, pageSize }: { current: number; pageSize: number },
-  formData: Record<string, any>
+  formData: Record<string, any>,
 ) => {
   const query = Object.entries(formData)
     .map(([key, value]) => (value ? `&${key}=${value}` : ''))
@@ -77,14 +77,14 @@ const getTableData = async (
     .then((res) => res.json())
     .then((res) => ({
       total: 55,
-      list: res.results.slice(0, 10)
+      list: res.results.slice(0, 10),
     }));
 };
 
 export default function SingleColFilterTable() {
   const [form] = useForm();
   const { pagination, tableProps, search } = useAntdTable(getTableData, {
-    form
+    form,
   });
 
   const { type, changeType, submit } = search;

@@ -23,15 +23,15 @@ const HierarchicalForm: FC<HierarchicalFormProps> = (props) => {
   const [form] = Form.useForm();
   const {
     dataSource = {
-      authType: 1
+      authType: 1,
     },
     onSubmit = () => {},
-    onCancel = () => {}
+    onCancel = () => {},
   } = props;
 
   const formLayout = {
     labelCol: { span: 6 },
-    wrapperCol: { span: 20 }
+    wrapperCol: { span: 20 },
   };
   return (
     <Card className={styles.Card}>
@@ -49,8 +49,8 @@ const HierarchicalForm: FC<HierarchicalFormProps> = (props) => {
           rules={[
             {
               required: true,
-              message: '请输入项目名称'
-            }
+              message: '请输入项目名称',
+            },
           ]}
         >
           <Input placeholder="给项目起个名字" />
@@ -61,8 +61,8 @@ const HierarchicalForm: FC<HierarchicalFormProps> = (props) => {
           rules={[
             {
               required: true,
-              message: '请选择项目所属分类'
-            }
+              message: '请选择项目所属分类',
+            },
           ]}
           name="categoryId"
         >
@@ -92,42 +92,42 @@ const HierarchicalForm: FC<HierarchicalFormProps> = (props) => {
           }
         >
           {({ getFieldValue }) =>
-            getFieldValue('authType') === 1 ||
+            (getFieldValue('authType') === 1 ||
             getFieldValue('authType') === 2 ? (
-                <Row>
-                  <Col span={15} push={6}>
-                    <Form.Item label="权限范围" name="authScope" {...formLayout}>
-                      <Select placeholder="请选择权限范围">
-                        <Select.Option value={1}>公司内部</Select.Option>
-                        <Select.Option value={2}>团队内部</Select.Option>
-                        <Select.Option value={3}>个人</Select.Option>
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={15} push={6}>
-                    <Form.Item
-                      label="权限成员"
-                      name="authMembers"
-                      {...formLayout}
-                    >
-                      <Select
-                        maxTagCount={2}
-                        maxTagPlaceholder={(values: []) =>
-                          `+${values.length - 2}`
+              <Row>
+                <Col span={15} push={6}>
+                  <Form.Item label="权限范围" name="authScope" {...formLayout}>
+                    <Select placeholder="请选择权限范围">
+                      <Select.Option value={1}>公司内部</Select.Option>
+                      <Select.Option value={2}>团队内部</Select.Option>
+                      <Select.Option value={3}>个人</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={15} push={6}>
+                  <Form.Item
+                    label="权限成员"
+                    name="authMembers"
+                    {...formLayout}
+                  >
+                    <Select
+                      maxTagCount={2}
+                      maxTagPlaceholder={(values: []) =>
+                        `+${values.length - 2}`
                         }
-                        placeholder="请选择权限成员"
-                      >
-                        <Select.Option value={1}>张三</Select.Option>
-                        <Select.Option value={2}>李四</Select.Option>
-                        <Select.Option value={3}>王五</Select.Option>
-                        <Select.Option value={4}>阮小二</Select.Option>
-                        <Select.Option value={5}>阮小五</Select.Option>
-                        <Select.Option value={6}>阮小七</Select.Option>
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                </Row>
-              ) : null
+                      placeholder="请选择权限成员"
+                    >
+                      <Select.Option value={1}>张三</Select.Option>
+                      <Select.Option value={2}>李四</Select.Option>
+                      <Select.Option value={3}>王五</Select.Option>
+                      <Select.Option value={4}>阮小二</Select.Option>
+                      <Select.Option value={5}>阮小五</Select.Option>
+                      <Select.Option value={6}>阮小七</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+              ) : null)
           }
         </Form.Item>
         <Form.Item
@@ -136,7 +136,7 @@ const HierarchicalForm: FC<HierarchicalFormProps> = (props) => {
           }
         >
           {({ getFieldValue }) =>
-            getFieldValue('authType') === 1 ? (
+            (getFieldValue('authType') === 1 ? (
               <Row>
                 <Col span={15} push={6}>
                   <Form.Item label="私密ID" {...formLayout} name="authId">
@@ -149,7 +149,7 @@ const HierarchicalForm: FC<HierarchicalFormProps> = (props) => {
                   </Form.Item>
                 </Col>
               </Row>
-            ) : null
+            ) : null)
           }
         </Form.Item>
         <Form.Item label="项目描述" {...formLayout} name="description">

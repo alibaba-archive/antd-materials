@@ -1,5 +1,5 @@
 {
-  "name": "forbidden",
+  "name": "@icedesign/antd-forbidden",
   "version": "0.1.0",
   "description": "forbidden  exception",
   "files": [

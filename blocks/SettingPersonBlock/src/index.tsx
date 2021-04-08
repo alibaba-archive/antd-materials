@@ -10,7 +10,7 @@ import {
   message,
   UploadProps,
   Row,
-  Col
+  Col,
 } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import styles from './index.module.less';
@@ -31,12 +31,12 @@ export interface SettingPersonProps {
 }
 
 const DEFAULT_DATA: DataSource = {
-  name: '阿里-Amy'
+  name: '阿里-Amy',
 };
 
 const DEFAULT_ON_SUBMIT = (
   values: SettingPersonProps,
-  errors?: object[]
+  errors?: object[],
 ): void => {
   if (errors) {
     console.log('errors', errors);
@@ -47,7 +47,7 @@ const DEFAULT_ON_SUBMIT = (
 };
 
 const SettingPersonBlock: React.FC<SettingPersonProps> = (
-  props: SettingPersonProps
+  props: SettingPersonProps,
 ): JSX.Element => {
   const { dataSource = DEFAULT_DATA, onSubmit = DEFAULT_ON_SUBMIT } = props;
 
@@ -81,7 +81,7 @@ const SettingPersonBlock: React.FC<SettingPersonProps> = (
   };
   const formLayout = {
     labelCol: { span: 4 },
-    wrapperCol: { span: 20 }
+    wrapperCol: { span: 20 },
   };
   return (
     <Card className={styles.SettingPersonBlock}>
@@ -131,8 +131,8 @@ const SettingPersonBlock: React.FC<SettingPersonProps> = (
               rules={[
                 {
                   required: true,
-                  message: '必填'
-                }
+                  message: '必填',
+                },
               ]}
             >
               <Input placeholder="请输入昵称" />

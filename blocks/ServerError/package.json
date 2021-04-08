@@ -1,5 +1,5 @@
 {
-  "name": "server-error",
+  "name": "@icedesign/antd-server-error",
   "version": "0.1.0",
   "description": "server error",
   "files": [

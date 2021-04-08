@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Card,
-  Form,
-  Input,
-  Radio,
-  Steps,
-  Button,
-  Typography,
-  Row,
-  Col
-} from 'antd';
+import { Card, Form, Input, Radio, Steps, Button, Typography, Row, Col } from 'antd';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 import styles from './index.module.less';
@@ -30,29 +20,21 @@ const DEFAULT_DATA: DataSource = {
   name: '',
   category: '',
   authority: 'private',
-  desc: ''
+  desc: '',
 };
 
-const StepForm: React.FunctionComponent<StepFormProps> = (
-  props: StepFormProps
-): JSX.Element => {
+const StepForm: React.FunctionComponent<StepFormProps> = (props: StepFormProps): JSX.Element => {
   const { dataSource = DEFAULT_DATA, onSubmit = (): void => {} } = props;
 
   const [currentStep, setStep] = useState<number>(0);
   const [form] = useForm();
   const formLayout = {
     labelCol: { span: 6 },
-    wrapperCol: { span: 15 }
+    wrapperCol: { span: 15 },
   };
 
   const steps = ['填写信息', '确认信息', '完成'].map(
-    (item, index): React.ReactElement => (
-      <Steps.Step
-        aria-current={index === currentStep ? 'step' : undefined}
-        key={index}
-        title={item}
-      />
-    )
+    (item, index): React.ReactElement => <Steps.Step aria-current={index === currentStep ? 'step' : undefined} key={item} title={item} />,
   );
 
   const submit = (): void => {
@@ -113,11 +95,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
             <Typography.Title level={2}>提交成功</Typography.Title>
             <Typography.Text>5s 后自动跳转至工单页</Typography.Text>
             <div>
-              <Button
-                type="primary"
-                style={{ marginRight: '5px' }}
-                onClick={goInitial}
-              >
+              <Button type="primary" style={{ marginRight: '5px' }} onClick={goInitial}>
                 返回主页
               </Button>
               <Button onClick={goInitial}>继续创建</Button>
@@ -130,15 +108,10 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
       break;
   }
 
-  if (currentStep == 0) {
+  if (currentStep === 0) {
     mainbody = (
       <>
-        <Form
-          form={form}
-          className={styles.form}
-          labelAlign="right"
-          initialValues={dataSource}
-        >
+        <Form form={form} className={styles.form} labelAlign="right" initialValues={dataSource}>
           <Row>
             <Col span={24}>
               <Form.Item
@@ -149,8 +122,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
               >
                 <Input placeholder="给项目起个名字" />
@@ -165,8 +138,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
               >
                 <Input placeholder="请输入你的分类" />
@@ -193,25 +166,29 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item wrapperCol={{ span: 15, offset: 6 }}>
-                {actions}
-              </Form.Item>
+              <Form.Item wrapperCol={{ span: 15, offset: 6 }}>{actions}</Form.Item>
             </Col>
           </Row>
         </Form>
       </>
     );
-  } else if (currentStep == 1) {
+  } else if (currentStep === 1) {
     const values = form.getFieldsValue(true);
     const { name, category, authority, desc = '' } = values;
+    const categoryResulut = () => {
+      switch (authority) {
+        case 'private':
+          return '私密项目';
+        case 'internal':
+          return '内部项目';
+        default:
+          return '开放项目';
+      }
+    };
+
     mainbody = (
       <>
-        <Form
-          form={form}
-          className={styles.form}
-          labelAlign="right"
-          initialValues={dataSource}
-        >
+        <Form form={form} className={styles.form} labelAlign="right" initialValues={dataSource}>
           <Row>
             <Col span={24}>
               <Form.Item
@@ -222,8 +199,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
               >
                 {name}
@@ -238,8 +215,8 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
                 rules={[
                   {
                     required: true,
-                    message: '必填'
-                  }
+                    message: '必填',
+                  },
                 ]}
               >
                 {category}
@@ -249,11 +226,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
               <Form.Item label="项目权限" name="authority" {...formLayout}>
                 <Radio.Group aria-labelledby="authority of project">
                   <Radio id={authority} value={authority} disabled>
-                    {authority == 'private'
-                      ? '私密项目'
-                      : authority == 'internal'
-                        ? '内部项目'
-                        : '开放项目'}
+                    {categoryResulut()}
                   </Radio>
                 </Radio.Group>
               </Form.Item>
@@ -264,9 +237,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item wrapperCol={{ span: 15, offset: 6 }}>
-                {actions}
-              </Form.Item>
+              <Form.Item wrapperCol={{ span: 15, offset: 6 }}>{actions}</Form.Item>
             </Col>
           </Row>
         </Form>

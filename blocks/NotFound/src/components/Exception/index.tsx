@@ -12,7 +12,7 @@ const Exception: FC<ExceptionProps> = (props: ExceptionProps) => {
   const {
     statusCode = '404',
     description = '服务器好像挂了你要等会了',
-    image = 'https://img.alicdn.com/tfs/TB14c1VoET1gK0jSZFhXXaAtVXa-200-200.png'
+    image = 'https://img.alicdn.com/tfs/TB14c1VoET1gK0jSZFhXXaAtVXa-200-200.png',
   } = props;
 
   return (

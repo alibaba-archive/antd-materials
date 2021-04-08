@@ -1,5 +1,5 @@
 {
-  "name": "setting-system-block",
+  "name": "@icedesign/antd-setting-system-block",
   "version": "0.1.0",
   "description": "基础的系统设置Block",
   "files": [

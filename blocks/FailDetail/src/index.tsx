@@ -19,7 +19,7 @@ export default function FailDetail(props: FailDetailProps) {
     description = '请核对并修改信息后，再重新提交。',
     image = 'https://img.alicdn.com/tfs/TB1VOSVoqL7gK0jSZFBXXXZZpXa-72-72.png',
     buttonBackDesc = '返回修改',
-    onButtonBack = null
+    onButtonBack = null,
   } = props;
 
   const gobackHandle = () => {

@@ -14,7 +14,7 @@ import {
   Typography,
   Row,
   Col,
-  Space
+  Space,
 } from 'antd';
 import styles from './index.module.less';
 
@@ -27,6 +27,7 @@ export interface Experience {
   time?: number;
   allowance?: string;
   rsu?: boolean;
+  key?: number;
 }
 
 export interface Approval {
@@ -70,7 +71,7 @@ export interface FlowFormProps {
 const DEFAULT_DATA: DataSource = {
   approval: {
     approverId: 1,
-    assessmentType: 1
+    assessmentType: 1,
   },
   person: {
     avatar:
@@ -98,10 +99,11 @@ const DEFAULT_DATA: DataSource = {
         salary: '20,000 USD',
         time: 13,
         allowance: '5,000 USD',
-        rsu: false
-      }
-    ]
-  }
+        rsu: false,
+        key: 1,
+      },
+    ],
+  },
 };
 
 const FlowForm: FC<FlowFormProps> = (props) => {
@@ -110,12 +112,8 @@ const FlowForm: FC<FlowFormProps> = (props) => {
     onAgree = () => {},
     onRefuse = () => {},
     onTransfer = () => {},
-    onSignature = () => {}
+    onSignature = () => {},
   } = props;
-
-  // const field = Field.useField({
-  //   values: dataSource.approval,
-  // });
 
   const containerRef = useRef(null);
   const formValueRef = useRef(null);
@@ -331,85 +329,85 @@ const FlowForm: FC<FlowFormProps> = (props) => {
         </Card>
         <Card title="工作经历">
           {dataSource && dataSource.person && dataSource.person.experiences
-            ? dataSource?.person?.experiences.map((experience, idx) => (
-                <div key={idx}>
-                  <div>
-                    <Typography.Text className={styles.SubTitle}>
-                      公司信息
-                    </Typography.Text>
-                    <Form labelAlign="right" className={styles.formMarinTop}>
-                      <Row>
-                        <Col span={8}>
-                          <Form.Item label="工作单位" required>
-                            <span className="next-form-preview">
-                              {experience.company}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                          <Form.Item label="职位" required>
-                            <span className="next-form-preview">
-                              {experience.position}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                          <Form.Item label="国家/地区">
-                            <span className="next-form-preview">
-                              {experience.region}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                        <Col span={16}>
-                          <Form.Item label="职责描述" required>
-                            <span className="next-form-preview">
-                              {experience.description}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                      </Row>
-                    </Form>
-                  </div>
-                  <Divider dashed />
-                  <div>
-                    <Typography.Text className={styles.SubTitle}>
-                      待遇信息
-                    </Typography.Text>
-                    <Form labelAlign="right" className={styles.formMarinTop}>
-                      <Row>
-                        <Col span={8}>
-                          <Form.Item label="月薪">
-                            <span className="next-form-preview">
-                              {experience.salary}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                          <Form.Item label="月数">
-                            <span className="next-form-preview">
-                              {experience.time}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                          <Form.Item label="国家/地区">
-                            <span className="next-form-preview">
-                              {experience.region}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                          <Form.Item label="Options/RSU">
-                            <span className="next-form-preview">
-                              {experience.rsu ? 'Yes' : 'No'}
-                            </span>
-                          </Form.Item>
-                        </Col>
-                      </Row>
-                    </Form>
-                  </div>
+            ? dataSource?.person?.experiences.map((experience) => (
+              <div key={experience.key}>
+                <div>
+                  <Typography.Text className={styles.SubTitle}>
+                    公司信息
+                  </Typography.Text>
+                  <Form labelAlign="right" className={styles.formMarinTop}>
+                    <Row>
+                      <Col span={8}>
+                        <Form.Item label="工作单位" required>
+                          <span className="next-form-preview">
+                            {experience.company}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                      <Col span={8}>
+                        <Form.Item label="职位" required>
+                          <span className="next-form-preview">
+                            {experience.position}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                      <Col span={8}>
+                        <Form.Item label="国家/地区">
+                          <span className="next-form-preview">
+                            {experience.region}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                      <Col span={16}>
+                        <Form.Item label="职责描述" required>
+                          <span className="next-form-preview">
+                            {experience.description}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </Form>
                 </div>
-              ))
+                <Divider dashed />
+                <div>
+                  <Typography.Text className={styles.SubTitle}>
+                    待遇信息
+                  </Typography.Text>
+                  <Form labelAlign="right" className={styles.formMarinTop}>
+                    <Row>
+                      <Col span={8}>
+                        <Form.Item label="月薪">
+                          <span className="next-form-preview">
+                            {experience.salary}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                      <Col span={8}>
+                        <Form.Item label="月数">
+                          <span className="next-form-preview">
+                            {experience.time}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                      <Col span={8}>
+                        <Form.Item label="国家/地区">
+                          <span className="next-form-preview">
+                            {experience.region}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                      <Col span={8}>
+                        <Form.Item label="Options/RSU">
+                          <span className="next-form-preview">
+                            {experience.rsu ? 'Yes' : 'No'}
+                          </span>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </Form>
+                </div>
+              </div>
+            ))
             : null}
         </Card>
       </Space>

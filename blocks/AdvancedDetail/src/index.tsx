@@ -12,7 +12,7 @@ import {
   Steps,
   Typography,
   Divider,
-  Table
+  Table,
 } from 'antd';
 import styles from './index.module.less';
 
@@ -57,8 +57,8 @@ export interface DataSource {
 
 export interface AdvancedDetailProps {
   dataSource?: DataSource;
-  onTabChange?: void;
-  onTableTabChange?: void;
+  onTabChange?: null;
+  onTableTabChange?: null;
 }
 const DEFAULT_DATA: DataSource = {
   logs: [
@@ -66,15 +66,15 @@ const DEFAULT_DATA: DataSource = {
     ['HRG', '叶周全'],
     ['C&B审核人', '吴永辉'],
     ['业务线审批', '倩倩'],
-    ['HR线审批', '叶俊']
+    ['HR线审批', '叶俊'],
   ].map(
     (item, index): LogItem => ({
       opStatus: item[0],
       operator: item[1],
       opResult: '同意',
       opTime: '2019-11-11 09:36',
-      key: index
-    })
+      key: index,
+    }),
   ),
   person: {
     avatar:
@@ -90,29 +90,29 @@ const DEFAULT_DATA: DataSource = {
     rank: 'P10',
     position: 'Senior Director',
     department: 'aliwork&EHR',
-    workAddress: '杭州'
+    workAddress: '杭州',
   },
   preJob: {
     company: '浙江杭州天猫有限公司',
     position: '高级研发专家',
     address: '中国/浙江',
     description:
-      'Fusion 是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。'
+      'Fusion 是一套企业级中后台设计系统解决方案，致力于解决产品体验一致性问题、设计研发协同问题，以及UI开发效率问题。',
   },
   salary: {
     month: '20,000 USD',
     monthNumber: 13,
     bonus: '5,000 USD',
-    rsu: 'No'
-  }
+    rsu: 'No',
+  },
 };
 const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
-  props: AdvancedDetailProps
+  props: AdvancedDetailProps,
 ): JSX.Element => {
   const {
     dataSource = DEFAULT_DATA,
     onTabChange = (): void => {},
-    onTableTabChange = (): void => {}
+    onTableTabChange = (): void => {},
   } = props;
   const { TabPane } = Tabs;
   const renderTab = (): JSX.Element => {
@@ -142,7 +142,7 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="http://www.alipay.com/"
+            href="https://www.alipay.com/"
           >
             操作一
           </a>
@@ -151,7 +151,7 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="http://www.alipay.com/"
+            href="https://www.alipay.com/"
           >
             操作二
           </a>
@@ -252,7 +252,7 @@ const AdvancedDetail: React.FunctionComponent<AdvancedDetailProps> = (
       </Card>
       <div className={styles.AdvancedDetailBody}>
         <Card className={styles.marginBottom}>
-          <Steps shape="dot" current={1} labelPlacement="vertical" size="small">
+          <Steps current={1} labelPlacement="vertical" size="small">
             <Steps.Step
               title="申请"
               description={

@@ -1,5 +1,5 @@
 {
-  "name": "hierarchical-form",
+  "name": "@icedesign/antd-hierarchical-form",
   "version": "0.1.0",
   "description": "分级表单",
   "files": [

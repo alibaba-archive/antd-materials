@@ -56,9 +56,9 @@ const DEFAULT_DATA: CardConfig = {
     { date: 1489593630000, name: 'rate', count: 101 },
     { date: 1489593730000, name: 'success', value: 100, count: 101 },
     { date: 1489593730000, name: 'fail', value: 1, count: 101 },
-    { date: 1489593730000, name: 'rate', count: 101 }
+    { date: 1489593730000, name: 'rate', count: 101 },
   ],
-  chartHeight: 260
+  chartHeight: 260,
 };
 
 export interface JSErrorChartProps {
@@ -66,21 +66,21 @@ export interface JSErrorChartProps {
 }
 
 const JSErrorChart: React.FunctionComponent<JSErrorChartProps> = (
-  props: JSErrorChartProps
+  props: JSErrorChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
   const { title, chartData, chartHeight } = cardConfig;
 
   const scale = {
     name: {
-      ticks: ['rate', 'success', 'fail']
+      ticks: ['rate', 'success', 'fail'],
     },
     date: {
       type: 'timeCat',
       range: [0.05, 0.95],
       mask: 'HH:mm',
-      tickCount: 12
-    }
+      tickCount: 12,
+    },
   };
 
   return (
@@ -113,7 +113,7 @@ const JSErrorChart: React.FunctionComponent<JSErrorChartProps> = (
                 break;
             }
             return `<li style="padding:10px;"><i class="${classNames(
-              styles[`${alias}Icon`]
+              styles[`${alias}Icon`],
             )}"></i><span >${name}</span></li>`;
           }}
         />

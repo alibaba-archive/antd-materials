@@ -7,6 +7,7 @@ interface DataItem {
   name?: string;
   rate?: string;
   color?: string;
+  key?: number;
 }
 
 interface CardConfig {
@@ -21,15 +22,15 @@ export interface AntdCardRankChartProps {
 const DEFAULT_DATA: CardConfig = {
   title: '区域销售',
   dataSource: [
-    { name: '亚洲', rate: '40%', color: '#2B7FFB' },
-    { name: '欧洲', rate: '30%', color: '#00D6CB' },
-    { name: '南非', rate: '20%', color: '#F0C330' },
-    { name: '美洲', rate: '10%', color: '#3840D9' }
-  ]
+    { name: '亚洲', rate: '40%', color: '#2B7FFB', key: 1 },
+    { name: '欧洲', rate: '30%', color: '#00D6CB', key: 2 },
+    { name: '南非', rate: '20%', color: '#F0C330', key: 3 },
+    { name: '美洲', rate: '10%', color: '#3840D9', key: 4 },
+  ],
 };
 
 const AntdCardRankChart: React.FunctionComponent<AntdCardRankChartProps> = (
-  props: AntdCardRankChartProps
+  props: AntdCardRankChartProps,
 ): JSX.Element => {
   const { cardConfig = DEFAULT_DATA } = props;
   const { title, dataSource } = cardConfig;
@@ -42,8 +43,8 @@ const AntdCardRankChart: React.FunctionComponent<AntdCardRankChartProps> = (
         <Col span={6}>
           <div className={styles.histogram}>
             {dataSource &&
-              dataSource.map((item, idx) => (
-                <div key={idx} style={{ justifyContent: 'flex-start' }}>
+              dataSource.map((item) => (
+                <div key={item.key} style={{ justifyContent: 'flex-start' }}>
                   <div className={styles.hisTitle}>{item.name}</div>
                   <div style={{ display: 'flex' }}>
                     <div

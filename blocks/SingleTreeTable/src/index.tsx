@@ -14,30 +14,30 @@ const data = [
         rowNo: '第一条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 2,
         rowNo: '第二条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 3,
         rowNo: '第三条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 4,
         rowNo: '第四条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
-      }
-    ]
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
+      },
+    ],
   },
   {
     id: 'second',
@@ -49,30 +49,30 @@ const data = [
         rowNo: '第一条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 6,
         rowNo: '第二条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 7,
         rowNo: '第三条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 8,
         rowNo: '第四条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
-      }
-    ]
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
+      },
+    ],
   },
   {
     id: 'third',
@@ -84,30 +84,30 @@ const data = [
         rowNo: '第一条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 10,
         rowNo: '第二条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 11,
         rowNo: '第三条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 12,
         rowNo: '第四条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
-      }
-    ]
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
+      },
+    ],
   },
   {
     id: 'fourth',
@@ -119,30 +119,30 @@ const data = [
         rowNo: '第一条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 14,
         rowNo: '第二条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 15,
         rowNo: '第三条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 16,
         rowNo: '第四条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
-      }
-    ]
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
+      },
+    ],
   },
   {
     id: 'fifth',
@@ -154,45 +154,45 @@ const data = [
         rowNo: '第一条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 18,
         rowNo: '第二条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 19,
         rowNo: '第三条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
       },
       {
         id: 20,
         rowNo: '第四条',
         // eslint-disable-next-line
         rowContent:
-          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容'
-      }
-    ]
-  }
+          '法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容法律条文内容',
+      },
+    ],
+  },
 ];
 export default function SingleTreeTable() {
-  const renderContent = (value: string, row: any, index: number) => {
+  const renderContent = (value: string, row: any) => {
     if (row.children) {
       return {
         children: value,
         props: {
-          colSpan: 0
-        }
+          colSpan: 0,
+        },
       };
     } else {
       return {
         children: value,
-        props: {}
+        props: {},
       };
     }
   };
@@ -201,22 +201,22 @@ export default function SingleTreeTable() {
       title: '法律条文编号',
       dataIndex: 'rowNo',
       width: 180,
-      render: (value: string, row: any, index: number) => {
+      render: (value: string, row: any) => {
         if (!row.children) {
           return <span>{value}</span>;
         }
         return {
           children: <span>{value}</span>,
           props: {
-            colSpan: 2
-          }
+            colSpan: 2,
+          },
         };
-      }
+      },
     },
     {
       title: '法律条文内容',
       dataIndex: 'rowContent',
-      render: renderContent
+      render: renderContent,
     },
     {
       title: '操作',
@@ -250,10 +250,10 @@ export default function SingleTreeTable() {
             )}
           </div>
         );
-      }
-    }
+      },
+    },
   ];
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
 
   const fetchRemote = () => {
     message.success('请求成功');
