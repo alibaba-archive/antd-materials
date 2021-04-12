@@ -1,13 +1,15 @@
+import { SmileOutlined, HeartOutlined } from '@ant-design/icons';
+
 const asideMenuConfig = [
   {
     name: 'home',
     path: '/',
-    icon: 'smile'
+    icon: SmileOutlined,
   },
   {
     name: 'Dashboard',
     path: '/dashboard',
-    icon: 'heart'
+    icon: HeartOutlined,
   },
 ];
 

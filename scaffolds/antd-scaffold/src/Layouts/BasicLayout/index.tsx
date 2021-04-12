@@ -2,18 +2,13 @@ import React from 'react';
 import ProLayout, {
   DefaultFooter
 } from '@ant-design/pro-layout';
-import { SmileOutlined, HeartOutlined } from '@ant-design/icons';
 import { Link } from 'ice';
 import { asideMenuConfig } from './menuConfig';
 
-const IconMap = {
-  smile: <SmileOutlined />,
-  heart: <HeartOutlined />,
-};
 const loopMenuItem = (menus) =>
   menus.map(({ icon, children, ...item }) => ({
     ...item,
-    icon: icon && IconMap[icon as string],
+    icon: React.createElement(icon),
     children: children && loopMenuItem(children),
   }));
 
