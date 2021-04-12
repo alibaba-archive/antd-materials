@@ -2,11 +2,11 @@ import { createApp, IAppConfig } from 'ice';
 
 const appConfig: IAppConfig = {
   app: {
-    rootId: 'ice-container'
+    rootId: 'ice-container',
   },
   router: {
-    type: 'hash'
-  }
+    type: 'hash',
+  },
 };
 
 createApp(appConfig);

@@ -5,3 +5,7 @@ node_modules/
 **/*.min.js
 coverage/
 lib/
+scripts
+.ice
+
+blocks/

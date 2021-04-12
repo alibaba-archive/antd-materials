@@ -17,7 +17,7 @@ const routerConfig: IRouterConfig = [
       component: Home,
     }, {
       component: NotFound,
-    }]
+    }],
   },
 ];
 
