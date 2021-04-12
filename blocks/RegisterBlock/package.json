@@ -1,5 +1,5 @@
 {
-  "name": "@antd-materials/block-register-block",
+  "name": "@antd-materials/block-register",
   "version": "0.1.0",
   "description": "A basic register module",
   "files": [
