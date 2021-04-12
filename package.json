@@ -9,9 +9,9 @@
     "publish": "ts-node ./scripts/publish.ts",
     "generate": "iceworks generate",
     "sync": "ts-node ./scripts/upload.ts",
-    "lint": "npm run eslint",
-    "eslint": "eslint --cache --ext .js,.jsx ./",
-    "stylelint": "stylelint ./**/*.css"
+    "lint": "npm run eslint && npm run stylelint",
+    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
+    "stylelint": "stylelint **/*.{css,scss,less}"
   },
   "files": [
     "build"
