@@ -31,7 +31,7 @@ try {
 }
 
 // 2. upload build/materials.json to oss
-const materialPath = path.resolve(__dirname, '../../build/materials.json');
+const materialPath = path.resolve(__dirname, '../build/materials.json');
 const toPath = path.join(assetsPath, dirPath, 'antd-materials.json');
 
 const ossClient = oss({
