@@ -2,8 +2,6 @@ import React from 'react';
 import { Select, Form, Table, Card, Pagination, Button, Row, Col } from 'antd';
 import { useAntdTable } from 'ahooks';
 
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
-
 const FormItem = Form.Item;
 
 const getTableData = (
@@ -40,7 +38,7 @@ const getTableData = (
 };
 
 const FilterTable: React.FunctionComponent = (): JSX.Element => {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const { pagination, tableProps, search } = useAntdTable(getTableData, {
     form,
   });

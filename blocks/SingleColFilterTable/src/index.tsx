@@ -12,12 +12,8 @@ import {
   Card,
   Pagination,
 } from 'antd';
-
 import { useAntdTable } from 'ahooks';
-
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
-
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 import styles from './index.module.less';
 
 const RadioGroup = Radio.Group;
@@ -82,7 +78,7 @@ const getTableData = async (
 };
 
 export default function SingleColFilterTable() {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const { pagination, tableProps, search } = useAntdTable(getTableData, {
     form,
   });

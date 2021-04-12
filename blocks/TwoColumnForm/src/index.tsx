@@ -44,7 +44,7 @@ const TwoColumnForm: React.FC<TwoColumnFormProps> = (props: TwoColumnFormProps):
   };
 
   return (
-    <Card className={styles.TwoColumnForm}>
+    <Card>
       <Form
         initialValues={postData}
         labelAlign="right"

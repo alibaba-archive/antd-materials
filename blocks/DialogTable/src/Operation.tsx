@@ -1,6 +1,5 @@
 import React, { useEffect, useImperativeHandle } from 'react';
 import { Select, Form, Input } from 'antd';
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 
 const FormItem = Form.Item;
 
@@ -32,7 +31,7 @@ const Operation: React.ForwardRefRenderFunction<OperationRef, OperaitionProps> =
   const { actionType } = props;
 
   const dataSource = props.dataSource || {};
-  const [form] = useForm();
+  const [form] = Form.useForm();
   useEffect(() => {
     form.resetFields();
     if (dataSource) {

@@ -1,12 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { Table, Card, Pagination, message, Modal } from 'antd';
+import { Table, Card, Pagination, message, Modal, Form } from 'antd';
 import { useAntdTable, useSetState } from 'ahooks';
 
 import DialogOperation from './DialogOperation';
 import { ActionType, OperaitionProps } from './Operation';
-
 import styles from './index.module.less';
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 
 const getTableData = (
   { current, pageSize }: { current: number; pageSize: number },
@@ -72,7 +70,7 @@ const DialogTable: React.FC = () => {
   });
   const { actionVisible, columnWidth, optCol } = state;
   const [delMessage, setDelMessage] = useState('');
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const { pagination, tableProps, search } = useAntdTable(getTableData, {
     form,
   });

@@ -1,6 +1,5 @@
 import React, { FC, useRef } from 'react';
 import { Button, Card, Form, Input, Select, Row, Col, Space, Radio, Divider, message } from 'antd';
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 
 export interface DataSource {
   values: {
@@ -31,7 +30,7 @@ const ClassifiedForm: FC<ClassifiedFormProps> = (props): JSX.Element => {
 
   const jobRef = useRef(null);
 
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const handleSubmit = () => {
     const values = form.getFieldsValue(true);
 

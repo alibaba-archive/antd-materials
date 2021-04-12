@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Form, Input, Radio, Steps, Button, Typography, Row, Col } from 'antd';
 import { CheckCircleOutlined } from '@ant-design/icons';
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 import styles from './index.module.less';
 
 export interface DataSource {
@@ -27,7 +26,7 @@ const StepForm: React.FunctionComponent<StepFormProps> = (props: StepFormProps):
   const { dataSource = DEFAULT_DATA, onSubmit = (): void => {} } = props;
 
   const [currentStep, setStep] = useState<number>(0);
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const formLayout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 15 },

@@ -11,9 +11,8 @@ import {
   Col,
 } from 'antd';
 import { useAntdTable, useSetState } from 'ahooks';
-
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
+
 import styles from './index.module.less';
 
 const FormItem = Form.Item;
@@ -92,7 +91,7 @@ const MultiColFilterTable: React.FC = () => {
     expandStatus: defaultExpandStatus,
     actionListSpan: getNextActionListSpan(defaultExpandStatus),
   });
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const { pagination, tableProps, search } = useAntdTable(getTableData, {
     form,
   });

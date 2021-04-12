@@ -37,6 +37,6 @@ module.exports = {
         description: 'A universal framework based on React.js.',
         logo: 'https://avatars1.githubusercontent.com/u/1961952',
       },
-    ]
+    ],
   },
 };

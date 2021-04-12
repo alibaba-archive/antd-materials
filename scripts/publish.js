@@ -5,7 +5,8 @@ const { execSync } = require('child_process');
 
 const cwd = process.cwd();
 const TYPE = process.env.TYPE || 'blocks'; // scaffolds | blocks
-const blocksPath = path.join(cwd, TYPE);
+const packagesName = TYPE === 'scaffolds' ? 'scaffolds' : 'blocks'; 
+const blocksPath = path.join(cwd, packagesName);
 const blocksList = fs.readdirSync(blocksPath);
 // const blocksList = [
 //   'ActionTable',
@@ -23,7 +24,7 @@ const notPublished = [];
 
 const arr = [];
 blocksList.forEach(block => {
-  const blockDirPath = path.join(cwd, TYPE, block);
+  const blockDirPath = path.join(cwd, packagesName, block);
   const blockPkgjson = path.join(blockDirPath, 'package.json');
 
   if (!fs.existsSync(blockDirPath) || !fs.existsSync(blockPkgjson)) {
@@ -52,8 +53,6 @@ blocksList.forEach(block => {
 
   // fs.writeJsonSync(blockPkgjson, packageInfo, { spaces: 2 });
 
-
-
   // 批量写入 tsconfig.json
   // fs.writeJSONSync(path.join(blockDirPath, 'tsconfig.json'), {
   //   "extends": "../../tsconfig.block.json",
@@ -65,13 +64,7 @@ blocksList.forEach(block => {
   // }, {
   //   spaces: 2,
   // });
-
-  // 批量写入 src/style.d.ts
-  //   fs.writeFileSync(path.join(blockDirPath, 'src/style.d.ts'), `declare module '*.module.scss' {
-  //   const classes: { [key: string]: string };
-  //   export default classes;
-  // }`);
-
+  // return;
 
   // 批量修改 package.json
   // if (!fs.existsSync(blockPkgjson)) {
@@ -104,9 +97,26 @@ blocksList.forEach(block => {
   //     'html': '',
   //   }];
   // }
+
+  // packageInfo.peerDependencies = {
+  //   "react": "^16.8.0",
+  //   "antd": "^4.0.0"
+  // };
+  // delete packageInfo.devDependencies;
+  // packageInfo.scripts = {
+  //   "start": "../../node_modules/.bin/build-scripts start --config ../../build.block.json",
+  //   "build": "../../node_modules/.bin/build-scripts build --config ../../build.block.json",
+  //   "screenshot": "../../node_modules/.bin/screenshot -l -s mountNode -t 800",
+  //   "prepublishOnly": "npm run build && npm run screenshot"
+  // };
+
+  // packageInfo.scripts.prepublishOnly = "npm run build && npm run screenshot";
+
+  // // packageInfo.name = packageInfo.name.replace('@icedesign/antd-', '@antd-materials/block-');
   // fs.writeJSONSync(blockPkgjson, packageInfo, {
   //   spaces: 2
   // });
+  // return;
 
   // 批量发布区块
   let stdout = '';
@@ -127,9 +137,9 @@ blocksList.forEach(block => {
 
   try {
     console.log(`publish start: ${name} ${version}`);
-    const cmd = TYPE === 'scaffolds'
-      ? `cd ${TYPE}/${block};tnpm update;npm publish;`
-      : `cd blocks/${block};tnpm update;tnpm install bizcharts@3.x @antv/data-set@0.10.x;npm publish;`
+    const cmd = packagesName === 'scaffolds'
+      ? `cd ${packagesName}/${block};tnpm update;npm publish;`
+      : `cd ${packagesName}/${block};tnpm update;npm publish;`
     execSync(cmd, {
       stdio: 'inherit'
     });

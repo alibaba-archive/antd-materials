@@ -1,9 +1,10 @@
+import { IRouterConfig } from 'ice';
 import Layout from '@/Layouts/BasicLayout';
 import Dashboard from '@/pages/Dashboard';
 import Home from '@/pages/Home';
 import NotFound from '@/components/NotFound';
 
-const routerConfig = [
+const routerConfig: IRouterConfig = [
   {
     path: '/',
     component: Layout,
@@ -16,7 +17,7 @@ const routerConfig = [
       component: Home,
     }, {
       component: NotFound,
-    }]
+    }],
   },
 ];
 

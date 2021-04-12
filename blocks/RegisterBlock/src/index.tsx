@@ -1,10 +1,7 @@
 /* eslint-disable @iceworks/best-practices/no-secret-info */
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Input, message, Form, Button } from 'antd';
-
-import { useForm } from '_antd@4.12.3@antd/lib/form/Form';
 import { useInterval } from './utils';
 import styles from './index.module.less';
 
@@ -61,7 +58,7 @@ export default function RegisterBlock() {
     console.log('values:', values);
     message.success('注册成功');
   };
-  const [form] = useForm();
+  const [form] = Form.useForm();
   return (
     <div className={styles.RegisterBlock}>
       <div className={styles.innerBlock}>
