@@ -52,19 +52,18 @@ blocksList.forEach(block => {
 
   // fs.writeJsonSync(blockPkgjson, packageInfo, { spaces: 2 });
 
-
-
   // 批量写入 tsconfig.json
-  // fs.writeJSONSync(path.join(blockDirPath, 'tsconfig.json'), {
-  //   "extends": "../../tsconfig.block.json",
-  //   "include": [
-  //     "./src/**/*.ts",
-  //     "./src/**/*.tsx"
-  //   ],
-  //   "exclude": ["node_modules", "build"]
-  // }, {
-  //   spaces: 2,
-  // });
+  fs.writeJSONSync(path.join(blockDirPath, 'tsconfig.json'), {
+    "extends": "../../tsconfig.block.json",
+    "include": [
+      "./src/**/*.ts",
+      "./src/**/*.tsx"
+    ],
+    "exclude": ["node_modules", "build"]
+  }, {
+    spaces: 2,
+  });
+  return;
 
   // 批量写入 src/style.d.ts
   //   fs.writeFileSync(path.join(blockDirPath, 'src/style.d.ts'), `declare module '*.module.scss' {

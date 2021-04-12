@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './index.module.scss';
+import styles from './index.module.less';
 
 export default function PageHead({ value }) {
   return (
