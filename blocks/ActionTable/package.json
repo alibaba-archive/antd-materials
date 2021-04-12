@@ -1,0 +1,40 @@
+{
+  "name": "@antd-materials/block-action-table",
+  "version": "0.1.0",
+  "description": "action bar table",
+  "files": [
+    "src/!(style.d.ts)",
+    "build/",
+    "screenshot.png"
+  ],
+  "keywords": [
+    "ice",
+    "react",
+    "block"
+  ],
+  "scripts": {
+    "start": "../../node_modules/.bin/build-scripts start --config ../../build.block.json",
+    "build": "../../node_modules/.bin/build-scripts build --config ../../build.block.json",
+    "screenshot": "../../node_modules/.bin/screenshot -l -s mountNode -t 800",
+    "prepublishOnly": "npm run build && npm run screenshot"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "prop-types": "^15.5.8",
+    "react-sortablejs": "^6.0.0",
+    "sortablejs": "^1.13.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "antd": "^4.0.0"
+  },
+  "blockConfig": {
+    "name": "ActionTable",
+    "title": "ActionTable",
+    "category": "Table"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT"
+}

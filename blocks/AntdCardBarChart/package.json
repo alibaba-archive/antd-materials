@@ -1,0 +1,37 @@
+{
+  "name": "@antd-materials/block-card-bar-chart",
+  "version": "0.1.0",
+  "description": "柱形图卡片",
+  "files": [
+    "src/!(style.d.ts)",
+    "build/",
+    "screenshot.png"
+  ],
+  "keywords": [
+    "ice",
+    "react",
+    "block"
+  ],
+  "scripts": {
+    "start": "../../node_modules/.bin/build-scripts start --config ../../build.block.json",
+    "build": "../../node_modules/.bin/build-scripts build --config ../../build.block.json",
+    "screenshot": "../../node_modules/.bin/screenshot -l -s mountNode -t 800",
+    "prepublishOnly": "npm run build && npm run screenshot"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "blockConfig": {
+    "name": "AntdCardBarChart",
+    "title": "Antd-card-bar-Chart",
+    "category": "Chart"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "antd": "^4.0.0"
+  }
+}

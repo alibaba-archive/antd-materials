@@ -20,9 +20,6 @@
     "@alib/build-scripts": "^0.1.5",
     "@ice/screenshot": "^0.1.1",
     "@iceworks/spec": "^1.0.1",
-    "@types/classnames": "^2.2.11",
-    "@types/react": "^16.9.13",
-    "@types/react-dom": "^16.9.4",
     "ali-oss": "^6.9.1",
     "build-plugin-antd": "^0.1.0",
     "build-plugin-block": "^1.0.0",
@@ -32,24 +29,22 @@
     "fs-extra": "^9.0.1",
     "ice-npm-utils": "^2.0.0",
     "iceworks": "^3.2.5",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
     "stylelint": "^13.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.7.5"
   },
-  "dependencies": {
-    "antd": "^4.12.3",
-    "bizcharts": "^3.5.6",
-    "ice": "^3.7.5",
-    "ice-scaffold-generator": "^1.1.31",
-    "react-sortablejs": "^6.0.0",
-    "sortablejs": "^1.12.0",
-    "ahooks": "^2.0.0",
-    "lodash.debounce": "^4.0.8"
-  },
   "materialConfig": {
     "template": "@icedesign/ice-react-ts-material-template",
     "type": "react"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "ahooks": "^2.10.0",
+    "antd": "^4.15.1",
+    "bizcharts": "^4.1.9",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

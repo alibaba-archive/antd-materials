@@ -66,13 +66,6 @@ blocksList.forEach(block => {
   // });
   // return;
 
-  // 批量写入 src/style.d.ts
-  fs.writeFileSync(path.join(blockDirPath, 'src/style.d.ts'), `declare module '*.module.less' {
-    const classes: { [key: string]: string };
-    export default classes;
-  }`);
-
-
   // 批量修改 package.json
   // if (!fs.existsSync(blockPkgjson)) {
   //   console.log(blockPkgjson, 'not exist');
@@ -104,9 +97,29 @@ blocksList.forEach(block => {
   //     'html': '',
   //   }];
   // }
+
+  // packageInfo.peerDependencies = {
+  //   "react": "^16.8.0",
+  //   "antd": "^4.0.0"
+  // };
+  // delete packageInfo.devDependencies;
+  // packageInfo.scripts = {
+  //   "start": "../../node_modules/.bin/build-scripts start --config ../../build.block.json",
+  //   "build": "../../node_modules/.bin/build-scripts build --config ../../build.block.json",
+  //   "screenshot": "../../node_modules/.bin/screenshot -l -s mountNode -t 800",
+  //   "prepublishOnly": "npm run build && npm run screenshot"
+  // };
+
+  // packageInfo.name = packageInfo.name.replace('@icedesign/antd-', '@antd-materials/block-');
   // fs.writeJSONSync(blockPkgjson, packageInfo, {
   //   spaces: 2
   // });
+  // return;
+
+  if (fs.existsSync(path.join(blockDirPath, 'screenshot.png'))) {
+    console.log('已构建成功', blockDirPath)
+    return;
+  }
 
   // 批量发布区块
   let stdout = '';
@@ -129,7 +142,7 @@ blocksList.forEach(block => {
     console.log(`publish start: ${name} ${version}`);
     const cmd = packagesName === 'scaffolds'
       ? `cd ${packagesName}/${block};tnpm update;npm publish;`
-      : `cd ${packagesName}/${block};tnpm update;npm run prepublishOnly;`
+      : `cd ${packagesName}/${block};npm run prepublishOnly;`
       // : `cd ${packagesName}/${block};tnpm update;npm publish;`
     execSync(cmd, {
       stdio: 'inherit'
