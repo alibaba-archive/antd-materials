@@ -5,7 +5,8 @@ const { execSync } = require('child_process');
 
 const cwd = process.cwd();
 const TYPE = process.env.TYPE || 'blocks'; // scaffolds | blocks
-const blocksPath = path.join(cwd, TYPE);
+const packagesName = TYPE === 'scaffolds' ? 'scaffolds' : 'blocks-tmp'; 
+const blocksPath = path.join(cwd, packagesName);
 const blocksList = fs.readdirSync(blocksPath);
 // const blocksList = [
 //   'ActionTable',
@@ -23,7 +24,7 @@ const notPublished = [];
 
 const arr = [];
 blocksList.forEach(block => {
-  const blockDirPath = path.join(cwd, TYPE, block);
+  const blockDirPath = path.join(cwd, packagesName, block);
   const blockPkgjson = path.join(blockDirPath, 'package.json');
 
   if (!fs.existsSync(blockDirPath) || !fs.existsSync(blockPkgjson)) {
@@ -53,23 +54,23 @@ blocksList.forEach(block => {
   // fs.writeJsonSync(blockPkgjson, packageInfo, { spaces: 2 });
 
   // 批量写入 tsconfig.json
-  fs.writeJSONSync(path.join(blockDirPath, 'tsconfig.json'), {
-    "extends": "../../tsconfig.block.json",
-    "include": [
-      "./src/**/*.ts",
-      "./src/**/*.tsx"
-    ],
-    "exclude": ["node_modules", "build"]
-  }, {
-    spaces: 2,
-  });
-  return;
+  // fs.writeJSONSync(path.join(blockDirPath, 'tsconfig.json'), {
+  //   "extends": "../../tsconfig.block.json",
+  //   "include": [
+  //     "./src/**/*.ts",
+  //     "./src/**/*.tsx"
+  //   ],
+  //   "exclude": ["node_modules", "build"]
+  // }, {
+  //   spaces: 2,
+  // });
+  // return;
 
   // 批量写入 src/style.d.ts
-  //   fs.writeFileSync(path.join(blockDirPath, 'src/style.d.ts'), `declare module '*.module.scss' {
-  //   const classes: { [key: string]: string };
-  //   export default classes;
-  // }`);
+  fs.writeFileSync(path.join(blockDirPath, 'src/style.d.ts'), `declare module '*.module.less' {
+    const classes: { [key: string]: string };
+    export default classes;
+  }`);
 
 
   // 批量修改 package.json
@@ -126,9 +127,10 @@ blocksList.forEach(block => {
 
   try {
     console.log(`publish start: ${name} ${version}`);
-    const cmd = TYPE === 'scaffolds'
-      ? `cd ${TYPE}/${block};tnpm update;npm publish;`
-      : `cd blocks/${block};tnpm update;tnpm install bizcharts@3.x @antv/data-set@0.10.x;npm publish;`
+    const cmd = packagesName === 'scaffolds'
+      ? `cd ${packagesName}/${block};tnpm update;npm publish;`
+      : `cd ${packagesName}/${block};tnpm update;npm run prepublishOnly;`
+      // : `cd ${packagesName}/${block};tnpm update;npm publish;`
     execSync(cmd, {
       stdio: 'inherit'
     });

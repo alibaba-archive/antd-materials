@@ -19,3 +19,4 @@ blocks/**/es/
 components/**/lib/
 components/**/es/
 screenshot.png
+style.d.ts

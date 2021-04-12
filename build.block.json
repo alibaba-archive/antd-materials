@@ -10,9 +10,7 @@
       }
     ],
     ["build-plugin-antd", {
-      "themeConfig": {
-        "primary-color": "#5584FF"
-      }
-    }]  
+    }],
+    "build-plugin-fusion-material"
   ]
 }
