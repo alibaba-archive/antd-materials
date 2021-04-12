@@ -9,7 +9,7 @@ const accessKeyId = process.env.ACCESS_KEY_ID;
 const accessKeySecret = process.env.ACCESS_KEY_SECRET;
 const dirPath = 'materials/';  
 const assetsPath = process.env.BRANCH_NAME === 'master' ? 'assets' : 'pre-assets'; // assets 正式
-const rootDir = path.resolve(__dirname, '../../');
+const rootDir = path.resolve(__dirname, '..');
 
 console.log('generate and upload, current branch', process.env.BRANCH_NAME);
 
